@@ -5,7 +5,7 @@ from pathlib import Path
 import pandas as pd
 from datetime import datetime
 
-DB_PATH = Path("/home/mytestapp/mysite/database.db")
+DB_PATH = Path(os.getenv('DATABASE_PATH', Path(__file__).resolve().parent.parent / 'database.db'))
 UPLOAD_MAX_MB = 10
 ALLOWED_EXT = {".xlsx"}
 

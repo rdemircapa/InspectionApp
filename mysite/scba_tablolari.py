@@ -1,7 +1,7 @@
 import sqlite3
 import os
 
-DATABASE = '/home/mytestapp/mysite/database.db'
+DATABASE = os.getenv('DATABASE_PATH', os.path.join(os.path.dirname(os.path.abspath(__file__)), 'database.db'))
 print("Bağlanılan veritabanı:", os.path.abspath(DATABASE))
 
 conn = sqlite3.connect(DATABASE)

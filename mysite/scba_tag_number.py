@@ -1,6 +1,7 @@
+import os
 import sqlite3
 
-DATABASE = '/home/mytestapp/mysite/database.db'
+DATABASE = os.getenv('DATABASE_PATH', os.path.join(os.path.dirname(os.path.abspath(__file__)), 'database.db'))
 
 def assign_scba_tags():
     conn = sqlite3.connect(DATABASE)

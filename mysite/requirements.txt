@@ -1,0 +1,11 @@
+Flask>=3.0
+gunicorn>=21.2
+pandas>=2.0
+qrcode[pil]>=7.4
+reportlab>=4.0
+bcrypt>=4.0
+python-dateutil>=2.8
+
+# upload_to_bigquery.py icin (web uygulamasinin kendisi icin gerekli degil)
+google-cloud-bigquery>=3.11
+db-dtypes>=1.2

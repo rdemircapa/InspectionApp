@@ -1,0 +1,8 @@
+.git
+.gitignore
+README.txt
+**/__pycache__
+**/*.pyc
+mysite/.env
+mysite/deft-citizen-466607-q7-a0a53ceeef2a.json
+mysite/database.db

@@ -6,11 +6,12 @@ EEBA/SCBA ekipman tablosu için SQLite veritabanı oluşturucu
 - Trigger: UPDATE'ta updated_at alanını otomatik günceller
 """
 
+import os
 import sqlite3
 from pathlib import Path
 
 # --- Ayarlar ---
-DB_PATH = Path("/home/mytestapp/mysite/database.db")  # gerekirse değiştir
+DB_PATH = Path(os.getenv('DATABASE_PATH', Path(__file__).resolve().parent / 'database.db'))
 DB_PATH.parent.mkdir(parents=True, exist_ok=True)
 
 DDL_TABLE = """

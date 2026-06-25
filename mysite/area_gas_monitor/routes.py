@@ -3,19 +3,14 @@ from flask import session, redirect, url_for, flash
 from auth_utils import login_required, role_required
 from flask import Blueprint, render_template, request, redirect, url_for, flash
 import sqlite3
+import os
 
 
 
 
 area_gas_monitor_bp = Blueprint('area_gas_monitor', __name__, template_folder='templates')
 
-DB_FILE = '/home/mytestapp/mysite/database.db'
-
-
-
-from database import get_db_connection
-
-# /home/mytestapp/mysite/area_gas_monitor/routes.py
+DB_FILE = os.getenv('DATABASE_PATH', os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), 'database.db'))
 
 from flask import Blueprint, render_template
 import sqlite3
@@ -39,7 +34,7 @@ def list_area_gas_monitors():
     import sqlite3
     from datetime import datetime
 
-    conn = sqlite3.connect('/home/mytestapp/mysite/database.db')
+    conn = sqlite3.connect(DB_FILE)
     conn.row_factory = sqlite3.Row
     cursor = conn.cursor()
 
@@ -370,7 +365,7 @@ def manual_scan_area_monitor():
         tag_number = request.form.get('tag_number')
 
         # Veritabanını kontrol et
-        conn = sqlite3.connect('/home/mytestapp/mysite/database.db')
+        conn = sqlite3.connect(DB_FILE)
         conn.row_factory = sqlite3.Row
         cursor = conn.cursor()
 
@@ -437,7 +432,7 @@ def inspect_area_monitor(tag_number):
 @login_required
 @role_required('admin', 'inspector')
 def update_status(id, new_status):
-    conn = sqlite3.connect('/home/mytestapp/mysite/database.db')
+    conn = sqlite3.connect(DB_FILE)
     cursor = conn.cursor()
 
     if new_status == "Active":
@@ -499,7 +494,7 @@ def filter_area_gas_monitors(filter_type):
             monitors.append(m)
         return monitors
 
-    conn = sqlite3.connect('/home/mytestapp/mysite/database.db')
+    conn = sqlite3.connect(DB_FILE)
     conn.row_factory = sqlite3.Row
     cursor = conn.cursor()
 

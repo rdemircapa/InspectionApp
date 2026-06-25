@@ -1,11 +1,11 @@
 from flask import Flask, render_template, session, request, redirect, url_for, g, flash, send_file
 from auth_utils import login_required, role_required
+import os
 
 
 app = Flask(__name__, static_folder='static')
-app.secret_key = 'your_super_secret_key_12345'
+app.secret_key = os.getenv('SECRET_KEY', 'your_super_secret_key_12345')
 import sqlite3
-import os
 import pandas as pd
 from datetime import datetime, date
 from io import BytesIO
@@ -26,8 +26,9 @@ from reportlab.lib.utils import ImageReader
 from flask import jsonify
 
 
-DB_FILE = '/home/mytestapp/mysite/database.db'
-OUTPUT_FOLDER = '/home/mytestapp/mysite/output'
+BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+DB_FILE = os.getenv('DATABASE_PATH', os.path.join(BASE_DIR, 'database.db'))
+OUTPUT_FOLDER = os.getenv('OUTPUT_FOLDER', os.path.join(BASE_DIR, 'output'))
 
 # klasör yoksa oluştur
 if not os.path.exists(OUTPUT_FOLDER):
@@ -734,7 +735,7 @@ from reportlab.lib import colors
 @login_required
 def scba_report(scba_id):
     def get_db_connection():
-        conn = sqlite3.connect('/home/mytestapp/mysite/database.db')
+        conn = sqlite3.connect(DB_FILE)
         conn.row_factory = sqlite3.Row
         return conn
 

@@ -2,11 +2,12 @@ from flask import Blueprint, render_template, request, redirect, url_for, flash,
 from auth_utils import login_required, role_required
 from datetime import datetime, timedelta, date
 import sqlite3
+import os
 
 # --- Ortak Ayarlar ---
 from . import personal_gas_monitor_bp
 
-DB_PATH = '/home/mytestapp/mysite/database.db'
+DB_PATH = os.getenv('DATABASE_PATH', os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), 'database.db'))
 
 def get_db_connection():
     conn = sqlite3.connect(DB_PATH)

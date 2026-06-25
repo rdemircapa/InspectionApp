@@ -2,7 +2,7 @@ import sqlite3
 import os
 
 # Veritabanı yolu
-DATABASE = '/home/mytestapp/mysite/database.db'
+DATABASE = os.getenv('DATABASE_PATH', os.path.join(os.path.dirname(os.path.abspath(__file__)), 'database.db'))
 print("🔧 Bağlanılıyor:", os.path.abspath(DATABASE))
 
 conn = sqlite3.connect(DATABASE)
