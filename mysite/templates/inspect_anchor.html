@@ -1,0 +1,107 @@
+{% extends 'base.html' %}
+
+{% block title %}Inspect Anchor{% endblock %}
+
+{% block content %}
+<div class="container mt-4">
+  <h2>Rigging Equipment Inspection Form</h2>
+  <p><strong>Product:</strong> {{ product.name }} | <strong>Serial ID:</strong> {{ product.serial_id }}</p>
+
+  <form method="POST">
+    <h5 class="mt-4">User & Equipment Info</h5>
+    <div class="row">
+      <div class="col-md-6 mb-3">
+        <label>Surname</label>
+        <input type="text" name="surname" class="form-control">
+      </div>
+      <div class="col-md-6 mb-3">
+        <label>Model</label>
+        <input type="text" name="model" class="form-control">
+      </div>
+      <div class="col-md-6 mb-3">
+        <label>Serial Number</label>
+        <input type="text" name="serial_number" class="form-control" value="{{ product.serial_id }}">
+      </div>
+      <div class="col-md-6 mb-3">
+        <label>Year of Manufacture</label>
+        <input type="text" name="year_of_manufacture" class="form-control">
+      </div>
+      <div class="col-md-6 mb-3">
+        <label>Date of Purchase</label>
+        <input type="date" name="date_of_purchase" class="form-control">
+      </div>
+      <div class="col-md-6 mb-3">
+        <label>Identifier</label>
+        <input type="text" name="identifier" class="form-control">
+      </div>
+      <div class="col-md-6 mb-3">
+        <label>Date of First Use</label>
+        <input type="date" name="date_of_first_use" class="form-control">
+      </div>
+    </div>
+
+    <h5 class="mt-4">1. Known Product History</h5>
+    <textarea name="history" class="form-control mb-3"></textarea>
+
+    <h5>2. Preliminary Observations</h5>
+    <textarea name="observations" class="form-control mb-3"></textarea>
+
+    <h5>3. General Condition</h5>
+    <div class="form-check">
+      <input class="form-check-input" type="checkbox" name="general_condition" value="OK">
+      <label class="form-check-label">No marks, deformation, cracks, or corrosion</label>
+    </div>
+    <div class="form-check mb-3">
+      <input class="form-check-input" type="checkbox" name="swivel_rivet" value="OK">
+      <label class="form-check-label">SWIVEL rivet has no play or deformation</label>
+    </div>
+
+    <h5>4. Attachment Holes</h5>
+    <div class="form-check mb-3">
+      <input class="form-check-input" type="checkbox" name="attachment_holes" value="OK">
+      <label class="form-check-label">No cracks, corrosion or deformation</label>
+    </div>
+
+    <h5>5. Function Check</h5>
+    <div class="form-check mb-3">
+      <input class="form-check-input" type="checkbox" name="function_check" value="OK">
+      <label class="form-check-label">Parts rotate freely, smooth operation</label>
+    </div>
+
+    <h5>Comments</h5>
+    <textarea name="comments" class="form-control mb-3"></textarea>
+
+    <h5>Verdict</h5>
+    <div class="mb-3">
+      <select name="verdict" class="form-select">
+        <option value="G">Good condition</option>
+        <option value="TM">To monitor</option>
+        <option value="TR">To repair</option>
+        <option value="R">Do not use, retire</option>
+      </select>
+    </div>
+
+    <div class="row">
+      <div class="col-md-6 mb-3">
+        <label>Inspected By</label>
+        <input type="text" name="inspected_by" class="form-control">
+      </div>
+      <div class="col-md-6 mb-3">
+        <label>Company</label>
+        <input type="text" name="company" class="form-control">
+      </div>
+      <div class="col-md-6 mb-3">
+        <label>Inspection Date</label>
+        <input type="date" name="inspection_date" class="form-control">
+      </div>
+      <div class="col-md-6 mb-3">
+        <label>Next Inspection Date</label>
+        <input type="date" name="next_inspection_date" class="form-control">
+      </div>
+    </div>
+
+    <button type="submit" class="btn btn-success">Submit Inspection</button>
+    <a href="/products" class="btn btn-secondary">Cancel</a>
+  </form>
+</div>
+{% endblock %}

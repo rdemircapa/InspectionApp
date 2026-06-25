@@ -1,0 +1,174 @@
+{% extends 'base.html' %}
+
+{% block title %}Product List{% endblock %}
+
+{% block content %}
+<h2 class="mb-4">Product List</h2>
+
+<!-- Filter Form -->
+<form method="GET" action="{{ url_for('list_products') }}" class="row mb-4 g-2 align-items-end">
+  <div class="col-md-2">
+    <label for="brand" class="form-label">Brand</label>
+    <select name="brand" id="brand" class="form-select">
+      <option value="">All Brands</option>
+      {% for brand in brands %}
+      <option value="{{ brand.id }}" {% if request.args.get('brand') == brand.id|string %}selected{% endif %}>{{ brand.name }}</option>
+
+      {% endfor %}
+    </select>
+  </div>
+
+  <div class="col-md-2">
+    <label for="type" class="form-label">Type</label>
+    <select name="type" id="type" class="form-select">
+      <option value="">All Types</option>
+      {% for t in types %}
+      <option value="{{ t }}" {% if request.args.get('type') == t %}selected{% endif %}>{{ t }}</option>
+      {% endfor %}
+    </select>
+  </div>
+
+  <div class="col-md-2">
+    <label for="status" class="form-label">Status</label>
+    <select name="status" id="status" class="form-select">
+      <option value="">All Statuses</option>
+      <option value="Good" {% if request.args.get('status') == 'Good' %}selected{% endif %}>Good</option>
+      <option value="Needs Inspection" {% if request.args.get('status') == 'Needs Inspection' %}selected{% endif %}>Needs Inspection</option>
+      <option value="Rejected" {% if request.args.get('status') == 'Rejected' %}selected{% endif %}>Rejected</option>
+    </select>
+  </div>
+
+  <div class="col-md-3">
+    <label for="inspection_date" class="form-label">Next Inspection Before</label>
+    <input type="date" name="inspection_date" id="inspection_date" class="form-control" value="{{ request.args.get('inspection_date', '') }}">
+  </div>
+
+  <div class="col-md-2">
+    <button type="submit" class="btn btn-primary w-100">Filter</button>
+  </div>
+
+  <div class="col-md-1">
+    <a href="{{ url_for('list_products') }}" class="btn btn-secondary w-100">Reset</a>
+  </div>
+</form>
+
+<!-- Brand Summary -->
+<h4 class="mt-5">Brand Inventory Summary</h4>
+<div class="row">
+  {% for brand in brand_totals %}
+  <div class="col-md-3 mb-4">
+    <div class="card shadow-sm border-0 text-center">
+      <div class="card-body">
+        <h5 class="card-title text-primary">{{ brand.brand_name }}</h5>
+        <p class="card-text display-6 fw-bold">{{ brand.total_items }}</p>
+        <small class="text-muted">Total Items</small>
+      </div>
+    </div>
+  </div>
+  {% endfor %}
+</div>
+
+<!-- Product Table -->
+<table class="table table-bordered table-hover table-striped">
+    <thead class="table-dark">
+        <tr>
+            <th>ID</th>
+            <th>Brand</th>
+            <th>Serial ID</th>
+            <th>Name</th>
+            <th>Type</th>
+            <th>Quantity</th>
+            <th>Next Inspection</th>
+            <th>Status</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for product in products %}
+        <tr>
+            <td>{{ product.id }}</td>
+            <td>{{ product.brand_name }}</td>
+            <td>{{ product.serial_id }}</td>
+            <td>{{ product.name }}</td>
+            <td>
+              {% if product.type == 'Helmet' %}
+                🪖 Helmet
+              {% elif product.type == 'Harness' %}
+                🢍 Harness
+              {% elif product.type == 'Lanyard' %}
+                🔗 Lanyard
+              {% elif product.type == 'Mobile Fall Arrester' %}
+                ⚙️ Fall Arrester
+              {% elif product.type == 'Connector' %}
+                🔌 Connector
+              {% elif product.type == 'Descender' %}
+                ⬇️ Descender
+              {% elif product.type == 'Rope Clamp' %}
+                🨲 Clamp
+              {% elif product.type == 'Pulley' %}
+                ⚙️ Pulley
+              {% elif product.type == 'Anchor' %}
+                ⚓ Anchor
+              {% elif product.type == 'Rope' %}
+                🧵 Rope
+              {% elif product.type == 'Pack' %}
+                🎒 Pack
+              {% elif product.type == 'Kit' %}
+                🧰 Kit
+              {% elif product.type == 'Customizable Product' %}
+                🧬 Custom
+              {% elif product.type == 'Spare Part' %}
+                🧹 Spare
+              {% elif product.type == 'Petzl ePPECentre' %}
+                🖥️ Petzl
+              {% else %}
+                📦 {{ product.type }}
+              {% endif %}
+            </td>
+            <td>{{ product.quantity }}</td>
+            <td>{{ product.inspection_date }}</td>
+            <td>{{ product.status }}</td>
+            <td class="text-nowrap">
+  <div class="btn-group" role="group">
+    <!-- Inspect -->
+    <a href="/inspect/{{ product.id }}"
+       class="btn btn-sm btn-outline-info"
+       title="Inspect">
+      🕵️
+    </a>
+
+    <!-- Edit -->
+    <a href="/edit-product/{{ product.id }}"
+       class="btn btn-sm btn-outline-warning"
+       title="Edit">
+      ✏️
+    </a>
+
+    <!-- View Log -->
+    <a href="/inspection-log/{{ product.id }}"
+       class="btn btn-sm btn-outline-primary"
+       title="View Log">
+      📋
+    </a>
+
+    <!-- Delete -->
+    <form action="/delete-product/{{ product.id }}"
+          method="POST"
+          style="display:inline;"
+          onsubmit="return confirm('Are you sure you want to delete this product?');">
+      <button type="submit"
+              class="btn btn-sm btn-outline-danger"
+              title="Delete">
+        🗑️
+      </button>
+    </form>
+  </div>
+</td>
+
+        </tr>
+        {% else %}
+        <tr><td colspan="9" class="text-center">No products found.</td></tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% endblock %}

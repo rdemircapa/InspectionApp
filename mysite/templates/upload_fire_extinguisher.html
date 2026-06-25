@@ -1,0 +1,24 @@
+
+{% extends 'base.html' %}
+{% block title %}Upload Fire Extinguishers{% endblock %}
+
+{% block content %}
+<h2 class="mb-4">Upload Fire Extinguishers (Excel)</h2>
+<form method="POST" enctype="multipart/form-data" class="mb-4">
+  <div class="mb-3">
+    <label for="excel_file" class="form-label">Select Excel File (.xlsx)</label>
+    <input class="form-control" type="file" name="excel_file" accept=".xlsx" required>
+  </div>
+  <button type="submit" class="btn btn-primary">Upload</button>
+</form>
+
+<div class="alert alert-info">
+  <strong>Note:</strong> Your Excel file must contain the following columns: <br>
+  <code>tag_number, extinguisher_type, capacity, responsible_company, location, sub_location,
+  third_party_inspection_date, monthly_inspection_date, pressure_gauge, hose_nozzle, safety_pin, trigger, overall_condition, remarks</code><br>
+  <small>Due dates will be calculated automatically based on inspection dates.</small>
+</div>
+{% endblock %}
+"""
+
+Path("templates/upload_fire_extinguisher.html").write_text(bulk_upload_template.strip(), encoding="utf-8")

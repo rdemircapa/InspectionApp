@@ -1,0 +1,176 @@
+{% extends 'base.html' %}
+{% block content %}
+
+{% with messages = get_flashed_messages(with_categories=true) %}
+  {% if messages %}
+    <div class="container mt-3">
+      {% for category, message in messages %}
+        <div class="alert alert-{{ category }} alert-dismissible fade show" role="alert">
+          {{ message }}
+          <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+      {% endfor %}
+    </div>
+  {% endif %}
+{% endwith %}
+
+<div class="container mt-4">
+  <h2>Fire Extinguisher List <span class="badge bg-secondary">{{ total }}</span></h2>
+
+  <!-- 🔍 PDF Export Filter Form -->
+  <form method="GET" action="{{ url_for('export_fire_extinguishers_pdf') }}" class="row g-2 align-items-center mb-4">
+    <div class="col-md-auto">
+      <label for="company" class="form-label">Company</label>
+      <select name="company" class="form-select">
+        <option value="">All</option>
+        {% for c in companies %}
+        <option value="{{ c }}">{{ c }}</option>
+        {% endfor %}
+      </select>
+    </div>
+    <div class="col-md-auto">
+      <label for="location" class="form-label">Location</label>
+      <select name="location" class="form-select">
+        <option value="">All</option>
+        {% for loc in locations %}
+        <option value="{{ loc }}">{{ loc }}</option>
+        {% endfor %}
+      </select>
+    </div>
+    <div class="col-md-auto mt-4">
+      <button type="submit" class="btn btn-outline-primary">📄 Export Filtered PDF</button>
+      <a href="{{ url_for('export_fire_extinguishers_pdf') }}" class="btn btn-outline-secondary">📁 Export All PDF</a>
+    </div>
+  </form>
+
+  <!-- 🔁 Bulk Update Form -->
+  <form method="POST" action="{{ url_for('bulk_inspect_fire_extinguishers') }}">
+    <div class="card mb-4">
+      <div class="card-header d-flex justify-content-between align-items-center">
+        <strong>Bulk Inspection Update</strong>
+        <button class="btn btn-sm btn-outline-secondary" type="button" data-bs-toggle="collapse" data-bs-target="#bulkFormCollapse">
+          Toggle
+        </button>
+      </div>
+      <div id="bulkFormCollapse" class="collapse show">
+        <div class="card-body">
+          <div class="row g-3 align-items-end">
+            <div class="col-md-auto">
+              <button type="submit" class="btn btn-primary">Apply Bulk Update</button>
+            </div>
+            {% for field, label in {
+              'bulk_pressure_gauge': 'Pressure Gauge',
+              'bulk_hose_nozzle': 'Hose Nozzle',
+              'bulk_safety_pin': 'Safety Pin',
+              'bulk_trigger': 'Trigger'
+            }.items() %}
+            <div class="col-md">
+              <label class="form-label">{{ label }}</label>
+              <select name="{{ field }}" class="form-select">
+                <option value="">---</option>
+                <option value="Pass">Pass</option>
+                <option value="Fail">Fail</option>
+              </select>
+            </div>
+            {% endfor %}
+            <div class="col-md">
+              <label class="form-label">Monthly Inspection Date</label>
+              <input type="date" name="bulk_inspection_date" class="form-control">
+            </div>
+            <div class="col-md">
+              <label class="form-label">3rd Party Inspection Date</label>
+              <input type="date" name="bulk_third_party_inspection_date" class="form-control">
+            </div>
+            <div class="col-md">
+              <label class="form-label">Remarks</label>
+              <input type="text" name="bulk_remarks" class="form-control" placeholder="Remarks">
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 📋 Extinguisher Table -->
+    <table class="table table-bordered table-hover">
+      <thead class="table-dark">
+        <tr>
+          <th><input type="checkbox" id="select_all"></th>
+          <th>Tag</th>
+          <th>Type</th>
+          <th>Capacity</th>
+          <th>Company</th>
+          <th>Location</th>
+          <th>Sub-Location</th>
+          <th>3rd Party Inspection</th>
+          <th>3rd Party Due</th>
+          <th>Monthly Inspection</th>
+          <th>Monthly Due</th>
+          <th>Pressure</th>
+          <th>Hose</th>
+          <th>Pin</th>
+          <th>Trigger</th>
+          <th>Condition</th>
+          <th>Remarks</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for fe in extinguishers %}
+        <tr>
+          <td><input type="checkbox" name="selected_ids" value="{{ fe.id }}"></td>
+          <td>{{ fe.tag_number }}</td>
+          <td>{{ fe.extinguisher_type }}</td>
+          <td>{{ fe.capacity }}</td>
+          <td>{{ fe.company_name or 'N/A' }}</td>
+          <td>{{ fe.location }}</td>
+          <td>{{ fe.sub_location }}</td>
+          <td>{{ fe.third_party_inspection_date | format_date_custom }}</td>
+          <td {% if fe.third_party_due_date and fe.third_party_due_date|todate < current_date %} style="color:red;" {% endif %}>
+            {{ fe.third_party_due_date | format_date_custom }}
+          </td>
+          <td>{{ fe.monthly_inspection_date | format_date_custom }}</td>
+          <td {% if fe.monthly_due_date and fe.monthly_due_date|todate < current_date %} style="color:red;" {% endif %}>
+            {{ fe.monthly_due_date | format_date_custom }}
+          </td>
+          <td>{% if fe.extinguisher_type == 'CO2' %}
+            N/A
+          {% else %}
+            {{ fe.pressure_gauge }}
+          {% endif %}</td>
+          <td>{{ fe.hose_nozzle }}</td>
+          <td>{{ fe.safety_pin }}</td>
+          <td>{{ fe.trigger }}</td>
+          <td>{{ fe.overall_condition }}</td>
+          <td>{{ fe.remarks }}</td>
+          <td class="text-nowrap">
+              <a href="{{ url_for('inspect_fire_extinguisher_mobile', tag=fe.tag_number) }}"
+                 class="btn btn-sm btn-outline-primary me-1 d-inline-flex align-items-center">
+                🕵️ <span class="ms-1">Inspect</span>
+              </a>
+
+              <a href="{{ url_for('edit_fire_extinguisher', extinguisher_id=fe.id) }}"
+                 class="btn btn-sm btn-outline-warning me-1 d-inline-flex align-items-center">
+                ✏️ <span class="ms-1">Edit</span>
+              </a>
+
+              <a href="{{ url_for('delete_fire_extinguisher', extinguisher_id=fe.id) }}"
+                 class="btn btn-sm btn-outline-danger d-inline-flex align-items-center"
+                 onclick="return confirm('Are you sure you want to delete this extinguisher?')">
+                🗑️ <span class="ms-1">Delete</span>
+              </a>
+            </td>
+
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </form>
+</div>
+
+<!-- ✅ Select all functionality -->
+<script>
+  document.getElementById("select_all").addEventListener("click", function () {
+    document.querySelectorAll('input[name="selected_ids"]').forEach(cb => cb.checked = this.checked);
+  });
+</script>
+{% endblock %}

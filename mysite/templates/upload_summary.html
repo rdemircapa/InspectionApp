@@ -1,0 +1,36 @@
+{% extends "base.html" %}
+{% block title %}Upload Summary{% endblock %}
+
+{% block content %}
+<h2>Uploaded Fire Extinguishers Summary</h2>
+
+{% if records %}
+  <div class="alert alert-success">Successfully uploaded {{ records|length }} record(s).</div>
+  <table class="table table-bordered">
+    <thead>
+      <tr>
+        <th>Tag Number</th>
+        <th>Location</th>
+        <th>Type</th>
+        <th>Capacity</th>
+        <th>Company</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for r in records %}
+      <tr>
+        <td>{{ r.tag }}</td>
+        <td>{{ r.location }}</td>
+        <td>{{ r.type }}</td>
+        <td>{{ r.capacity }}</td>
+        <td>{{ r.company }}</td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+{% else %}
+  <div class="alert alert-warning">No records uploaded.</div>
+{% endif %}
+
+<a href="{{ url_for('upload_fire_extinguisher') }}" class="btn btn-secondary mt-3">Back to Upload</a>
+{% endblock %}

@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>GPS Konum Gösterimi</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+<body>
+    <h2>📍 Anlık Konum Bilginiz</h2>
+    <p><strong>Enlem (Latitude):</strong> <span id="lat">...</span></p>
+    <p><strong>Boylam (Longitude):</strong> <span id="lon">...</span></p>
+
+    <script>
+        if ("geolocation" in navigator) {
+            navigator.geolocation.getCurrentPosition(function(position) {
+                document.getElementById('lat').innerText = position.coords.latitude;
+                document.getElementById('lon').innerText = position.coords.longitude;
+            }, function(error) {
+                alert("Konum alınamadı: " + error.message);
+            });
+        } else {
+            alert("Tarayıcınız GPS desteği sunmuyor.");
+        }
+    </script>
+</body>
+</html>

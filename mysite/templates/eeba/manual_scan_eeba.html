@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+{% block title %}Scan EEBA{% endblock %}
+
+{% block content %}
+<div class="card shadow">
+  <div class="card-header bg-light">
+    <h5 class="mb-0"><i class="bi bi-qr-code-scan me-2"></i>Scan / Find by Tag</h5>
+  </div>
+  <div class="card-body">
+    <form method="POST" class="row g-3">
+      <div class="col-md-6">
+        <label class="form-label">Tag No</label>
+        <input type="text" name="tag_no" class="form-control" placeholder="JV-EEBD 001" required>
+      </div>
+      <div class="col-md-6 d-flex align-items-end">
+        <button type="submit" class="btn btn-primary">
+          <i class="bi bi-search"></i> Find
+        </button>
+        <a href="{{ url_for('eeba_bp.list_eeba') }}" class="btn btn-secondary ms-2">
+          <i class="bi bi-arrow-left-circle"></i> Back
+        </a>
+      </div>
+    </form>
+  </div>
+</div>
+{% endblock %}

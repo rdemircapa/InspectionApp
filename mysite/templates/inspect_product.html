@@ -1,0 +1,61 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Inspection Logs</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+{% include 'base.html' %}
+<div class="container mt-4">
+    <h2>Inspection Logs for {{ product[2] }}</h2>
+    <p><strong>Serial ID:</strong> {{ product[1] }}</p>
+
+    <form method="POST" class="mb-4">
+        <div class="row">
+            <div class="col-md-3">
+                <label>Date</label>
+                <input type="date" name="inspection_date" class="form-control" required>
+            </div>
+            <div class="col-md-3">
+                <label>Inspected By</label>
+                <input type="text" name="inspected_by" class="form-control" required>
+            </div>
+            <div class="col-md-3">
+                <label>Result</label>
+                <input type="text" name="inspection_result" class="form-control" required>
+            </div>
+            <div class="col-md-3">
+                <label>Notes</label>
+                <input type="text" name="notes" class="form-control">
+            </div>
+        </div>
+        <button type="submit" class="btn btn-success mt-3">Add Inspection</button>
+        <a href="/" class="btn btn-secondary mt-3">Back</a>
+    </form>
+
+    <h4>Past Inspections</h4>
+    <table class="table table-bordered">
+        <thead>
+            <tr>
+                <th>Date</th>
+                <th>Inspected By</th>
+                <th>Result</th>
+                <th>Notes</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for inspection in inspections %}
+            <tr>
+                <td>{{ inspection[2] }}</td>
+                <td>{{ inspection[3] }}</td>
+                <td>{{ inspection[4] }}</td>
+                <td>{{ inspection[5] }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+</body>
+</html>

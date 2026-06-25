@@ -1,0 +1,69 @@
+<!-- templates/inspect_desktop.html -->
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Inspection - {{ tag }}</title>
+    <link 
+        href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" 
+        rel="stylesheet">
+</head>
+<body class="container py-4">
+    <h3>Inspection for Fire Extinguisher: <strong>{{ tag }}</strong></h3>
+
+    <form method="POST">
+        <div class="row mb-3">
+            <div class="col">
+                <label for="pressure_gauge">Pressure Gauge</label>
+                <select name="pressure_gauge" id="pressure_gauge" class="form-select" required>
+                    <option value="">--Select--</option>
+                    <option value="Pass">Pass</option>
+                    <option value="Fail">Fail</option>
+                </select>
+            </div>
+            <div class="col">
+                <label for="hose_nozzle">Hose Nozzle</label>
+                <select name="hose_nozzle" id="hose_nozzle" class="form-select" required>
+                    <option value="">--Select--</option>
+                    <option value="Pass">Pass</option>
+                    <option value="Fail">Fail</option>
+                </select>
+            </div>
+        </div>
+
+        <div class="row mb-3">
+            <div class="col">
+                <label for="safety_pin">Safety Pin</label>
+                <select name="safety_pin" id="safety_pin" class="form-select" required>
+                    <option value="">--Select--</option>
+                    <option value="Pass">Pass</option>
+                    <option value="Fail">Fail</option>
+                </select>
+            </div>
+            <div class="col">
+                <label for="trigger">Trigger</label>
+                <select name="trigger" id="trigger" class="form-select" required>
+                    <option value="">--Select--</option>
+                    <option value="Pass">Pass</option>
+                    <option value="Fail">Fail</option>
+                </select>
+            </div>
+        </div>
+
+        <div class="mb-3">
+            <label for="overall_condition">Overall Condition</label>
+            <select name="overall_condition" id="overall_condition" class="form-select" required>
+                <option value="">--Select--</option>
+                <option value="Pass">Pass</option>
+                <option value="Fail">Fail</option>
+            </select>
+        </div>
+
+        <div class="mb-3">
+            <label for="remarks">Remarks</label>
+            <textarea name="remarks" id="remarks" class="form-control" rows="3" placeholder="Optional..."></textarea>
+        </div>
+
+        <button type="submit" class="btn btn-success w-100">Submit Inspection</button>
+    </form>
+</body>
+</html>

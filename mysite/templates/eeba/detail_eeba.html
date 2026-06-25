@@ -1,0 +1,251 @@
+{% extends "base.html" %}
+{% block title %}EEBA Detail – {{ row['tag_no'] }}{% endblock %}
+
+{% block content %}
+<div class="d-flex align-items-center justify-content-between mb-3">
+  <h4 class="mb-0"><i class="bi bi-eye me-2"></i>EEBA Detail</h4>
+  <div class="text-muted">Tag: <span class="fw-semibold">{{ row['tag_no'] }}</span></div>
+</div>
+
+<form method="POST" action="{{ url_for('eeba_bp.eeba_detail_by_tag', tag_no=row['tag_no']) }}">
+  <div class="row g-3">
+
+    <!-- SOL SÜTUN -->
+    <div class="col-lg-6">
+      <!-- Genel Bilgiler -->
+      <div class="card shadow mb-3">
+        <div class="card-header bg-light">
+          <div class="d-flex justify-content-between align-items-center">
+            <span class="fw-semibold"><i class="bi bi-info-circle me-2"></i>General</span>
+            <a class="btn btn-sm btn-outline-secondary" href="{{ url_for('eeba_bp.list_eeba') }}">
+              <i class="bi bi-arrow-left"></i> Back to List
+            </a>
+          </div>
+        </div>
+        <div class="card-body">
+          <div class="row g-3">
+            <div class="col-md-6">
+              <label class="form-label">Responsible</label>
+              <input name="responsible" class="form-control" value="{{ row['responsible'] or '' }}">
+            </div>
+            <div class="col-md-6">
+              <label class="form-label">Make / Brand</label>
+              <input name="make_brand" class="form-control" value="{{ row['make_brand'] or '' }}">
+            </div>
+            <div class="col-md-6">
+              <label class="form-label">Cylinder No.</label>
+              <input name="cyl_no" class="form-control" value="{{ row['cyl_no'] or '' }}">
+            </div>
+            <div class="col-md-6">
+              <label class="form-label">Capacity</label>
+              <input name="capacity" class="form-control" value="{{ row['capacity'] or '' }}">
+            </div>
+            <div class="col-md-6">
+              <label class="form-label">Location</label>
+              <input name="location" class="form-control" value="{{ row['location'] or '' }}">
+            </div>
+            <div class="col-md-6">
+              <label class="form-label">Sub Location</label>
+              <input name="sub_location" class="form-control" value="{{ row['sub_location'] or '' }}">
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Görsel Muayene -->
+      <div class="card shadow mb-3">
+        <div class="card-header bg-light">
+          <span class="fw-semibold"><i class="bi bi-eye-fill me-2"></i>Visual Inspection</span>
+        </div>
+        <div class="card-body">
+          <div class="row g-3 align-items-end">
+            <div class="col-md-4">
+              <label class="form-label">Mask</label>
+              <div class="btn-group d-flex" role="group">
+                <input type="hidden" name="mask_status" id="mask_status" value="{{ (row['mask_status'] or '') }}">
+                <button type="button" class="btn btn-outline-success" data-target="mask_status" data-val="OK">OK</button>
+                <button type="button" class="btn btn-outline-danger" data-target="mask_status" data-val="FAIL">FAIL</button>
+              </div>
+            </div>
+            <div class="col-md-4">
+              <label class="form-label">Straps</label>
+              <div class="btn-group d-flex" role="group">
+                <input type="hidden" name="straps_status" id="straps_status" value="{{ (row['straps_status'] or '') }}">
+                <button type="button" class="btn btn-outline-success" data-target="straps_status" data-val="OK">OK</button>
+                <button type="button" class="btn btn-outline-danger" data-target="straps_status" data-val="FAIL">FAIL</button>
+              </div>
+            </div>
+            <div class="col-md-4">
+              <label class="form-label">Bag</label>
+              <div class="btn-group d-flex" role="group">
+                <input type="hidden" name="bag_status" id="bag_status" value="{{ (row['bag_status'] or '') }}">
+                <button type="button" class="btn btn-outline-success" data-target="bag_status" data-val="OK">OK</button>
+                <button type="button" class="btn btn-outline-danger" data-target="bag_status" data-val="FAIL">FAIL</button>
+              </div>
+            </div>
+
+            <div class="col-md-6">
+              <label class="form-label">Cylinder Pressure (bar)</label>
+              <input type="number" step="0.1" name="cyl_pressure_bar" class="form-control" value="{{ row['cyl_pressure_bar'] if row['cyl_pressure_bar'] is not none else '' }}">
+            </div>
+            <div class="col-md-6">
+              <label class="form-label">Overall Condition</label>
+              <input name="overall_condition" class="form-control" value="{{ row['overall_condition'] or '' }}" placeholder="SATISFACTORY / UNSATISFACTORY ...">
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Notlar -->
+      <div class="card shadow mb-3">
+        <div class="card-header bg-light">
+          <span class="fw-semibold"><i class="bi bi-journal-text me-2"></i>Notes</span>
+        </div>
+        <div class="card-body">
+          <div class="row g-3">
+            <div class="col-md-6">
+              <label class="form-label">Inspected By</label>
+              <input name="inspected_by" class="form-control" value="{{ row['inspected_by'] or '' }}">
+            </div>
+            <div class="col-md-6">
+              <label class="form-label">Remarks</label>
+              <input name="remarks" class="form-control" value="{{ row['remarks'] or '' }}">
+            </div>
+            <div class="col-12">
+              <label class="form-label">Corrective Action</label>
+              <textarea name="corrective_action" rows="2" class="form-control">{{ row['corrective_action'] or '' }}</textarea>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- SAĞ SÜTUN -->
+    <div class="col-lg-6">
+      <!-- Tarihler -->
+      <div class="card shadow mb-3">
+        <div class="card-header bg-light">
+          <span class="fw-semibold"><i class="bi bi-calendar3 me-2"></i>Dates</span>
+        </div>
+        <div class="card-body">
+          <div class="row g-3">
+            <div class="col-md-6">
+              <label class="form-label">Hydro Test (Ins.)</label>
+              <div class="input-group">
+                <input type="date" name="hyd_ins_date" id="hyd_ins_date" class="form-control" value="{{ row['hyd_ins_date'] or '' }}">
+                <button type="button" class="btn btn-outline-secondary" data-today="hyd_ins_date" title="Set Today"><i class="bi bi-calendar-check"></i></button>
+              </div>
+            </div>
+            <div class="col-md-6">
+              <label class="form-label">Hydro Test (Due)</label>
+              <div class="input-group">
+                <input type="date" name="hyd_due_date" id="hyd_due_date" class="form-control" value="{{ row['hyd_due_date'] or '' }}">
+                <button type="button" class="btn btn-outline-secondary" data-plus="hyd_due_date" data-days="1825" title="+5y"><i class="bi bi-plus-circle"></i> 5y</button>
+              </div>
+              <div class="form-text">Örn: 5 yıl = 1825 gün</div>
+            </div>
+
+            <div class="col-md-6">
+              <label class="form-label">Refilling (Filled)</label>
+              <div class="input-group">
+                <input type="date" name="refilling_filled_date" id="refilling_filled_date" class="form-control" value="{{ row['refilling_filled_date'] or '' }}">
+                <button type="button" class="btn btn-outline-secondary" data-today="refilling_filled_date"><i class="bi bi-calendar-check"></i></button>
+              </div>
+            </div>
+            <div class="col-md-6">
+              <label class="form-label">Refilling (Due)</label>
+              <div class="input-group">
+                <input type="date" name="refilling_due_date" id="refilling_due_date" class="form-control" value="{{ row['refilling_due_date'] or '' }}">
+                <button type="button" class="btn btn-outline-secondary" data-plus="refilling_due_date" data-days="180"><i class="bi bi-plus-circle"></i> 6mo</button>
+              </div>
+            </div>
+
+            <div class="col-md-6">
+              <label class="form-label">Monthly (Ins.)</label>
+              <div class="input-group">
+                <input type="date" name="monthly_ins_date" id="monthly_ins_date" class="form-control" value="{{ row['monthly_ins_date'] or '' }}">
+                <button type="button" class="btn btn-outline-secondary" data-today="monthly_ins_date"><i class="bi bi-calendar-check"></i></button>
+              </div>
+            </div>
+            <div class="col-md-6">
+              <label class="form-label">Monthly (Due)</label>
+              <div class="input-group">
+                <input type="date" name="monthly_due_date" id="monthly_due_date" class="form-control" value="{{ row['monthly_due_date'] or '' }}">
+                <button type="button" class="btn btn-outline-secondary" data-plus="monthly_due_date" data-days="30"><i class="bi bi-plus-circle"></i> +30d</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Aksiyonlar -->
+      <div class="card shadow mb-3">
+        <div class="card-body d-flex justify-content-between">
+          <div class="d-flex gap-2">
+            <button type="submit" class="btn btn-success">
+              <i class="bi bi-save"></i> Save Changes
+            </button>
+            <a href="{{ url_for('eeba_bp.list_eeba') }}" class="btn btn-secondary">
+              <i class="bi bi-arrow-left-circle"></i> Cancel
+            </a>
+          </div>
+          <!-- İleride PDF/Print veya Delete eklenebilir -->
+          <div class="d-flex gap-2">
+            <!-- <a class="btn btn-outline-primary" href="#"><i class="bi bi-printer"></i> Print</a> -->
+            <!-- <a class="btn btn-outline-danger" href="#"><i class="bi bi-trash"></i> Delete</a> -->
+          </div>
+        </div>
+      </div>
+
+      <!-- Sistem alanları -->
+      <div class="text-muted small">
+        <div>Created: {{ row['created_at'] or '' }}</div>
+        <div>Updated: {{ row['updated_at'] or '' }}</div>
+      </div>
+    </div>
+  </div>
+</form>
+
+<script>
+// OK/FAIL toggle buttons
+document.querySelectorAll('button[data-target][data-val]').forEach(btn=>{
+  btn.addEventListener('click', ()=>{
+    const target = document.getElementById(btn.dataset.target);
+    target.value = btn.dataset.val;
+    // Aktif butonu belirgin yap
+    const siblings = btn.parentElement.querySelectorAll('button[data-target="'+btn.dataset.target+'"]');
+    siblings.forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+  });
+});
+
+// Today kısa yolu
+function todayISO(){
+  const t = new Date();
+  const m = String(t.getMonth()+1).padStart(2,'0');
+  const d = String(t.getDate()).padStart(2,'0');
+  return `${t.getFullYear()}-${m}-${d}`;
+}
+document.querySelectorAll('button[data-today]').forEach(btn=>{
+  btn.addEventListener('click', ()=>{
+    const id = btn.getAttribute('data-today');
+    const el = document.getElementById(id);
+    if (el) el.value = todayISO();
+  });
+});
+
+// +days kısa yolları
+document.querySelectorAll('button[data-plus]').forEach(btn=>{
+  btn.addEventListener('click', ()=>{
+    const id = btn.getAttribute('data-plus');
+    const days = parseInt(btn.getAttribute('data-days') || '0', 10);
+    const el = document.getElementById(id);
+    const base = el && el.value ? new Date(el.value) : new Date();
+    base.setDate(base.getDate() + days);
+    const m = String(base.getMonth()+1).padStart(2,'0');
+    const d = String(base.getDate()).padStart(2,'0');
+    el.value = `${base.getFullYear()}-${m}-${d}`;
+  });
+});
+</script>
+{% endblock %}

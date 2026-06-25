@@ -1,0 +1,73 @@
+{% extends 'base.html' %}
+
+{% block title %}Assignments{% endblock %}
+
+{% block content %}
+<div class="container">
+    <h2 class="mb-4">Assigned Products by Person</h2>
+
+    {% if grouped_assignments %}
+      {% for person, assignments in grouped_assignments.items() %}
+        <div class="card mb-4 shadow-sm">
+          <div class="card-header bg-primary text-white d-flex justify-content-between align-items-center">
+            <h5 class="mb-0 d-flex align-items-center">
+              {{ person }}
+              {% if assignments[0].badge_number %}
+                <small class="ms-3 px-2 py-1 bg-white text-dark rounded shadow-sm" style="font-size: 0.85rem;">
+                  Badge: {{ assignments[0].badge_number }}
+                </small>
+              {% endif %}
+            </h5>
+            <a href="/generate-pdf/{{ person | urlencode }}" class="btn btn-sm btn-outline-light">Generate PDF</a>
+          </div>
+          <div class="card-body p-0">
+            <div class="table-responsive">
+              <table class="table table-bordered table-striped mb-0">
+                <thead class="table-light">
+                  <tr>
+                    <th>#</th>
+                    <th>Product</th>
+                    <th>Serial ID</th>
+                    <th>Assigned Date</th>
+                    <th>Return Date</th>
+                    <th>Notes</th>
+                    <th>Action</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {% for assignment in assignments %}
+                  <tr {% if assignment.return_date %}class="table-secondary"{% endif %}>
+                    <td>{{ assignment.id }}</td>
+                    <td>{{ assignment.product_name }}</td>
+                    <td>{{ assignment.serial_id }}</td>
+                    <td>{{ assignment.assigned_date }}</td>
+                    <td>
+                      {% if assignment.return_date %}
+                        {{ assignment.return_date }}
+                      {% else %}
+                        <span class="badge bg-success">Assigned</span>
+                      {% endif %}
+                    </td>
+                    <td>{{ assignment.notes }}</td>
+                    <td>
+                      {% if not assignment.return_date %}
+                        <form action="/return-product/{{ assignment.id }}" method="POST" style="display:inline;">
+                          <button type="submit" class="btn btn-sm btn-outline-danger">Return</button>
+                        </form>
+                      {% else %}
+                        <span class="badge bg-secondary">Returned</span>
+                      {% endif %}
+                    </td>
+                  </tr>
+                  {% endfor %}
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      {% endfor %}
+    {% else %}
+      <p>No assignments found.</p>
+    {% endif %}
+</div>
+{% endblock %}

@@ -1,0 +1,106 @@
+{% extends "base.html" %}
+
+{% block title %}Fire Extinguisher Inspection{% endblock %}
+
+{% block content %}
+<div class="container mt-4">
+  <h3 class="mb-4"><i class="bi bi-fire"></i> Fire Extinguisher Inspection</h3>
+
+  <!-- Extinguisher Info -->
+  <div class="card mb-4 border-0 shadow-sm">
+    <div class="card-body">
+      <h6 class="text-muted"><i class="bi bi-info-circle-fill"></i> BuExtinguisher Details</h6>
+      <div class="row">
+        <div class="col-md-6">
+          <p class="mb-1"><strong>Tag:</strong> {{ extinguisher['tag_number'] }}</p>
+          <p class="mb-1"><strong>Location:</strong> {{ extinguisher['location'] }}</p>
+
+        </div>
+        <div class="col-md-6">
+          <p class="mb-1"><strong>Type:</strong> {{ extinguisher['extinguisher_type'] }}</p>
+          <p class="mb-1"><strong>Weight:</strong> {{ extinguisher['capacity'] }}</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  {% if show_form %}
+  <!-- 🔧 Inspection Form -->
+  <form method="POST" class="card shadow-sm border-0">
+    <div class="card-body row g-3">
+
+      {% macro toggle_group(field, label) %}
+      <div class="col-md-6">
+        <label class="form-label">{{ label }}</label>
+        <div class="btn-group w-100" role="group">
+          <input type="radio" class="btn-check" name="{{ field }}" id="{{ field }}_pass" value="Pass" autocomplete="off"
+            {% if last_inspection and last_inspection[field] == 'Pass' %}checked{% endif %}>
+          <label class="btn btn-outline-success" for="{{ field }}_pass">Pass</label>
+
+          <input type="radio" class="btn-check" name="{{ field }}" id="{{ field }}_fail" value="Fail" autocomplete="off"
+            {% if last_inspection and last_inspection[field] == 'Fail' %}checked{% endif %}>
+          <label class="btn btn-outline-danger" for="{{ field }}_fail">Fail</label>
+        </div>
+      </div>
+      {% endmacro %}
+
+      {{ toggle_group('pressure_gauge', 'Pressure Gauge') }}
+      {{ toggle_group('hose_nozzle', 'Hose Nozzle') }}
+      {{ toggle_group('safety_pin', 'Safety Pin') }}
+      {{ toggle_group('trigger', 'Trigger') }}
+      <div class="col-md-6">
+  <label class="form-label">Overall Condition</label>
+  <div class="btn-group w-100" role="group">
+    <input type="radio" class="btn-check" name="overall_condition" id="overall_condition_good" value="Good" autocomplete="off"
+      {% if last_inspection and last_inspection['overall_condition'] == 'Good' %}checked{% endif %}>
+    <label class="btn btn-outline-success" for="overall_condition_good">👍 Good</label>
+
+    <input type="radio" class="btn-check" name="overall_condition" id="overall_condition_maint" value="Needs Maintenance" autocomplete="off"
+      {% if last_inspection and last_inspection['overall_condition'] == 'Needs Maintenance' %}checked{% endif %}>
+    <label class="btn btn-outline-warning" for="overall_condition_maint">🛠️ Needs Maintenance</label>
+  </div>
+</div>
+
+
+
+      <div class="col-12">
+        <label class="form-label">Remarks</label>
+        <textarea class="form-control" name="remarks" rows="3">{{ last_inspection.remarks if last_inspection }}</textarea>
+      </div>
+    </div>
+
+    <div class="card-footer text-end">
+      <button type="submit" class="btn btn-primary">
+        <i class="bi bi-save"></i> Save Inspection
+      </button>
+    </div>
+  </form>
+
+  {% else %}
+  <div class="alert alert-warning text-center">
+    🔒 You must be logged in to perform inspection.
+  </div>
+  {% endif %}
+
+  <!-- ✅ Previous Inspections -->
+  {% if inspections %}
+  <div class="card mt-4">
+    <div class="card-header"><strong>Last Inspections</strong></div>
+    <div class="card-body">
+      <ul class="list-group">
+        {% for item in inspections %}
+          <li class="list-group-item">
+            🗓️ {{ item['date'] }} —
+            Pressure: {{ item['pressure_gauge'] }},
+            Hose: {{ item['hose_nozzle'] }},
+            Pin: {{ item['safety_pin'] }},
+            Trigger: {{ item['trigger'] }},
+            Condition: {{ item['overall_condition'] }}
+          </li>
+        {% endfor %}
+      </ul>
+    </div>
+  </div>
+  {% endif %}
+</div>
+{% endblock %}

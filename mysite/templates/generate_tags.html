@@ -1,0 +1,35 @@
+{% extends "base.html" %}
+
+{% block title %}Generate Tags{% endblock %}
+
+{% block content %}
+<div class="card shadow mb-4">
+    <div class="card-header bg-primary text-white">
+        <h4 class="mb-0">Generate Fire Extinguisher Tags</h4>
+    </div>
+    <div class="card-body">
+        <form method="POST" action="{{ url_for('generate_tags') }}">
+            <div class="mb-3">
+                <label for="quantity" class="form-label">Number of Fire Extinguisher Tags</label>
+                <input type="number" name="quantity" id="quantity" class="form-control" required min="1" max="100">
+            </div>
+            <button type="submit" class="btn btn-success">Generate & Download Fire Extinguisher Tags</button>
+        </form>
+    </div>
+</div>
+
+<div class="card shadow">
+    <div class="card-header bg-dark text-white">
+        <h4 class="mb-0">Generate SCBA QR Tags</h4>
+    </div>
+    <div class="card-body">
+        <form method="POST" action="{{ url_for('generate_scba_tags') }}">
+            <div class="mb-3">
+                <label for="scba_quantity" class="form-label">Number of SCBA Tags</label>
+                <input type="number" name="scba_quantity" id="scba_quantity" class="form-control" required min="1" max="100">
+            </div>
+            <button type="submit" class="btn btn-dark">Generate & Download SCBA Tags</button>
+        </form>
+    </div>
+</div>
+{% endblock %}

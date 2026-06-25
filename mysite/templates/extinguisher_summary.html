@@ -1,0 +1,73 @@
+{% extends 'base.html' %}
+{% block title %}Fire Extinguisher Summary{% endblock %}
+{% block content %}
+
+<h2>Fire Extinguisher Summary Table</h2>
+<div class="d-flex justify-content-end mb-3">
+    <a href="{{ url_for('extinguisher_summary_pdf') }}" class="btn btn-outline-dark">
+      📄 Export to PDF
+    </a>
+  </div>
+  
+<table class="table table-bordered table-striped text-center align-middle">
+  <thead>
+    <tr>
+      <th rowspan="2">NO</th>
+      <th rowspan="2">LOCATION</th>
+      {% for type, capacities in types.items() %}
+        <th colspan="{{ capacities|length }}" class="bg-primary text-white">{{ type }}</th>
+      {% endfor %}
+      <th rowspan="2">TOTAL</th>
+    </tr>
+    <tr>
+      {% for type, capacities in types.items() %}
+        {% for cap in capacities %}
+          <th>{{ cap }}</th>
+        {% endfor %}
+      {% endfor %}
+    </tr>
+  </thead>
+  <tbody>
+    {% set grand_total = namespace(value=0) %}
+    {% set col_totals = dict() %}
+  
+    {% for loc in locations %}
+      {% set row_total = namespace(value=0) %}
+      <tr>
+        <td>{{ loop.index }}</td>
+        <td>{{ loc }}</td>
+        {% for type, capacities in types.items() %}
+          {% for cap in capacities %}
+            {% set key = type ~ cap %}
+            {% set qty = data[loc][type][cap] if data[loc][type][cap] is defined else 0 %}
+            {% set qty = qty | int %}
+            <td>{% if qty > 0 %}{{ qty }}{% endif %}</td>
+  
+            {% set row_total.value = row_total.value + qty %}
+            {% set col_totals = col_totals.update({key: (col_totals[key] if col_totals[key] is defined else 0) + qty}) or col_totals %}
+          {% endfor %}
+        {% endfor %}
+        <td><strong>{{ row_total.value }}</strong></td>
+        {% set grand_total.value = grand_total.value + row_total.value %}
+      </tr>
+    {% endfor %}
+  
+    <!-- Alt toplam satırı -->
+    <tr class="table-dark fw-bold">
+      <td colspan="2">TOTAL</td>
+      {% for type, capacities in types.items() %}
+        {% for cap in capacities %}
+          {% set key = type ~ cap %}
+          <td>{{ col_totals[key] if col_totals[key] is defined else 0 }}</td>
+        {% endfor %}
+      {% endfor %}
+      <td>{{ grand_total.value }}</td>
+    </tr>
+  </tbody>
+  
+     
+      
+  </tbody>
+</table>
+
+{% endblock %}

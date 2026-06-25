@@ -1,0 +1,128 @@
+{% extends 'base.html' %}
+{% block title %}Add Fire Extinguisher{% endblock %}
+
+{% block content %}
+<h2 class="mb-4">Add Fire Extinguisher</h2>
+<form method="POST" class="row g-3">
+
+  <div class="col-md-4">
+    <label class="form-label">Type</label>
+    <select class="form-select" name="extinguisher_type" required>
+      <option value="">Select</option>
+      {% for type in ['DCP', 'CO2', 'FOAM', 'WATER', 'WET CHEMICALS'] %}
+        <option value="{{ type }}" {% if form and form.extinguisher_type == type %}selected{% endif %}>{{ type }}</option>
+      {% endfor %}
+    </select>
+  </div>
+
+  <div class="col-md-4">
+    <label class="form-label">Capacity</label>
+    <select class="form-select" name="capacity" required>
+      <option value="">Select</option>
+      {% for cap in [
+        '1 KG', '2 KG', '3 KG', '4 KG', '5 KG', '6 KG', '7 KG', '9 KG', '10 KG', '12 KG',
+        '20 KG', '25 KG', '45 KG', '50 KG', '72 KG', '100 KG',
+        '4 ltr.', '6 ltr.', '9 ltr.', '12 ltr.', '25 ltr.', '50 ltr.', '100 ltr.', '135 ltr.', '9 L'
+      ] %}
+        <option value="{{ cap }}" {% if form and form.capacity == cap %}selected{% endif %}>{{ cap }}</option>
+      {% endfor %}
+    </select>
+  </div>
+
+  <div class="col-md-4">
+    <label class="form-label">Responsible Company</label>
+    <select class="form-select" name="responsible_company_id" required>
+      <option value="">Select Company</option>
+      {% for company in companies %}
+        <option value="{{ company['id'] }}" {% if form and form.responsible_company_id == company['id']|string %}selected{% endif %}>{{ company['company_name'] }}</option>
+      {% endfor %}
+    </select>
+  </div>
+
+  <div class="col-md-4">
+    <label class="form-label">Tag Number</label>
+    <input type="text" class="form-control" name="tag_number" required value="{{ form.tag_number if form else '' }}">
+  </div>
+
+  <div class="col-md-4">
+    <label class="form-label">Location</label>
+    <select class="form-select" name="location" required>
+      <option value="">Select</option>
+      {% for loc in ['GOP', 'DC1', 'DC4', 'DC6', 'HAIL'] %}
+        <option value="{{ loc }}" {% if form and form.location == loc %}selected{% endif %}>{{ loc }}</option>
+      {% endfor %}
+    </select>
+  </div>
+
+  <div class="col-md-4">
+    <label class="form-label">Sub Location</label>
+    <input type="text" class="form-control" name="sub_location" value="{{ form.sub_location if form else '' }}">
+  </div>
+
+  <div class="col-md-3">
+    <label class="form-label">3rd Party Inspection Date</label>
+    <input type="date" class="form-control" name="third_party_inspection_date" value="{{ form.third_party_inspection_date if form else '' }}">
+  </div>
+
+  <div class="col-md-3">
+    <label class="form-label">3rd Party Due Date</label>
+    <input type="date" class="form-control" name="third_party_due_date" readonly value="{{ form.third_party_due_date if form else '' }}">
+  </div>
+
+  <div class="col-md-3">
+    <label class="form-label">Monthly Inspection Date</label>
+    <input type="date" class="form-control" name="monthly_inspection_date" value="{{ form.monthly_inspection_date if form else '' }}">
+  </div>
+
+  <div class="col-md-3">
+    <label class="form-label">Monthly Due Date</label>
+    <input type="date" class="form-control" name="monthly_due_date" readonly value="{{ form.monthly_due_date if form else '' }}">
+  </div>
+
+  {% for field in ['pressure_gauge', 'hose_nozzle', 'safety_pin', 'trigger', 'overall_condition'] %}
+    <div class="col-md-2">
+      <label class="form-label">{{ field.replace('_', ' ').title() }}</label>
+      <select class="form-select" name="{{ field }}" required>
+        <option value="Pass" {% if form and form[field] == 'Pass' %}selected{% endif %}>Pass</option>
+        <option value="Fail" {% if form and form[field] == 'Fail' %}selected{% endif %}>Fail</option>
+      </select>
+    </div>
+  {% endfor %}
+
+  <div class="col-12">
+    <label class="form-label">Remarks</label>
+    <textarea class="form-control" name="remarks" rows="2">{{ form.remarks if form else '' }}</textarea>
+  </div>
+
+  <div class="col-12 mt-3">
+    <button type="submit" class="btn btn-primary">Add Fire Extinguisher</button>
+  </div>
+</form>
+
+<script>
+  document.addEventListener("DOMContentLoaded", function () {
+    const thirdPartyInput = document.querySelector('input[name="third_party_inspection_date"]');
+    const thirdPartyDue = document.querySelector('input[name="third_party_due_date"]');
+    const monthlyInput = document.querySelector('input[name="monthly_inspection_date"]');
+    const monthlyDue = document.querySelector('input[name="monthly_due_date"]');
+
+    function addDays(dateStr, days) {
+      const date = new Date(dateStr);
+      date.setDate(date.getDate() + days);
+      return date.toISOString().split('T')[0];
+    }
+
+    thirdPartyInput.addEventListener("change", function () {
+      if (thirdPartyInput.value) {
+        thirdPartyDue.value = addDays(thirdPartyInput.value, 180);
+      }
+    });
+
+    monthlyInput.addEventListener("change", function () {
+      if (monthlyInput.value) {
+        monthlyDue.value = addDays(monthlyInput.value, 30);
+      }
+    });
+  });
+</script>
+{% endblock %}

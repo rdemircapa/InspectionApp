@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="container mt-5">
+  <div class="alert alert-success text-center shadow">
+    <h2 class="mb-3">✅ Inspection Completed</h2>
+    <p class="lead">The inspection for <strong>{{ tag }}</strong> has been successfully submitted.</p>
+
+    <a href="{{ url_for('list_fire_extinguishers') }}" class="btn btn-outline-primary mt-4 me-2">
+      🔙 Return to List
+    </a>
+
+    <a href="{{ url_for('manual_scan') }}" class="btn btn-outline-success mt-4">
+      📷 New QR Scan
+    </a>
+  </div>
+</div>
+{% endblock %}

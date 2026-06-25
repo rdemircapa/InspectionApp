@@ -1,0 +1,26 @@
+{
+  "name": "InspectionApp",
+  "short_name": "Inspect",
+  "start_url": "/",
+  "scope": "/",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#212529",
+  "icons": [
+    {
+      "src": "/static/images/icon-192.png",
+      "type": "image/png",
+      "sizes": "192x192"
+    },
+    {
+      "src": "/static/images/icon-512.png",
+      "type": "image/png",
+      "sizes": "512x512"
+    },
+    {
+      "src": "/static/images/splash_icon_512.png",
+      "type": "image/png",
+      "sizes": "512x512"
+    }
+  ]
+}

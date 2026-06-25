@@ -1,0 +1,80 @@
+{% extends "base.html" %}
+{% block title %}Upload EEBA{% endblock %}
+
+{% block content %}
+<div class="d-flex align-items-center justify-content-between mb-3">
+  <h4 class="mb-0"><i class="bi bi-upload me-2"></i>Upload EEBA (Excel)</h4>
+  <div class="d-flex gap-2">
+    <a class="btn btn-outline-secondary" href="{{ url_for('eeba_bp.download_eeba_template') }}">
+      <i class="bi bi-file-earmark-excel"></i> Download Template
+    </a>
+    <a class="btn btn-secondary" href="{{ url_for('eeba_bp.list_eeba') }}">
+      <i class="bi bi-arrow-left-circle"></i> Back to List
+    </a>
+  </div>
+</div>
+
+<div class="card shadow">
+  <div class="card-body">
+    <form method="POST" enctype="multipart/form-data" id="uploadForm">
+      <div class="row g-3">
+        <div class="col-md-6">
+          <label class="form-label">Select Excel file (.xlsx)</label>
+          <input class="form-control" type="file" name="file" accept=".xlsx" required>
+          <div class="form-text">
+            Accepted: <code>.xlsx</code> • Max 10 MB • Headers must match the template.
+          </div>
+        </div>
+        <div class="col-md-6">
+          <label class="form-label">When tag already exists</label>
+          <select name="on_conflict" class="form-select">
+            <option value="update" selected>Update existing record</option>
+            <option value="skip">Skip (do not change)</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="mt-4 d-flex justify-content-end">
+        <button type="submit" class="btn btn-primary">
+          <i class="bi bi-cloud-arrow-up"></i> Upload & Import
+        </button>
+      </div>
+    </form>
+
+    <hr>
+
+    <details class="mt-2">
+      <summary class="mb-2">Required column names in Excel</summary>
+      <div class="small">
+        <code>
+          RESPONSIBLE, MAKE / BRAND, CYL.NO., CAPACITY, TAG NO., LOCATION, SUB LOCATION,<br>
+          HYD TEST DATE - INS. DATE, HYD TEST DATE - DUE DATE,<br>
+          REFILLING STATUS - FILLED DATE, REFILLING STATUS - DUE DATE,<br>
+          MONTHLY INSPECTIONS - INS. DATE, MONTHLY INSPECTIONS - DUE DATE,<br>
+          MASK, CYLINDER PRESSURE IN BAR, STRAPS, BAG, OVERALL CONDITION,<br>
+          INSPECTED BY, REMARKS, CORRECTIVE ACTION
+        </code>
+      </div>
+    </details>
+  </div>
+</div>
+
+<!-- Basit istemci tarafı doğrulaması -->
+<script>
+document.getElementById('uploadForm').addEventListener('submit', function(e){
+  const f = this.querySelector('input[type="file"]');
+  if (!f.files || !f.files[0]) return;
+  const file = f.files[0];
+  if (!file.name.toLowerCase().endsWith('.xlsx')) {
+    e.preventDefault();
+    alert('Please select an .xlsx file.');
+    return;
+  }
+  const maxMB = 10;
+  if (file.size > maxMB * 1024 * 1024) {
+    e.preventDefault();
+    alert('File too large. Max ' + maxMB + ' MB.');
+  }
+});
+</script>
+{% endblock %}

@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Inspect Fire Extinguisher</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  <style>
+    .btn-option {
+      width: 48%;
+      font-size: 1rem;
+      padding: 0.5rem;
+      transition: all 0.2s ease-in-out;
+    }
+
+    .btn-selected-success {
+      background-color: #198754 !important;
+      color: white !important;
+    }
+
+    .btn-selected-danger {
+      background-color: #dc3545 !important;
+      color: white !important;
+    }
+
+    .btn-selected-warning {
+      background-color: #ffc107 !important;
+      color: black !important;
+    }
+  </style>
+</head>
+<body class="bg-light">
+<div class="container py-5">
+
+  <h3 class="mb-4 text-center">🧯 Bu Fire Extinguisher Inspection - {{ extinguisher['tag_number'] }}</h3>
+
+  <div class="card shadow-sm p-4">
+
+    <!-- Extinguisher Info -->
+    <div class="mb-4">
+      <h5>Extinguisher Details</h5>
+      <p><strong>Type:</strong> {{ extinguisher['extinguisher_type'] }}</p>
+      <p><strong>Capacity:</strong> {{ extinguisher['capacity'] }}</p>
+      <p><strong>Location:</strong> {{ extinguisher['location'] }} / {{ extinguisher['sub_location'] }}</p>
+    </div>
+
+    <form method="POST" onsubmit="return validateForm();">
+      {% for label, field in {
+        "Pressure Gauge": "pressure_gauge",
+        "Hose Nozzle": "hose_nozzle",
+        "Safety Pin": "safety_pin",
+        "Trigger": "trigger"
+      }.items() %}
+      <div class="mb-3">
+        <label class="form-label d-block">{{ label }}</label>
+        <div class="d-flex justify-content-between">
+          <button type="button" class="btn btn-outline-success btn-option" onclick="setOption('{{ field }}', 'Pass', this)">✅ Pass</button>
+          <button type="button" class="btn btn-outline-danger btn-option" onclick="setOption('{{ field }}', 'Fail', this)">❌ Fail</button>
+        </div>
+        <input type="hidden" name="{{ field }}" id="{{ field }}" required>
+      </div>
+      {% endfor %}
+
+         <div class="mb-3">
+      <label class="form-label d-block">Overall Condition</label>
+      <div class="d-flex justify-content-between">
+        <button type="button" class="btn btn-outline-success btn-option" onclick="setOption('overall_condition', 'Good', this)">👍 Good</button>
+        <button type="button" class="btn btn-outline-warning btn-option" onclick="setOption('overall_condition', 'Needs Maintenance', this)">🛠️ Needs Maintenance</button>
+      </div>
+      <input type="hidden" name="overall_condition" id="overall_condition" required>
+    </div>
+
+
+      <!-- Tarihler -->
+      <div class="row g-3 mb-3">
+        <div class="col-md-6">
+          <label class="form-label">3rd Party Inspection Date</label>
+          <input type="date" name="third_party_inspection_date" class="form-control" value="{{ extinguisher['third_party_inspection_date'] }}">
+        </div>
+        <div class="col-md-6">
+          <label class="form-label">3rd Party Due Date</label>
+          <input type="date" name="third_party_due_date" class="form-control" value="{{ extinguisher['third_party_due_date'] }}">
+        </div>
+        <div class="col-md-6">
+          <label class="form-label">Monthly Inspection Date</label>
+          <input type="date" name="monthly_inspection_date" class="form-control" value="{{ extinguisher['monthly_inspection_date'] }}">
+        </div>
+        <div class="col-md-6">
+          <label class="form-label">Monthly Due Date</label>
+          <input type="date" name="monthly_due_date" class="form-control" value="{{ extinguisher['monthly_due_date'] }}">
+        </div>
+      </div>
+
+      <!-- Not -->
+      <div class="mb-3">
+        <label class="form-label">Remarks (optional)</label>
+        <textarea name="remarks" class="form-control" rows="2">{{ extinguisher['remarks'] }}</textarea>
+      </div>
+
+      <button type="submit" class="btn btn-success w-100">✅ Submit Inspection</button>
+    </form>
+
+  </div>
+</div>
+
+<script>
+  function setOption(field, value, btn) {
+    document.getElementById(field).value = value;
+
+    const buttons = btn.parentElement.querySelectorAll('button');
+    buttons.forEach(b => {
+      b.classList.remove('btn-selected-success', 'btn-selected-danger', 'btn-selected-warning');
+    });
+
+    if (value === 'Pass' || value === 'Good') {
+      btn.classList.add('btn-selected-success');
+    } else if (value === 'Fail') {
+      btn.classList.add('btn-selected-danger');
+    } else if (value === 'Needs Maintenance') {
+      btn.classList.add('btn-selected-warning');
+    }
+  }
+
+  function validateForm() {
+    const requiredFields = ['pressure_gauge', 'hose_nozzle', 'safety_pin', 'trigger', 'overall_condition'];
+    for (const field of requiredFields) {
+      if (!document.getElementById(field).value) {
+        alert("Please complete all sections before submitting.");
+        return false;
+      }
+    }
+    return true;
+  }
+</script>
+</body>
+</html>

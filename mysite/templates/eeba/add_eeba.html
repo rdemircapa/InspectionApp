@@ -1,0 +1,352 @@
+{% extends "base.html" %}
+{% block title %}Add EEBA{% endblock %}
+
+{% block content %}
+<div class="card shadow">
+  <div class="card-header bg-primary text-white d-flex justify-content-between align-items-center">
+    <h5 class="mb-0"><i class="bi bi-plus-circle me-2"></i>Add EEBA</h5>
+    <a href="{{ url_for('eeba_bp.list_eeba') }}" class="btn btn-outline-light btn-sm">
+      <i class="bi bi-arrow-left-circle"></i> Back to list
+    </a>
+  </div>
+
+  <div class="card-body">
+    <form method="POST" id="eebaForm" novalidate>
+
+      <!-- ==================== Identification ==================== -->
+      <div class="section-title"><i class="bi bi-info-circle me-2"></i>Identification</div>
+      <div class="row g-3 mb-4">
+        <div class="col-md-4">
+          <label class="form-label">Responsible (Company)</label>
+          <select name="responsible" class="form-select" required>
+            <option value="">-- Select company --</option>
+            {% for c in companies %}
+              <option value="{{ c['company_name'] }}">{{ c['company_name'] }}</option>
+            {% endfor %}
+          </select>
+        </div>
+        <div class="col-md-4">
+          <label class="form-label">Tag No.</label>
+          <input type="text" name="tag_no" id="tag_no" class="form-control" required placeholder="e.g. EEBA-001">
+        </div>
+        <div class="col-md-4">
+          <label class="form-label">Make / Brand</label>
+          <input type="text" name="make_brand" class="form-control" placeholder="e.g. Dräger">
+        </div>
+
+        <div class="col-md-4">
+          <label class="form-label">Cylinder No.</label>
+          <input type="text" name="cyl_no" class="form-control" placeholder="e.g. 12345">
+        </div>
+        <div class="col-md-4">
+          <label class="form-label">Capacity</label>
+          <input  type="text"
+                  name="capacity"
+                  class="form-control"
+                  placeholder="e.g. 15 Minute"
+                  value="{{ request.form.get('capacity', '15 Minute') }}"
+                >
+        </div>
+        <div class="col-md-4">
+          <label class="form-label">Location</label>
+          <input type="text" name="location" class="form-control" placeholder="e.g. GOP">
+        </div>
+
+        <div class="col-md-6">
+          <label class="form-label">Sub Location</label>
+          <input type="text" name="sub_location" class="form-control" placeholder="e.g. MCC Room">
+        </div>
+      </div>
+
+      <!-- ==================== Dates & Validity ==================== -->
+      <div class="section-title d-flex align-items-center justify-content-between">
+        <div><i class="bi bi-calendar-event me-2"></i>Dates & Validity</div>
+        <div class="form-check m-0">
+          <input class="form-check-input" type="checkbox" id="autoCalc" checked>
+          <label class="form-check-label" for="autoCalc">
+            Auto-calc due dates (Hydro: +5y, Refilling: +6m, Monthly: +30d)
+          </label>
+        </div>
+      </div>
+
+      <!-- Hydro -->
+      <div class="row g-3 mb-3 align-items-end">
+        <div class="col-md-4">
+          <label class="form-label">Hydro Test Date (Ins.)</label>
+          <div class="input-group">
+            <input type="date" id="hyd_ins_date" name="hyd_ins_date" class="form-control">
+            <button type="button" class="btn btn-outline-secondary" data-today="#hyd_ins_date">
+              Today
+            </button>
+          </div>
+          <div class="form-text">Due date auto: +5 years</div>
+        </div>
+        <div class="col-md-4">
+          <label class="form-label">Hydro Test Date (Due)</label>
+          <input type="date" id="hyd_due_date" name="hyd_due_date" class="form-control">
+        </div>
+
+        <!-- Refilling -->
+        <div class="col-md-4">
+          <label class="form-label">Refilling Filled Date</label>
+          <div class="input-group">
+            <input type="date" id="refilling_filled_date" name="refilling_filled_date" class="form-control">
+            <button type="button" class="btn btn-outline-secondary" data-today="#refilling_filled_date">
+              Today
+            </button>
+          </div>
+          <div class="form-text">Due date auto: +6 months</div>
+        </div>
+      </div>
+
+      <div class="row g-3 mb-4">
+        <div class="col-md-4">
+          <label class="form-label">Refilling Due Date</label>
+          <input type="date" id="refilling_due_date" name="refilling_due_date" class="form-control">
+        </div>
+
+        <!-- Monthly -->
+        <div class="col-md-4">
+          <label class="form-label">Monthly Inspection Date</label>
+          <div class="input-group">
+            <input type="date" id="monthly_ins_date" name="monthly_ins_date" class="form-control">
+            <button type="button" class="btn btn-outline-secondary" data-today="#monthly_ins_date">
+              Today
+            </button>
+          </div>
+          <div class="form-text">Due date auto: +30 days</div>
+        </div>
+        <div class="col-md-4">
+          <label class="form-label">Monthly Due Date</label>
+          <input type="date" id="monthly_due_date" name="monthly_due_date" class="form-control">
+        </div>
+      </div>
+
+      <!-- ==================== Visual Inspection ==================== -->
+      <div class="section-title"><i class="bi bi-eye me-2"></i>Visual Inspection</div>
+      <div class="row g-3 mb-4">
+        <div class="col-md-4">
+          <label class="form-label">Mask Status</label>
+          <select name="mask_status" class="form-select">
+            <option value="">-- Select --</option>
+            <option value="OK">OK</option>
+            <option value="FAIL">FAIL</option>
+          </select>
+        </div>
+
+        <div class="col-md-4">
+          <label class="form-label">Cylinder Pressure</label>
+          <div class="input-group">
+            <input type="number" step="0.1" name="cyl_pressure_bar" class="form-control" placeholder="e.g. 300">
+            <span class="input-group-text">bar</span>
+          </div>
+          <div class="form-text">Tip: <span class="text-danger fw-semibold">190 bar</span> below is considered low...</div>
+        </div>
+
+        <div class="col-md-4">
+          <label class="form-label">Straps Status</label>
+          <select name="straps_status" class="form-select">
+            <option value="">-- Select --</option>
+            <option value="OK">OK</option>
+            <option value="FAIL">FAIL</option>
+          </select>
+        </div>
+
+        <div class="col-md-4">
+          <label class="form-label">Bag Status</label>
+          <select name="bag_status" class="form-select">
+            <option value="">-- Select --</option>
+            <option value="OK">OK</option>
+            <option value="FAIL">FAIL</option>
+          </select>
+        </div>
+
+        <div class="col-md-8">
+          <label class="form-label">Overall Condition</label>
+          <div class="btn-group w-100" role="group" aria-label="Overall condition">
+            <!-- SAT -->
+            <input type="radio" class="btn-check" name="overall_condition" id="oc-sat"
+                   value="SATISFACTORY" autocomplete="off"
+                   {% if row and row['overall_condition']=='SATISFACTORY' %}checked{% endif %}>
+            <label class="btn btn-outline-success oc-pill" for="oc-sat">
+              <i class="bi bi-hand-thumbs-up me-1"></i> SATISFACTORY
+            </label>
+            <!-- UNSAT -->
+            <input type="radio" class="btn-check" name="overall_condition" id="oc-unsat"
+                   value="UNSATISFACTORY" autocomplete="off"
+                   {% if row and row['overall_condition']=='UNSATISFACTORY' %}checked{% endif %}>
+            <label class="btn btn-outline-danger oc-pill" for="oc-unsat">
+              <i class="bi bi-hand-thumbs-down me-1"></i> UNSATISFACTORY
+            </label>
+          </div>
+        </div>
+      </div>
+
+      <!-- ==================== Notes ==================== -->
+      <div class="section-title"><i class="bi bi-journal-text me-2"></i>Notes</div>
+      <div class="row g-3 mb-4">
+        <div class="col-md-6">
+          <label class="form-label">Inspected By</label>
+          <input type="text" name="inspected_by" class="form-control" placeholder="e.g. Jane Doe">
+        </div>
+        <div class="col-md-6">
+          <label class="form-label">Remarks</label>
+          <textarea name="remarks" class="form-control" rows="1" placeholder="Optional remarks..."></textarea>
+        </div>
+        <div class="col-12">
+          <label class="form-label">Corrective Action</label>
+          <textarea name="corrective_action" class="form-control" rows="2" placeholder="If UNSATISFACTORY, note the actions..."></textarea>
+        </div>
+      </div>
+
+      <!-- Actions -->
+      <div class="d-flex justify-content-end gap-2">
+        <a href="{{ url_for('eeba_bp.list_eeba') }}" class="btn btn-secondary">
+          <i class="bi bi-arrow-left-circle"></i> Cancel
+        </a>
+        <button type="submit" class="btn btn-success">
+          <i class="bi bi-save"></i> Save EEBA
+        </button>
+      </div>
+
+    </form>
+  </div>
+</div>
+
+<!-- ===== Scripts: Auto-calc, Today buttons, UX helpers ===== -->
+<script>
+// YYYY-MM-DD
+function toISO(d){
+  const y = d.getFullYear();
+  const m = String(d.getMonth()+1).padStart(2,'0');
+  const day = String(d.getDate()).padStart(2,'0');
+  return `${y}-${m}-${day}`;
+}
+function addDays(base, days){ const d = new Date(base.getTime()); d.setDate(d.getDate() + days); return d; }
+// Months preserving day, clamp EOM
+function addMonthsPreserveDay(base, months){
+  const y = base.getFullYear(), m = base.getMonth(), day = base.getDate();
+  const targetMonth = m + months;
+  const lastDay = new Date(y, targetMonth + 1, 0).getDate();
+  return new Date(y, targetMonth, Math.min(day, lastDay));
+}
+function parseDate(val){ if(!val) return null; const d = new Date(val); return isNaN(d.getTime()) ? null : d; }
+function setDueReadonly(isAuto){
+  ['hyd_due_date','refilling_due_date','monthly_due_date'].forEach(id=>{
+    const el = document.getElementById(id);
+    el.readOnly = isAuto;
+    el.classList.toggle('bg-light', isAuto);
+  });
+}
+function maybeAutoFill(baseId, dueId, addFn){
+  const auto = document.getElementById('autoCalc').checked;
+  const baseEl = document.getElementById(baseId);
+  const dueEl  = document.getElementById(dueId);
+  const baseDate = parseDate(baseEl.value);
+  if(!baseDate){ if(auto){ dueEl.value=''; } return; }
+  if(auto){ dueEl.value = toISO(addFn(baseDate)); }
+}
+
+(function(){
+  const hydIns = document.getElementById('hyd_ins_date');
+  const hydDue = document.getElementById('hyd_due_date');
+  const refFill = document.getElementById('refilling_filled_date');
+  const refDue = document.getElementById('refilling_due_date');
+  const monIns = document.getElementById('monthly_ins_date');
+  const monDue = document.getElementById('monthly_due_date');
+  const auto = document.getElementById('autoCalc');
+
+  // init: due readonly
+  setDueReadonly(true);
+
+  if(hydIns){
+    hydIns.addEventListener('change', () =>
+      maybeAutoFill('hyd_ins_date','hyd_due_date', d => addMonthsPreserveDay(d, 60)) // +5 years
+    );
+  }
+  if(refFill){
+    refFill.addEventListener('change', () =>
+      maybeAutoFill('refilling_filled_date','refilling_due_date', d => addMonthsPreserveDay(d, 6)) // +6 months
+    );
+  }
+  if(monIns){
+    monIns.addEventListener('change', () =>
+      maybeAutoFill('monthly_ins_date','monthly_due_date', d => addDays(d, 30)) // +30 days
+    );
+  }
+
+  if(auto){
+    auto.addEventListener('change', () => {
+      setDueReadonly(auto.checked);
+      if(auto.checked){
+        if(hydIns.value) hydIns.dispatchEvent(new Event('change'));
+        if(refFill.value) refFill.dispatchEvent(new Event('change'));
+        if(monIns.value) monIns.dispatchEvent(new Event('change'));
+      }
+    });
+  }
+
+  // Today shortcuts
+  document.querySelectorAll('[data-today]').forEach(btn=>{
+    btn.addEventListener('click', ()=>{
+      const target = document.querySelector(btn.getAttribute('data-today'));
+      if(!target) return;
+      target.value = toISO(new Date());
+      target.dispatchEvent(new Event('change'));
+      target.focus();
+    });
+  });
+
+  // Tag No upper-case
+  const tag = document.getElementById('tag_no');
+  if(tag){
+    tag.addEventListener('input', ()=>{
+      const curPos = tag.selectionStart;
+      tag.value = (tag.value || '').toUpperCase();
+      tag.setSelectionRange(curPos, curPos);
+    });
+  }
+})();
+</script>
+
+<style>
+/* Bölüm başlığı şeridi */
+.section-title{
+  font-size:.95rem;
+  font-weight:700;
+  text-transform:uppercase;
+  letter-spacing:.04em;
+  color:#495057;
+  border-bottom:1px dashed #dee2e6;
+  padding-bottom:.4rem;
+  margin-bottom:1rem;
+}
+
+/* Overall Condition pill butonları */
+.oc-pill{
+  border-width: 2px;
+  padding: .55rem 1rem;
+  font-weight: 600;
+  letter-spacing: .3px;
+  border-radius: .75rem;
+  transition: transform .06s ease-in, box-shadow .2s ease, background-color .2s ease, color .2s ease;
+}
+.oc-pill:hover{ transform: translateY(-1px); }
+
+/* Seçiliyken parlasın + renk dolsun */
+.btn-check:checked + .btn-outline-success{
+  color:#fff; background-color:#198754; border-color:#198754;
+  box-shadow: 0 0 0 .25rem rgba(25,135,84,.3);
+}
+.btn-check:checked + .btn-outline-danger{
+  color:#fff; background-color:#dc3545; border-color:#dc3545;
+  box-shadow: 0 0 0 .25rem rgba(220,53,69,.3);
+}
+
+/* Klavye odak halkası */
+.btn-check:focus + .btn,
+.btn-check:focus-visible + .btn{
+  box-shadow: 0 0 0 .25rem rgba(13,110,253,.2);
+}
+</style>
+{% endblock %}

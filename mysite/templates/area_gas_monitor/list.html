@@ -1,0 +1,72 @@
+{# templates/area_gas_monitor/list.html #}
+{% extends "base.html" %}
+{% block content %}
+<div class="container mt-5">
+
+  <!-- Üst Menü -->
+  <div class="d-flex justify-content-between align-items-center mb-3">
+    <a href="{{ url_for('area_gas_monitor.manual_scan_area_monitor') }}" class="btn btn-success">
+      <i class="bi bi-qr-code-scan"></i> Scan QR
+    </a>
+    <a href="{{ url_for('area_gas_monitor.add_area_gas_monitor') }}" class="btn btn-success">
+      ➕ Add New Monitor
+    </a>
+  </div>
+
+  <div class="mb-3 text-end">
+    <a href="{{ url_for('area_gas_monitor.map_all_area_gas_monitors') }}" target="_blank" class="btn btn-outline-primary">
+      <i class="bi bi-geo-alt-fill"></i> View All on Map
+    </a>
+  </div>
+
+  <h2 class="mb-4">📊 Area Gas Monitor List</h2>
+
+  <!-- Sayaç Kartları (tıklanabilir) -->
+  <div class="row mb-4 text-center">
+    <div class="col-md-3">
+      <a href="{{ url_for('area_gas_monitor.filter_area_gas_monitors', filter_type='active') }}" class="text-decoration-none">
+        <div class="card border-success shadow-sm h-100">
+          <div class="card-body">
+            <h5 class="card-title text-success">✅ Active</h5>
+            <h3>{{ active_count }}</h3>
+          </div>
+        </div>
+      </a>
+    </div>
+    <div class="col-md-3">
+      <a href="{{ url_for('area_gas_monitor.filter_area_gas_monitors', filter_type='inactive') }}" class="text-decoration-none">
+        <div class="card border-secondary shadow-sm h-100">
+          <div class="card-body">
+            <h5 class="card-title text-muted">⚙️ Inactive</h5>
+            <h3>{{ inactive_count }}</h3>
+          </div>
+        </div>
+      </a>
+    </div>
+    <div class="col-md-3">
+      <a href="{{ url_for('area_gas_monitor.filter_area_gas_monitors', filter_type='service') }}" class="text-decoration-none">
+        <div class="card border-warning shadow-sm h-100">
+          <div class="card-body">
+            <h5 class="card-title text-warning">🛠️ Service</h5>
+            <h3>{{ service_count }}</h3>
+          </div>
+        </div>
+      </a>
+    </div>
+    <div class="col-md-3">
+      <a href="{{ url_for('area_gas_monitor.filter_area_gas_monitors', filter_type='calibration_soon') }}" class="text-decoration-none">
+        <div class="card border-danger shadow-sm h-100">
+          <div class="card-body">
+            <h5 class="card-title text-danger">⏳ Calibration Critical</h5>
+            <h3>{{ calibration_soon_count }}</h3>
+          </div>
+        </div>
+      </a>
+    </div>
+  </div>
+
+  {# TABLO yalnızca include edilir; burada IF/ENDIF YOK! #}
+  {% include "area_gas_monitor/monitor_table.html" %}
+
+</div>
+{% endblock %}

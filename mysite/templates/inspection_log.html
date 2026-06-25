@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+
+{% block title %}Inspection History{% endblock %}
+
+{% block content %}
+<div class="container mt-4">
+  <h2>Inspection Log for {{ product.name }} ({{ product.serial_id }})</h2>
+  <table class="table table-bordered mt-4">
+    <thead class="table-dark">
+      <tr>
+        <th>Inspection Date</th>
+        <th>Inspected By</th>
+        <th>Result</th>
+        <th>Notes</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for log in logs %}
+      <tr>
+        <td>{{ log.inspection_date }}</td>
+        <td>{{ log.inspected_by }}</td>
+        <td>{{ log.inspection_result }}</td>
+        <td>{{ log.notes }}</td>
+      </tr>
+      {% else %}
+      <tr><td colspan="4" class="text-center">No inspections found for this product.</td></tr>
+      {% endfor %}
+    </tbody>
+  </table>
+  <a href="/products" class="btn btn-secondary">Back to Products</a>
+</div>
+{% endblock %}

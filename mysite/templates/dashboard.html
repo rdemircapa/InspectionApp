@@ -1,0 +1,73 @@
+{% extends 'base.html' %}
+{% block title %}Dashboard{% endblock %}
+
+{% block content %}
+<div class="container mt-4">
+
+  <!-- Reminder Alerts Section -->
+  {% if overdue > 0 %}
+  <div class="alert alert-danger">
+    🔥 {{ overdue }} fire extinguishers are <strong>overdue</strong>!
+  </div>
+  {% endif %}
+  {% if approaching > 0 %}
+  <div class="alert alert-warning">
+    ⏰ {{ approaching }} fire extinguishers need inspection <strong>within 7 days</strong>.
+  </div>
+  {% endif %}
+
+  <!-- Summary Cards -->
+  <div class="row mb-4">
+    <div class="col-md-6">
+      <div class="card border-primary">
+        <div class="card-body text-center">
+          <h5 class="card-title">Total Products</h5>
+          <h3 class="card-text text-primary">{{ total_products }}</h3>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-6">
+      <div class="card border-warning">
+        <div class="card-body text-center">
+          <h5 class="card-title">Upcoming Inspections (Next 7 Days)</h5>
+          <h3 class="card-text text-warning">{{ upcoming_inspections }}</h3>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Chart -->
+  <h2>Product Summary by Type</h2>
+  <canvas id="typeChart" height="100"></canvas>
+</div>
+
+<!-- Chart.js -->
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script>
+const ctx = document.getElementById('typeChart').getContext('2d');
+new Chart(ctx, {
+  type: 'bar',
+  data: {
+    labels: {{ labels | tojson }},
+    datasets: [{
+      label: 'Total Products',
+      data: {{ values | tojson }},
+      backgroundColor: 'rgba(54, 162, 235, 0.6)',
+      borderColor: 'rgba(54, 162, 235, 1)',
+      borderWidth: 1
+    }]
+  },
+  options: {
+    responsive: true,
+    scales: {
+      y: {
+        beginAtZero: true,
+        ticks: {
+          stepSize: 1
+        }
+      }
+    }
+  }
+});
+</script>
+{% endblock %}

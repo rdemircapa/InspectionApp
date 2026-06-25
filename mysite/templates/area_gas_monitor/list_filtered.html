@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="container mt-5">
+  <div class="d-flex justify-content-between align-items-center mb-3">
+    <h2 class="mb-0">📋 Monitors — Filter:
+      {% if filter_type == 'active' %}Active
+      {% elif filter_type == 'inactive' %}Inactive
+      {% elif filter_type == 'service' %}Service
+      {% elif filter_type == 'calibration_soon' %}Calibration ≤ 15d / Overdue
+      {% else %}{{ filter_type|capitalize }}
+      {% endif %}
+    </h2>
+
+    <a href="{{ url_for('area_gas_monitor.list_area_gas_monitors') }}" class="btn btn-outline-secondary">
+      ← Back to All
+    </a>
+  </div>
+
+  {% include "area_gas_monitor/monitor_table.html" %}
+</div>
+{% endblock %}

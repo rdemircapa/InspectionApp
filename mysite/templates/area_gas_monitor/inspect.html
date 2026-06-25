@@ -1,0 +1,122 @@
+{% extends "base.html" %}
+{% block title %}Update Area Gas Monitor{% endblock %}
+{% block content %}
+<div class="container py-4">
+  <div class="card shadow-sm">
+    <div class="card-body">
+      <h4 class="card-title mb-3 text-center">Update Area Gas Monitor</h4>
+
+      <div class="alert alert-info small">
+        <strong>TAG:</strong> {{ monitor["tag_number"] }}<br>
+        <strong>Location:</strong> {{ monitor["location"] or "N/A" }}<br>
+        <strong>Sub-Location:</strong> {{ monitor["sub_location"] or "N/A" }}<br>
+        <strong>Serial No:</strong> {{ monitor["serial_number"] or "N/A" }}<br>
+        <strong>Sensor Serial:</strong> {{ monitor["sensor_serial_number"] or "N/A" }}<br>
+        <strong>Model:</strong> {{ monitor["model"] or "N/A" }}<br>
+        <strong>Gas Type:</strong> {{ monitor["gas_type"] or "N/A" }}<br>
+        <strong>Last Calibration:</strong> {{ monitor["calibration_date"] or "N/A" }}
+      </div>
+
+      <form method="POST" onsubmit="return checkGpsBeforeSubmit();">
+        <!-- Status buttons -->
+        <div class="mb-3">
+          <label class="form-label">Status</label>
+          <div class="d-flex gap-2 flex-wrap">
+            <button type="button" class="btn btn-outline-success flex-fill" onclick="setStatus('Active', this)">✅ Active</button>
+            <button type="button" class="btn btn-outline-secondary flex-fill" onclick="setStatus('Inactive', this)">🛑 Inactive</button>
+            <button type="button" class="btn btn-outline-warning flex-fill" onclick="setStatus('Service', this)">🔧 Service</button>
+          </div>
+          <input type="hidden" name="status" id="status">
+        </div>
+
+        <!-- Sub-Location field -->
+        <div class="mb-3">
+          <label for="sub_location" class="form-label">Sub-Location</label>
+          <input type="text" name="sub_location" id="sub_location" class="form-control" value="{{ monitor['sub_location'] or '' }}" placeholder="e.g. Sumpit 1001" >
+        </div>
+
+        <!-- Remarks -->
+        <div class="mb-3">
+          <label for="remarks" class="form-label">Remarks / Reason</label>
+          <textarea name="remarks" id="remarks" class="form-control" rows="2" placeholder="e.g. Battery low, taken for maintenance..."></textarea>
+        </div>
+
+        <!-- Hidden GPS inputs -->
+        <input type="hidden" name="latitude" id="latitude">
+        <input type="hidden" name="longitude" id="longitude">
+
+        <!-- GPS display -->
+        <div id="gpsStatus" class="text-muted small mb-2">📍 Getting GPS location...</div>
+        <div id="gpsCoordinates" class="text-primary small mb-2" style="display: none;">
+          <strong>Latitude:</strong> <span id="lat_display"></span><br>
+          <strong>Longitude:</strong> <span id="long_display"></span>
+        </div>
+
+        <button type="submit" class="btn btn-primary w-100 mt-2">
+          <i class="bi bi-geo-alt-fill"></i> Submit Update
+        </button>
+      </form>
+    </div>
+  </div>
+</div>
+
+<!-- GPS + Status Script -->
+<script>
+let gpsReady = false;
+
+function updateStatus(msg, success = false) {
+  const status = document.getElementById('gpsStatus');
+  status.textContent = msg;
+  status.className = success ? 'text-success small mb-2' : 'text-danger small mb-2';
+}
+
+function checkGpsBeforeSubmit() {
+  if (!gpsReady) {
+    alert("GPS location not ready yet. Please wait a moment...");
+    return false;
+  }
+  return true;
+}
+
+function setStatus(value, button) {
+  document.getElementById("status").value = value;
+  const allButtons = button.parentElement.querySelectorAll("button");
+  allButtons.forEach(btn => btn.classList.remove("active", "btn-primary"));
+  button.classList.add("active", "btn-primary");
+}
+
+document.addEventListener("DOMContentLoaded", function() {
+  if (navigator.geolocation) {
+    navigator.geolocation.getCurrentPosition(function(position) {
+      const lat = position.coords.latitude;
+      const long = position.coords.longitude;
+
+      document.getElementById("latitude").value = lat;
+      document.getElementById("longitude").value = long;
+
+      document.getElementById("lat_display").textContent = lat.toFixed(6);
+      document.getElementById("long_display").textContent = long.toFixed(6);
+      document.getElementById("gpsCoordinates").style.display = "block";
+
+      updateStatus("✅ GPS location acquired", true);
+      gpsReady = true;
+    }, function(error) {
+      updateStatus("❌ Unable to get GPS location");
+    });
+  } else {
+    updateStatus("❌ GPS not supported by this browser.");
+  }
+
+  // mevcut status'u işaretle (isteğe bağlı)
+  const current = "{{ monitor['status'] }}";
+  if (current) {
+    const buttons = document.querySelectorAll('button[onclick^="setStatus"]');
+    buttons.forEach(btn => {
+      if (btn.textContent.includes(current)) {
+        setStatus(current, btn);
+      }
+    });
+  }
+});
+</script>
+{% endblock %}

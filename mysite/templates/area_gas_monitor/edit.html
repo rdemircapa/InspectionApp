@@ -1,0 +1,82 @@
+{% extends 'base.html' %}
+
+{% block title %}Edit Area Gas Monitor{% endblock %}
+
+{% block content %}
+<div class="container mt-5">
+  <div class="card shadow-sm">
+    <div class="card-body">
+      <h3 class="mb-4 text-center">Edit Area Gas Monitor</h3>
+
+      <form method="POST">
+        <div class="row">
+          <div class="col-md-6 mb-3">
+            <label class="form-label">Tag Number</label>
+            <input type="text" class="form-control" name="tag_number" value="{{ monitor.tag_number or '' }}" required>
+          </div>
+
+          <div class="col-md-6 mb-3">
+            <label class="form-label">Serial Number</label>
+            <input type="text" class="form-control" name="serial_number" value="{{ monitor.serial_number or '' }}">
+          </div>
+
+          <div class="col-md-6 mb-3">
+            <label class="form-label">Sensor Serial Number</label>
+            <input type="text" class="form-control" name="sensor_serial_number" value="{{ monitor.sensor_serial_number or '' }}">
+          </div>
+
+          <div class="col-md-6 mb-3">
+            <label class="form-label">Location</label>
+            <input type="text" class="form-control" name="location" value="{{ monitor.location or '' }}">
+          </div>
+
+          <div class="col-md-6 mb-3">
+            <label class="form-label">Sub-Location</label>
+            <input type="text" class="form-control" name="sub_location" value="{{ monitor.sub_location or '' }}">
+          </div>
+
+          <div class="col-md-6 mb-3">
+            <label class="form-label">Model</label>
+            <input type="text" class="form-control" name="model" value="{{ monitor.model or '' }}">
+          </div>
+
+          <div class="col-md-6 mb-3">
+            <label class="form-label">Gas Type</label>
+            <input type="text" class="form-control" name="gas_type" value="{{ monitor.gas_type or '' }}">
+          </div>
+
+          <div class="col-md-6 mb-3">
+            <label class="form-label">Calibration Date</label>
+            <input type="date" class="form-control" name="calibration_date" value="{{ monitor.calibration_date or '' }}">
+          </div>
+
+          <div class="col-md-6 mb-3">
+            <label class="form-label">Calibration Due Date</label>
+            <input type="date" class="form-control" name="due_date" value="{{ monitor.due_date or '' }}">
+          </div>
+
+          <div class="col-md-6 mb-3">
+            <label class="form-label">Status</label>
+            <select class="form-select" name="status">
+              <option value="">-- Select Status --</option>
+              <option value="Active" {% if monitor.status == 'Active' %}selected{% endif %}>Active</option>
+              <option value="Inactive" {% if monitor.status == 'Inactive' %}selected{% endif %}>Inactive</option>
+              <option value="Service" {% if monitor.status == 'Service' %}selected{% endif %}>Service</option>
+            </select>
+          </div>
+
+          <div class="col-12 mb-3">
+            <label class="form-label">Remarks</label>
+            <textarea class="form-control" name="remarks" rows="2">{{ monitor.remarks or '' }}</textarea>
+          </div>
+        </div>
+
+        <div class="d-flex justify-content-between">
+          <button type="submit" class="btn btn-primary">Update</button>
+          <a href="{{ url_for('area_gas_monitor.list_area_gas_monitors') }}" class="btn btn-secondary">Cancel</a>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+{% endblock %}

@@ -1,0 +1,238 @@
+{% extends 'base.html' %}
+{% block title %}Edit Gas Monitor Details{% endblock %}
+
+{% block content %}
+<div class="container">
+  <h3 class="d-flex align-items-center gap-2">
+    <i class="bi bi-pencil-square"></i>
+    Edit Gas Monitor Details
+  </h3>
+
+  <form method="POST" class="row g-3 mt-3" id="pgmEditForm" novalidate>
+    <!-- Serial Number (required) -->
+    <div class="col-md-6">
+      <label class="form-label" for="serial_number">Serial Number <span class="text-danger">*</span></label>
+      <input type="text" id="serial_number" name="serial_number" class="form-control" required autocomplete="off"
+             value="{{ monitor.serial_number }}">
+    </div>
+
+    <!-- Model -->
+    <div class="col-md-6">
+      <label class="form-label" for="model">Model</label>
+      <input type="text" id="model" name="model" class="form-control" autocomplete="off"
+             value="{{ monitor.model }}">
+    </div>
+
+    <!-- Manufacturer -->
+    <div class="col-md-6">
+      <label class="form-label" for="manufacturer">Manufacturer</label>
+      <input type="text" id="manufacturer" name="manufacturer" class="form-control" autocomplete="off"
+             value = "{{ monitor.manufacturer }}">
+    </div>
+
+    <!-- Calibration Date -->
+    <div class="col-md-6">
+      <label class="form-label" for="calibration_date">Calibration Date</label>
+      <input type="date" id="calibration_date" name="calibration_date" class="form-control"
+             value="{{ monitor.calibration_date }}">
+    </div>
+
+    <!-- Calibration Due Date (readonly display + hidden value) -->
+    <div class="col-md-6">
+      <label class="form-label" for="calibration_due_date_display">Calibration Due Date</label>
+      <input type="text" id="calibration_due_date_display" class="form-control" readonly placeholder="Auto-calculated"
+             value="{{ monitor.calibration_due_date if monitor.calibration_due_date else '' }}">
+      <input type="hidden" name="calibration_due_date" id="calibration_due_date"
+             value="{{ monitor.calibration_due_date if monitor.calibration_due_date else '' }}">
+      <div class="form-text">Auto-calculated as Calibration Date + 180 days.</div>
+    </div>
+
+    <!-- Status -->
+    <div class="col-md-6">
+      <label class="form-label" for="status">Status</label>
+      <select id="status" name="status" class="form-select">
+        <option value="Active"   {{ 'selected' if monitor.status == 'Active' else '' }}>Active</option>
+        <option value="Inactive" {{ 'selected' if monitor.status == 'Inactive' else '' }}>Inactive</option>
+        <option value="Faulty"   {{ 'selected' if monitor.status == 'Faulty' else '' }}>Faulty</option>
+      </select>
+    </div>
+
+    <!-- Location -->
+    <div class="col-md-6">
+      <label class="form-label" for="location">Location</label>
+      <input type="text" id="location" name="location" class="form-control" autocomplete="off"
+             value="{{ monitor.location }}">
+    </div>
+
+    <!-- Badge Number (optional) -->
+    <div class="col-md-6">
+      <label class="form-label" for="assigned_to">Badge Number</label>
+      <div class="input-group">
+        <input type="text" id="assigned_to" name="assigned_to" class="form-control" autocomplete="off"
+               value="{{ monitor.assigned_to if monitor.assigned_to else '' }}">
+        <span class="input-group-text" id="badge_status" title="Lookup status" style="min-width:2.25rem; text-align:center;">
+          <i class="bi bi-person"></i>
+        </span>
+      </div>
+      <div class="form-text">Optional. Enter a badge number to fetch the user name.</div>
+    </div>
+
+    <!-- Assigned User (readonly, optional but posted) -->
+    <div class="col-md-6">
+      <label class="form-label" for="assigned_user_name">Assigned User</label>
+      <input type="text" id="assigned_user_name" name="assigned_user_name" class="form-control" readonly placeholder="—"
+             value="{{ monitor.assigned_user_name if monitor.assigned_user_name else '' }}">
+      <div class="form-text">Filled automatically from the badge lookup (optional).</div>
+    </div>
+
+    <!-- Assigned Date -->
+    <div class="col-md-6">
+      <label class="form-label" for="assigned_date">Assigned Date</label>
+      <input type="date" id="assigned_date" name="assigned_date" class="form-control"
+             value="{{ monitor.assigned_date }}">
+    </div>
+
+    <!-- Bump Test Date -->
+    <div class="col-md-6">
+      <label class="form-label" for="bump_test_date">Bump Test Date</label>
+      <input type="date" id="bump_test_date" name="bump_test_date" class="form-control"
+             value="{{ monitor.bump_test_date if monitor.bump_test_date else '' }}">
+    </div>
+
+    <!-- Bump Status -->
+    <div class="col-md-6">
+      <label class="form-label" for="bump_status">Bump Status</label>
+      <select id="bump_status" name="bump_status" class="form-select">
+        <option value="">— Select —</option>
+        <option value="Pass"           {{ 'selected' if monitor.bump_status == 'Pass' else '' }}>Pass</option>
+        <option value="Fail"           {{ 'selected' if monitor.bump_status == 'Fail' else '' }}>Fail</option>
+        <option value="Not Performed"  {{ 'selected' if monitor.bump_status == 'Not Performed' else '' }}>Not Performed</option>
+      </select>
+    </div>
+
+    <!-- Remarks -->
+    <div class="col-12">
+      <label class="form-label" for="remarks">Remarks</label>
+      <textarea id="remarks" name="remarks" class="form-control" rows="2">{{ monitor.remarks }}</textarea>
+    </div>
+
+    <!-- Actions -->
+    <div class="col-12 d-flex gap-2">
+      <button type="submit" class="btn btn-primary">
+        <i class="bi bi-check-circle"></i> Save
+      </button>
+      <a href="{{ url_for('personal_gas_monitor.list_personal_gas_monitor') }}" class="btn btn-secondary">Cancel</a>
+    </div>
+  </form>
+</div>
+
+<script>
+// ---- Debounce helper ----
+function debounce(fn, delay = 400) {
+  let t; return (...args) => { clearTimeout(t); t = setTimeout(() => fn(...args), delay); };
+}
+
+// ---- Elements ----
+const badgeInput    = document.getElementById('assigned_to');
+const userNameInput = document.getElementById('assigned_user_name');
+const badgeStatus   = document.getElementById('badge_status');
+
+const calInput   = document.getElementById('calibration_date');
+const dueDisplay = document.getElementById('calibration_due_date_display');
+const dueHidden  = document.getElementById('calibration_due_date');
+
+function setBadgeIcon(state) {
+  const map = {
+    idle:     'bi-person',
+    loading:  'bi-arrow-repeat',
+    ok:       'bi-check-circle',
+    notfound: 'bi-question-circle',
+    error:    'bi-exclamation-triangle',
+  };
+  badgeStatus.innerHTML = `<i class="bi ${map[state]}"></i>`;
+}
+
+// ---- Fetch user name from badge (optional) ----
+async function fetchUserName() {
+  const badge = badgeInput.value.trim();
+  if (!badge) {
+    userNameInput.value = '';
+    setBadgeIcon('idle');
+    return;
+  }
+  try {
+    setBadgeIcon('loading');
+    const resp = await fetch(`/get-user-name?badge=${encodeURIComponent(badge)}`);
+    if (!resp.ok) throw new Error('Network response was not ok');
+    const data = await resp.json();
+    if (data && data.name) {
+      userNameInput.value = data.name;
+      setBadgeIcon('ok');
+    } else {
+      userNameInput.value = 'Not found';
+      setBadgeIcon('notfound');
+    }
+  } catch (e) {
+    userNameInput.value = 'Error';
+    setBadgeIcon('error');
+  }
+}
+badgeInput.addEventListener('blur', fetchUserName);
+badgeInput.addEventListener('input', debounce(fetchUserName, 500));
+
+// ---- Calibration due date auto-calc (+180 days) ----
+function addDays(dateStr, days) {
+  const d = new Date(dateStr);
+  if (Number.isNaN(d.getTime())) return null;
+  d.setDate(d.getDate() + days);
+  return d;
+}
+function toISODate(d) {
+  const z = n => String(n).padStart(2,'0');
+  return `${d.getFullYear()}-${z(d.getMonth()+1)}-${z(d.getDate())}`;
+}
+function updateDue() {
+  const v = calInput.value;
+  if (!v) {
+    dueDisplay.value = '';
+    dueHidden.value = '';
+    return;
+  }
+  const due = addDays(v, 180);
+  if (!due) {
+    dueDisplay.value = '';
+    dueHidden.value = '';
+    return;
+  }
+  const iso = toISODate(due);
+  dueDisplay.value = iso;
+  dueHidden.value = iso;
+}
+calInput?.addEventListener('change', updateDue);
+calInput?.addEventListener('input', updateDue);
+
+// ---- Initialize on load ----
+(function initOnLoad(){
+  // 1) Ensure due date display is in sync (recalculate from calibration_date if needed)
+  if (!dueDisplay.value && calInput.value) {
+    updateDue();
+  }
+
+  // 2) If assigned_to exists but assigned_user_name empty, try to fetch
+  if (badgeInput.value && !userNameInput.value) {
+    fetchUserName();
+  } else {
+    setBadgeIcon(badgeInput.value ? 'ok' : 'idle');
+  }
+
+  // 3) Warn if Pass/Fail without date (only when user changes status)
+  document.getElementById('bump_status')?.addEventListener('change', (e) => {
+    const status = e.target.value;
+    const dateVal = document.getElementById('bump_test_date').value;
+    if ((status === 'Pass' || status === 'Fail') && !dateVal) {
+      alert('Please enter a Bump Test Date when selecting Pass/Fail.');
+    }
+  });
+})();
+</script>
+{% endblock %}

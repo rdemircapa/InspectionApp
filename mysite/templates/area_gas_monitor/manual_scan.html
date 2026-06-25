@@ -1,0 +1,57 @@
+{% extends "base.html" %}
+{% block title %}Scan Area Gas Monitor{% endblock %}
+{% block content %}
+<div class="container py-4">
+  <h3 class="text-center">Scan Area Gas Monitor</h3>
+
+  <div class="my-4 text-center">
+    <div id="reader" style="width:300px; margin:auto;"></div>
+    <p class="mt-2">veya elle gir:</p>
+    <form method="POST" class="mt-3">
+      <input type="text" id="tag_input" name="tag_number" class="form-control text-center" placeholder="Enter Tag No (e.g. AGM-001)" required autofocus>
+      <button type="submit" class="btn btn-success mt-3"><i class="bi bi-search"></i> Submit</button>
+    </form>
+  </div>
+</div>
+
+<!-- QR Code Reader -->
+<!-- QR Code Reader -->
+<script src="https://unpkg.com/html5-qrcode"></script>
+<script>
+function onScanSuccess(decodedText, decodedResult) {
+  console.log(`QR Code detected: ${decodedText}`);
+  html5QrCode.stop().then(() => {
+    document.getElementById("tag_input").value = decodedText;
+    document.querySelector("form").submit();
+  }).catch(err => {
+    console.error("Failed to stop scanner after success:", err);
+  });
+}
+
+function onScanFailure(error) {
+  // Suppressed error log for speed
+}
+
+const html5QrCode = new Html5Qrcode("reader");
+const config = {
+  fps: 25,               // Yüksek FPS ile daha hızlı tarama
+  qrbox: { width: 200, height: 200 }, // Küçük tarama kutusu
+  disableFlip: true
+};
+
+Html5Qrcode.getCameras().then(devices => {
+  if (devices && devices.length > 0) {
+    const backCamera = devices.find(d => d.label.toLowerCase().includes("back")) || devices[0];
+    html5QrCode.start(
+      { deviceId: { exact: backCamera.id } },
+      config,
+      onScanSuccess,
+      onScanFailure
+    );
+  } else {
+    document.getElementById("reader").innerText = "No camera found";
+  }
+});
+</script>
+
+{% endblock %}

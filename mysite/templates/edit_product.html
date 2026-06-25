@@ -1,0 +1,71 @@
+{% extends 'base.html' %}
+
+{% block title %}Edit Product{% endblock %}
+
+{% block content %}
+<div class="container mt-4">
+  <h2>Edit Product</h2>
+  <form method="POST">
+    <div class="mb-3">
+      <label class="form-label">Brand</label>
+      <select name="brand_id" class="form-select" required>
+        {% for brand in brands %}
+        <option value="{{ brand.id }}" {% if brand.id == product.brand_id %}selected{% endif %}>{{ brand.name }}</option>
+        {% endfor %}
+      </select>
+    </div>
+
+    <div class="mb-3">
+      <label class="form-label">Serial ID</label>
+      <input type="text" name="serial_id" class="form-control" value="{{ product.serial_id }}" required>
+    </div>
+
+    <div class="mb-3">
+      <label class="form-label">Product Name</label>
+      <input type="text" name="product_name" class="form-control" value="{{ product.name }}" required>
+    </div>
+
+    <div class="mb-3">
+      <label class="form-label">Product Type</label>
+      <select name="product_type" class="form-select" required>
+        {% for type in product_types %}
+        <option value="{{ type.name }}" {% if type.name == product.type %}selected{% endif %}>{{ type.name }}</option>
+        {% endfor %}
+      </select>
+    </div>
+
+    <div class="mb-3">
+      <label class="form-label">Quantity</label>
+      <input type="number" name="product_quantity" class="form-control" value="{{ product.quantity }}" required>
+    </div>
+
+    <div class="mb-3">
+      <label class="form-label">Details</label>
+      <textarea name="product_details" class="form-control">{{ product.details }}</textarea>
+    </div>
+
+    <div class="mb-3">
+      <label class="form-label">First Inspection Date</label>
+      <input type="date" name="first_inspection_date" class="form-control" value="{{ product.first_inspection_date }}">
+    </div>
+
+    <div class="mb-3">
+      <label class="form-label">Next Inspection Date</label>
+      <input type="date" name="next_inspection_date" class="form-control" value="{{ product.inspection_date }}">
+    </div>
+
+    <div class="mb-3">
+      <label class="form-label">Service Status</label>
+      <input type="text" name="service_status" class="form-control" value="{{ product.status }}">
+    </div>
+
+    <div class="mb-3">
+      <label class="form-label">Remarks</label>
+      <textarea name="remarks" class="form-control">{{ product.remarks }}</textarea>
+    </div>
+
+    <button type="submit" class="btn btn-primary">Update Product</button>
+    <a href="/products" class="btn btn-secondary">Cancel</a>
+  </form>
+</div>
+{% endblock %}

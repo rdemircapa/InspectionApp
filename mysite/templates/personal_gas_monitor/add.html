@@ -1,0 +1,193 @@
+{% extends 'base.html' %}
+{% block title %}Add Personal Gas Monitor{% endblock %}
+
+{% block content %}
+<div class="container">
+  <h3><i class="bi bi-plus-circle"></i> Add Personal Gas Monitor</h3>
+  <form method="POST" class="row g-3 mt-3" id="pgmForm">
+
+    <div class="col-md-6">
+      <label class="form-label">Serial Number</label>
+      <input type="text" name="serial_number" class="form-control" required>
+    </div>
+
+    <div class="col-md-6">
+      <label class="form-label">Model</label>
+      <input type="text" name="model" class="form-control">
+    </div>
+
+    <div class="col-md-6">
+      <label class="form-label">Manufacturer</label>
+      <input type="text" name="manufacturer" class="form-control">
+    </div>
+
+    <div class="col-md-6">
+      <label class="form-label">Calibration Date</label>
+      <input type="date" name="calibration_date" id="calibration_date" class="form-control">
+    </div>
+
+    <div class="col-md-6">
+      <label class="form-label">Calibration Due Date</label>
+      <input type="text" id="calibration_due_date_display" class="form-control" readonly placeholder="Auto-calculated">
+      <!-- server'a göndermek için hidden -->
+      <input type="hidden" name="calibration_due_date" id="calibration_due_date">
+    </div>
+
+    <div class="col-md-6">
+      <label class="form-label">Status</label>
+      <select name="status" class="form-select">
+        <option value="Active">Active</option>
+        <option value="Inactive">Inactive</option>
+        <option value="Faulty">Faulty</option>
+      </select>
+    </div>
+
+    <div class="col-md-6">
+      <label class="form-label">Location</label>
+      <input type="text" name="location" class="form-control">
+    </div>
+
+    <div class="col-md-6">
+  <label class="form-label">Badge Number</label>
+  <div class="input-group">
+    <input type="text" name="assigned_to" id="assigned_to" class="form-control">
+    <span class="input-group-text" id="badge_status" title="Status" style="min-width:2.25rem; text-align:center;">
+      <i class="bi bi-person"></i>
+    </span>
+  </div>
+  <div class="form-text">Enter badge and move focus away to fetch the user name (optional).</div>
+</div>
+
+<div class="col-md-6">
+  <label class="form-label">Assigned User</label>
+  <input type="text" name="assigned_user_name" id="assigned_user_name" class="form-control" readonly placeholder="—">
+</div>
+
+
+    <div class="col-md-6">
+      <label class="form-label">Assigned Date</label>
+      <input type="date" name="assigned_date" class="form-control">
+    </div>
+
+    <!-- NEW: Bump Test -->
+    <div class="col-md-6">
+      <label class="form-label">Bump Test Date</label>
+      <input type="date" name="bump_test_date" id="bump_test_date" class="form-control">
+    </div>
+
+    <div class="col-md-6">
+      <label class="form-label">Bump Status</label>
+      <select name="bump_status" id="bump_status" class="form-select">
+        <option value="">— Select —</option>
+        <option value="Pass">Pass</option>
+        <option value="Fail">Fail</option>
+        <option value="Not Performed">Not Performed</option>
+      </select>
+    </div>
+
+    <div class="col-12">
+      <label class="form-label">Remarks</label>
+      <textarea name="remarks" class="form-control" rows="2"></textarea>
+    </div>
+
+    <div class="col-12">
+      <button type="submit" class="btn btn-primary">
+        <i class="bi bi-check-circle"></i> Submit
+      </button>
+      <a href="{{ url_for('personal_gas_monitor.list_personal_gas_monitor') }}" class="btn btn-secondary">Cancel</a>
+    </div>
+  </form>
+</div>
+
+<script>
+// Basit debounce
+function debounce(fn, delay=400) {
+  let t; return (...args) => { clearTimeout(t); t = setTimeout(() => fn(...args), delay); };
+}
+
+const badgeInput = document.getElementById('assigned_to');
+const userNameInput = document.getElementById('assigned_user_name');
+const badgeStatus = document.getElementById('badge_status');
+
+function setBadgeIcon(state) {
+  // state: 'idle' | 'loading' | 'ok' | 'notfound' | 'error'
+  const map = {
+    idle:  'bi-person',
+    loading: 'bi-arrow-repeat',
+    ok: 'bi-check-circle',
+    notfound: 'bi-question-circle',
+    error: 'bi-exclamation-triangle',
+  };
+  badgeStatus.innerHTML = `<i class="bi ${map[state]}"></i>`;
+}
+
+async function fetchUserName() {
+  const badge = badgeInput.value.trim();
+  if (!badge) {
+    userNameInput.value = '';
+    setBadgeIcon('idle');
+    return;
+  }
+  try {
+    setBadgeIcon('loading');
+    const resp = await fetch(`/get-user-name?badge=${encodeURIComponent(badge)}`);
+    if (!resp.ok) throw new Error('Network response was not ok');
+    const data = await resp.json();
+    if (data && data.name) {
+      userNameInput.value = data.name;
+      setBadgeIcon('ok');
+    } else {
+      userNameInput.value = 'Not found';
+      setBadgeIcon('notfound');
+    }
+  } catch (e) {
+    userNameInput.value = 'Error';
+    setBadgeIcon('error');
+  }
+}
+
+badgeInput.addEventListener('blur', fetchUserName);
+badgeInput.addEventListener('input', debounce(fetchUserName, 500));
+
+/** Calibration due date auto-calc (default: +180 days) **/
+const calInput = document.getElementById('calibration_date');
+const dueDisplay = document.getElementById('calibration_due_date_display');
+const dueHidden = document.getElementById('calibration_due_date');
+
+// +days hesaplayıcı
+function addDays(date, days) {
+  const d = new Date(date);
+  d.setDate(d.getDate() + days);
+  return d;
+}
+function toISODate(d) {
+  // YYYY-MM-DD
+  const z = n => String(n).padStart(2,'0');
+  return `${d.getFullYear()}-${z(d.getMonth()+1)}-${z(d.getDate())}`;
+}
+function updateDue() {
+  const v = calInput.value;
+  if (!v) {
+    dueDisplay.value = '';
+    dueHidden.value = '';
+    return;
+  }
+  const due = addDays(v, 180); // gerekirse 90/365 yapabiliriz
+  const iso = toISODate(due);
+  dueDisplay.value = iso;
+  dueHidden.value = iso;
+}
+calInput?.addEventListener('change', updateDue);
+calInput?.addEventListener('input', updateDue);
+
+// Bump status'ı tarih yokken Pass seçilirse uyarı (küçük UX kuralı)
+document.getElementById('bump_status')?.addEventListener('change', (e) => {
+  const status = e.target.value;
+  const date = document.getElementById('bump_test_date').value;
+  if ((status === 'Pass' || status === 'Fail') && !date) {
+    alert('Please enter a Bump Test Date when selecting Pass/Fail.');
+  }
+});
+</script>
+
+{% endblock %}

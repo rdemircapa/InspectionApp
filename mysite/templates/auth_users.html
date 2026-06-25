@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="container">
+  <h3>Auth Users</h3>
+  <a href="{{ url_for('add_auth_user') }}" class="btn btn-success mb-3">Add New User</a>
+  <table class="table table-bordered">
+    <thead><tr><th>ID</th><th>Username</th><th>Full Name</th><th>Role</th><th>Actions</th></tr></thead>
+    <tbody>
+      {% for user in users %}
+      <tr>
+        <td>{{ user['id'] }}</td>
+        <td>{{ user['username'] }}</td>
+        <td>{{ user['full_name'] }}</td>
+        <td>{{ user['role'] }}</td>
+        <td>
+          <a href="{{ url_for('delete_auth_user', user_id=user['id']) }}" class="btn btn-sm btn-danger"
+             onclick="return confirm('Are you sure?')">Delete</a>
+        </td>
+        <td>
+          <a href="{{ url_for('update_auth_password', user_id=user['id']) }}" class="btn btn-sm btn-outline-secondary">
+            <i class="bi bi-shield-lock"></i> Update Password
+          </a>
+        </td>
+
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+</div>
+{% endblock %}

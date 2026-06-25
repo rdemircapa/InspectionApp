@@ -1,0 +1,86 @@
+{% extends 'base.html' %}
+{% block title %}SCBA Assemblies{% endblock %}
+
+{% block content %}
+<div class="container py-4">
+  <h2 class="mb-4">SCBA Assemblies (Live Overview)</h2>
+
+  <div class="table-responsive">
+    <table class="table table-bordered table-striped" id="assemblyTable">
+      <thead class="table-light">
+        <tr>
+          <th>Cylinder Serial</th>
+          <th>Capacity</th>
+          <th>Pressure</th>
+          <th>Regulator Serial</th>
+          <th>Brand / Model</th>
+          <th>Assigned Date</th>
+          <th>Location</th>
+          <th>Last Inspection</th>
+          <th>Status</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for asm in assemblies %}
+        <tr>
+          <td>{{ asm['cylinder_serial'] }}</td>
+          <td>{{ asm['capacity'] }}</td>
+          <td>{{ asm['pressure'] }}</td>
+          <td>{{ asm['regulator_serial'] }}</td>
+          <td>{{ asm['brand'] }} / {{ asm['model'] }}</td>
+          <td>{{ asm['assigned_date'] }}</td>
+          <td>{{ asm['location'] }}</td>
+          <td>
+            {% if asm['inspection_date'] %}
+              {{ asm['inspection_date'] }}
+            {% else %}
+              <span class="text-muted">No inspection</span>
+            {% endif %}
+          </td>
+          <td>
+            {% if asm['has_fail'] %}
+              <span class="badge bg-danger">
+                <i class="bi bi-exclamation-triangle-fill"></i> Failed
+              </span>
+            {% elif asm['inspection_date'] %}
+              <span class="badge bg-success">
+                <i class="bi bi-check-circle-fill"></i> OK
+              </span>
+            {% else %}
+              <span class="badge bg-secondary">N/A</span>
+            {% endif %}
+          </td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </div>
+</div>
+<!-- Bilgilendirici satır -->
+<div class="alert alert-info small">
+    Expected Cylinder: <strong>{{ current_cylinder }}</strong><br>
+    Expected Regulator: <strong>{{ current_regulator }}</strong>
+  </div>
+  
+  <!-- Kullanıcıya yeni girme fırsatı -->
+  <div class="row mb-3">
+    <div class="col-md-6">
+      <label class="form-label">Actual Cylinder Serial</label>
+      <input type="text" class="form-control" name="actual_cylinder_serial" required>
+    </div>
+    <div class="col-md-6">
+      <label class="form-label">Actual Regulator Serial</label>
+      <input type="text" class="form-control" name="actual_regulator_serial" required>
+    </div>
+  </div>
+  
+<!-- DataTables -->
+<script>
+  $(document).ready(function () {
+    $('#assemblyTable').DataTable({
+      pageLength: 10,
+      order: [[5, 'desc']]
+    });
+  });
+</script>
+{% endblock %}

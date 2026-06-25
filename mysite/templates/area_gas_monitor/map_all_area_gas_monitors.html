@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>All Gas Monitors Map</title>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- Leaflet CSS -->
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+
+  <!-- MarkerCluster CSS -->
+  <link rel="stylesheet" href="https://unpkg.com/leaflet.markercluster@1.5.3/dist/MarkerCluster.css" />
+  <link rel="stylesheet" href="https://unpkg.com/leaflet.markercluster@1.5.3/dist/MarkerCluster.Default.css" />
+
+  <style>
+    html, body {
+      height: 100%;
+      margin: 0;
+    }
+    #map {
+      height: 100%;
+      width: 100%;
+    }
+  </style>
+</head>
+<body>
+
+  <div id="map"></div>
+
+  <!-- Leaflet JS -->
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+
+  <!-- MarkerCluster JS -->
+  <script src="https://unpkg.com/leaflet.markercluster@1.5.3/dist/leaflet.markercluster.js"></script>
+
+  <script>
+    var map = L.map('map').setView([24.83940, 53.65452], 15);
+
+    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+      attribution: '&copy; OpenStreetMap contributors'
+    }).addTo(map);
+
+    var devices = {{ devices | tojson | safe }};
+    var markers = L.markerClusterGroup();
+    var bounds = [];
+    var seenCoords = {};
+
+    devices.forEach(function(device) {
+      const lat = parseFloat(device.latitude);
+      const lon = parseFloat(device.longitude);
+
+      if (!isNaN(lat) && !isNaN(lon)) {
+        const key = `${lat},${lon}`;
+        if (!seenCoords[key]) {
+          seenCoords[key] = 0;
+        } else {
+          seenCoords[key] += 1;
+        }
+
+        const latOffset = lat + seenCoords[key] * 0.00005;
+        const lonOffset = lon + seenCoords[key] * 0.00005;
+
+        var marker = L.marker([latOffset, lonOffset]);
+        marker.bindPopup(`
+          <strong>${device.tag_number}</strong><br>
+          ${device.model || ''}<br>
+          ${device.location || ''} / ${device.sub_location || ''}
+        `);
+        markers.addLayer(marker);
+        bounds.push([latOffset, lonOffset]);
+      }
+    });
+
+    map.addLayer(markers);
+
+    if (bounds.length > 0) {
+      map.fitBounds(bounds);
+    }
+  </script>
+
+</body>
+</html>

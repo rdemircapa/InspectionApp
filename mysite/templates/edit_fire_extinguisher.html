@@ -1,0 +1,148 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="container py-5">
+    <div class="card shadow p-4">
+        <h3 class="mb-4">✏️ Edit Fire Extinguisher - {{ extinguisher['tag_number'] }}</h3>
+
+        <form method="POST">
+            <!-- Satır 1: Type, Capacity, Company -->
+            <div class="row mb-3">
+                <div class="col-md-4">
+                    <label for="extinguisher_type" class="form-label">Type</label>
+                    <input type="text" name="extinguisher_type" id="extinguisher_type" class="form-control" value="{{ extinguisher['extinguisher_type'] }}">
+                </div>
+                <div class="col-md-4">
+                    <label for="capacity" class="form-label">Capacity</label>
+                    <input type="text" name="capacity" id="capacity" class="form-control" value="{{ extinguisher['capacity'] }}">
+                </div>
+                <div class="col-md-4">
+                    <label for="responsible_company_id" class="form-label">Responsible Company</label>
+                    <select name="responsible_company_id" id="responsible_company_id" class="form-select">
+                        {% for company in companies %}
+                        <option value="{{ company.id }}" {% if company.id == extinguisher['responsible_company_id'] %}selected{% endif %}>
+                            {{ company.company_name }}
+                        </option>
+                        {% endfor %}
+                    </select>
+                </div>
+            </div>
+
+            <!-- Satır 2: Tag, Location, Sub-Location -->
+            <div class="row mb-3">
+                <div class="col-md-4">
+                    <label for="tag_number" class="form-label">Tag Number</label>
+                    <input type="text" name="tag_number" id="tag_number" class="form-control" value="{{ extinguisher['tag_number'] }}">
+                </div>
+                <div class="col-md-4">
+                    <label for="location" class="form-label">Location</label>
+                    <input type="text" name="location" id="location" class="form-control" value="{{ extinguisher['location'] }}">
+                </div>
+                <div class="col-md-4">
+                    <label for="sub_location" class="form-label">Sub-Location</label>
+                    <input type="text" name="sub_location" id="sub_location" class="form-control" value="{{ extinguisher['sub_location'] }}">
+                </div>
+            </div>
+
+            <!-- Satır 3: Dates -->
+            <div class="row mb-3">
+                <div class="col-md-3">
+                    <label for="third_party_inspection_date" class="form-label">3rd Party Inspection Date</label>
+                    <input type="date" name="third_party_inspection_date" id="third_party_inspection_date" class="form-control" value="{{ extinguisher['third_party_inspection_date'] }}">
+                </div>
+                <div class="col-md-3">
+                    <label for="third_party_due_date" class="form-label">3rd Party Due Date</label>
+                    <input type="date" name="third_party_due_date" id="third_party_due_date" class="form-control" value="{{ extinguisher['third_party_due_date'] }}">
+                </div>
+                <div class="col-md-3">
+                    <label for="monthly_inspection_date" class="form-label">Monthly Inspection Date</label>
+                    <input type="date" name="monthly_inspection_date" id="monthly_inspection_date" class="form-control" value="{{ extinguisher['monthly_inspection_date'] }}">
+                </div>
+                <div class="col-md-3">
+                    <label for="monthly_due_date" class="form-label">Monthly Due Date</label>
+                    <input type="date" name="monthly_due_date" id="monthly_due_date" class="form-control" value="{{ extinguisher['monthly_due_date'] }}">
+                </div>
+            </div>
+
+            <!-- Satır 4: Kontroller -->
+            <div class="row mb-3">
+                <div class="col-md-2">
+                    <label class="form-label">Pressure Gauge</label>
+                    <select name="pressure_gauge" class="form-select">
+                        <option value="Pass" {% if extinguisher['pressure_gauge'] == 'Pass' %}selected{% endif %}>Pass</option>
+                        <option value="Fail" {% if extinguisher['pressure_gauge'] == 'Fail' %}selected{% endif %}>Fail</option>
+                    </select>
+                </div>
+                <div class="col-md-2">
+                    <label class="form-label">Hose/Nozzle</label>
+                    <select name="hose_nozzle" class="form-select">
+                        <option value="Pass" {% if extinguisher['hose_nozzle'] == 'Pass' %}selected{% endif %}>Pass</option>
+                        <option value="Fail" {% if extinguisher['hose_nozzle'] == 'Fail' %}selected{% endif %}>Fail</option>
+                    </select>
+                </div>
+                <div class="col-md-2">
+                    <label class="form-label">Safety Pin</label>
+                    <select name="safety_pin" class="form-select">
+                        <option value="Pass" {% if extinguisher['safety_pin'] == 'Pass' %}selected{% endif %}>Pass</option>
+                        <option value="Fail" {% if extinguisher['safety_pin'] == 'Fail' %}selected{% endif %}>Fail</option>
+                    </select>
+                </div>
+                <div class="col-md-2">
+                    <label class="form-label">Trigger</label>
+                    <select name="trigger" class="form-select">
+                        <option value="Pass" {% if extinguisher['trigger'] == 'Pass' %}selected{% endif %}>Pass</option>
+                        <option value="Fail" {% if extinguisher['trigger'] == 'Fail' %}selected{% endif %}>Fail</option>
+                    </select>
+                </div>
+                <div class="col-md-2">
+                    <label class="form-label">Overall</label>
+                    <select name="overall_condition" class="form-select">
+                        <option value="Good" {% if extinguisher['overall_condition'] == 'Good' %}selected{% endif %}>Good</option>
+                        <option value="Needs Maintenance" {% if extinguisher['overall_condition'] == 'Needs Maintenance' %}selected{% endif %}>Needs Maintenance</option>
+                    </select>
+                </div>
+                <div class="col-md-2">
+                    <label for="remarks" class="form-label">Remarks</label>
+                    <input type="text" name="remarks" id="remarks" class="form-control" value="{{ extinguisher['remarks'] }}">
+                </div>
+            </div>
+
+            <!-- Butonlar -->
+            <div class="d-flex justify-content-between">
+                <a href="{{ url_for('list_fire_extinguishers') }}" class="btn btn-secondary">⬅ Back</a>
+                <button type="submit" class="btn btn-success">💾 Update</button>
+            </div>
+
+            <!-- JavaScript: Otomatik Tarih Hesaplama -->
+            <script>
+            document.addEventListener('DOMContentLoaded', function () {
+                const thirdPartyDate = document.getElementById('third_party_inspection_date');
+                const thirdPartyDue = document.getElementById('third_party_due_date');
+                const monthlyDate = document.getElementById('monthly_inspection_date');
+                const monthlyDue = document.getElementById('monthly_due_date');
+
+                function addDays(dateStr, days) {
+                    const date = new Date(dateStr);
+                    date.setDate(date.getDate() + days);
+                    const year = date.getFullYear();
+                    const month = String(date.getMonth() + 1).padStart(2, '0');
+                    const day = String(date.getDate()).padStart(2, '0');
+                    return `${year}-${month}-${day}`;
+                }
+
+                thirdPartyDate.addEventListener('change', function () {
+                    if (thirdPartyDate.value) {
+                        thirdPartyDue.value = addDays(thirdPartyDate.value, 180);
+                    }
+                });
+
+                monthlyDate.addEventListener('change', function () {
+                    if (monthlyDate.value) {
+                        monthlyDue.value = addDays(monthlyDate.value, 30);
+                    }
+                });
+            });
+            </script>
+        </form>
+    </div>
+</div>
+{% endblock %}

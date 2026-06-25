@@ -1,0 +1,132 @@
+{% extends 'base.html' %}
+{% block title %}Inspect SCBA{% endblock %}
+
+{% block content %}
+<div class="container py-4">
+  <div class="d-flex justify-content-between align-items-center mb-4">
+    <div>
+      <h2 class="mb-0">Monthly Inspection – SCBA #{{ scba['cylinder_serial'] }}</h2>
+      <p class="text-muted mb-0">Tag: <strong class="text-primary">{{ scba['tag_number'] }}</strong></p>
+    </div>
+    <div>
+      <img src="https://api.qrserver.com/v1/create-qr-code/?data=https://mytestapp.pythonanywhere.com/inspect-scba-tag/{{ scba['tag_number'] }}&amp;size=120x120"
+           alt="QR Code for SCBA"
+           class="border border-2 rounded shadow-sm">
+      <div class="text-muted small text-center mt-1">Scan for this SCBA</div>
+    </div>
+  </div>
+
+  <form method="POST">
+    <div class="row mb-3">
+      <div class="col-md-6">
+        <label class="form-label">Inspection Date</label>
+        <input type="date" name="inspection_date" class="form-control" value="{{ current_date }}" required>
+      </div>
+      <div class="col-md-6">
+        <label class="form-label">Inspected By</label>
+        <input type="text" class="form-control" name="inspected_by" required>
+      </div>
+    </div>
+
+    <div class="row mb-3">
+      <div class="col-md-6">
+        <label class="form-label">Refiling Date</label>
+        <input type="date" class="form-control" name="refiling_date"
+               value="{{ scba['refiling_date'].split()[0] if scba['refiling_date'] else '' }}">
+      </div>
+      <div class="col-md-6">
+        <label class="form-label">Hydro Test Date</label>
+        <input type="date" class="form-control" name="hydro_test_date"
+               value="{{ scba['hydro_test_date'].split()[0] if scba['hydro_test_date'] else '' }}">
+      </div>
+    </div>
+    
+    <div class="mb-3">
+      <label class="form-label">Location</label>
+      <input type="text" class="form-control" name="location" value="{{ scba['location'] }}">
+    </div>
+
+    <div class="row mb-3">
+      <div class="col-md-6">
+        <label class="form-label">Cylinder Serial Number</label>
+        <input type="text" class="form-control bg-light text-muted" name="cylinder_serial" 
+               value="{{ scba['cylinder_serial'] }}" readonly title="Serial cannot be changed">
+      </div>
+      <div class="col-md-6">
+        <label class="form-label">Regulator Serial Number</label>
+        <input type="text" class="form-control" name="regulator_serial" value="{{ scba['regulator_serial'] }}" required>
+      </div>
+    </div>
+
+    <!-- Denetim kriterleri -->
+    {% for label, name in [
+      ("Pressure Check", "pressure_check"),
+      ("LDV Leak Test", "ldv_leak_test"),
+      ("Mask Leak Test", "mask_leak_test"),
+      ("Whistle Test", "whistle_test"),
+      ("Overall Condition", "overall_condition")
+    ] %}
+    <div class="mb-3">
+      <label class="form-label">{{ label }}</label>
+      <select name="{{ name }}" class="form-select" required>
+        <option value="">Select...</option>
+        <option value="Pass">Pass</option>
+        <option value="Fail">Fail</option>
+        <option value="N/A">N/A</option>
+      </select>
+    </div>
+    {% endfor %}
+
+    <!-- SCBA Genel Bilgi Alanı -->
+    <div class="mb-3">
+      <label class="form-label"><strong>SCBA Remarks (Device Notes)</strong></label>
+      <textarea name="remarks" class="form-control" rows="2">{{ scba['remarks'] }}</textarea>
+    </div>
+
+    <!-- Muayeneye Özel Not -->
+    <div class="mb-3">
+      <label class="form-label"><strong>Inspection Remarks (This Visit)</strong></label>
+      <textarea name="inspection_remarks" class="form-control" rows="2"></textarea>
+    </div>
+
+    <button type="submit" class="btn btn-success">Submit Inspection</button>
+    <a href="{{ url_for('list_scba') }}" class="btn btn-secondary ms-2">Cancel</a>
+
+    <hr class="my-5">
+    <h4>Inspection History</h4>
+    <div class="table-responsive">
+      <table class="table table-bordered table-striped">
+        <thead class="table-light">
+          <tr>
+            <th>Date</th>
+            <th>Inspected By</th>
+            <th>Pressure</th>
+            <th>LDV</th>
+            <th>Mask</th>
+            <th>Whistle</th>
+            <th>Condition</th>
+            <th>Remarks</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for i in inspections %}
+          <tr>
+            <td>{{ i['inspection_date'] }}</td>
+            <td>{{ i['inspected_by'] }}</td>
+            <td>{{ i['pressure_check'] }}</td>
+            <td>{{ i['ldv_leak_test'] }}</td>
+            <td>{{ i['mask_leak_test'] }}</td>
+            <td>{{ i['whistle_test'] }}</td>
+            <td>{{ i['overall_condition'] }}</td>
+            <td>{{ i['remarks'] }}</td>
+          </tr>
+          {% endfor %}
+          {% if inspections|length == 0 %}
+          <tr><td colspan="8" class="text-center text-muted">No inspections yet.</td></tr>
+          {% endif %}
+        </tbody>
+      </table>
+    </div>
+  </form>
+</div>
+{% endblock %}

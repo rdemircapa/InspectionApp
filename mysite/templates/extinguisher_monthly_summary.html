@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+{% block title %}Fire Extinguisher Inspection Expiry Summary{% endblock %}
+{% block content %}
+
+<h2>Fire Extinguisher 3rd Party Inspection Expiry Summary</h2>
+
+<table class="table table-bordered text-center">
+  <thead>
+    <tr>
+      <th>Location</th>
+      {% for label in month_labels %}
+          <th>{{ label }}</th>
+        {% endfor %}
+    </tr>
+  </thead>
+  <tbody>
+    {% for loc in locations %}
+      <tr>
+        <td>{{ loc }}</td>
+                {% for label in month_labels %}
+          <td>
+            {{ summary[loc][label] if summary[loc][label] else '' }}
+          </td>
+        {% endfor %}
+
+      </tr>
+    {% endfor %}
+  </tbody>
+</table>
+
+{% endblock %}

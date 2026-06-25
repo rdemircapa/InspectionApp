@@ -1,0 +1,40 @@
+{% extends 'base.html' %}
+
+{% block title %}Add Products in Bulk{% endblock %}
+
+{% block content %}
+<div class="container mt-4">
+    <h2>Upload Excel File to Add Products</h2>
+    <form method="POST" enctype="multipart/form-data">
+        <div class="mb-3">
+            <label for="file" class="form-label">Choose Excel File (.xlsx)</label>
+            <input type="file" name="file" class="form-control" accept=".xlsx" required>
+        </div>
+        <button type="submit" class="btn btn-success">Upload and Import</button>
+        <a href="/" class="btn btn-secondary">Cancel</a>
+    </form>
+    <div class="mt-4">
+        <p><strong>Note:</strong> The Excel file should contain the following columns:</p>
+        <ul>
+            <li><code>brand_id</code></li>
+            <li><code>serial_id</code></li>
+            <li><code>name</code></li>
+            <li><code>quantity</code></li>
+            <li><code>type</code> (e.g. Helmet, Harness, Rope, etc.)</li>
+            <li><code>details</code></li>
+            <li><code>first_inspection_date</code></li>
+            <li><code>inspection_date</code></li>
+            <li><code>status</code></li>
+            <li><code>remarks</code></li>
+        </ul>
+        <p>
+            You can download an 
+            {% if file_exists %}
+                <a href="/static/example_bulk_upload.xlsx" class="link-primary" download>example Excel template here</a>.
+            {% else %}
+                <span class="text-danger">example Excel template is currently unavailable</span>.
+            {% endif %}
+        </p>
+    </div>
+</div>
+{% endblock %}

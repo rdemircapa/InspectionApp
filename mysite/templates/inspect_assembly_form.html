@@ -1,0 +1,67 @@
+{% extends 'base.html' %}
+{% block title %}SCBA Inspection (Verify Assembly){% endblock %}
+
+{% block content %}
+<div class="container py-4">
+  <h2 class="mb-4">SCBA Inspection – Verify Cylinder & Regulator</h2>
+
+  <form method="POST">
+    <!-- 🧠 Mevcut SCBA bilgileri -->
+    <div class="alert alert-info">
+      Expected Cylinder: <strong>{{ expected_cylinder }}</strong> |
+      Expected Regulator: <strong>{{ expected_regulator }}</strong>
+    </div>
+
+    <!-- 🔄 Kullanıcının takılı olanı girme alanları -->
+    <div class="row mb-3">
+      <div class="col-md-6">
+        <label class="form-label">Actual Cylinder Serial</label>
+        <input type="text" class="form-control" name="actual_cylinder_serial" required>
+      </div>
+      <div class="col-md-6">
+        <label class="form-label">Actual Regulator Serial</label>
+        <input type="text" class="form-control" name="actual_regulator_serial" required>
+      </div>
+    </div>
+
+    <!-- Standart Inspection alanları -->
+    <div class="row mb-3">
+      <div class="col-md-6">
+        <label class="form-label">Inspection Date</label>
+        <input type="date" class="form-control" name="inspection_date" required>
+      </div>
+      <div class="col-md-6">
+        <label class="form-label">Inspected By</label>
+        <input type="text" class="form-control" name="inspected_by" required>
+      </div>
+    </div>
+
+    <!-- Denetim kriterleri -->
+    {% for label, name in [
+      ("Pressure Check", "pressure_check"),
+      ("LDV Leak Test", "ldv_leak_test"),
+      ("Mask Leak Test", "mask_leak_test"),
+      ("Whistle Test", "whistle_test"),
+      ("Overall Condition", "overall_condition")
+    ] %}
+    <div class="mb-3">
+      <label class="form-label">{{ label }}</label>
+      <select name="{{ name }}" class="form-select" required>
+        <option value="">Select...</option>
+        <option value="Pass">Pass</option>
+        <option value="Fail">Fail</option>
+        <option value="N/A">N/A</option>
+      </select>
+    </div>
+    {% endfor %}
+
+    <div class="mb-3">
+      <label class="form-label">Remarks</label>
+      <textarea name="remarks" class="form-control" rows="2"></textarea>
+    </div>
+
+    <button type="submit" class="btn btn-success">Submit Inspection</button>
+    <a href="{{ url_for('list_assemblies') }}" class="btn btn-secondary ms-2">Cancel</a>
+  </form>
+</div>
+{% endblock %}

@@ -1,0 +1,118 @@
+{% extends 'base.html' %}
+
+{% block title %}Assign Product{% endblock %}
+
+{% block content %}
+<div class="container py-4">
+  <h2 class="mb-4">Assign Product to User</h2>
+
+  <!-- Flash Messages -->
+  {% with messages = get_flashed_messages(with_categories=true) %}
+    {% if messages %}
+      {% for category, message in messages %}
+        <div class="alert alert-{{ category }} alert-dismissible fade show" role="alert">
+          {{ message }}
+          <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+      {% endfor %}
+    {% endif %}
+  {% endwith %}
+
+  <form method="POST" action="{{ url_for('assign_product') }}">
+    <!-- Badge + Get Name + Assigned To -->
+    <div class="row mb-3 align-items-end">
+      <div class="col-md-5">
+        <label for="badge_number" class="form-label">Badge Number</label>
+        <input type="text" class="form-control" name="badge_number" id="badge_number" placeholder="e.g., 12345-NPCC" required>
+      </div>
+      <div class="col-md-3">
+        <label class="form-label d-block">&nbsp;</label>
+        <button type="button" class="btn btn-outline-primary w-100" id="fetch_name_btn">Get Name</button>
+      </div>
+      <div class="col-md-4">
+        <label for="assigned_to" class="form-label">Assigned To (Name)</label>
+        <input type="text" class="form-control" name="assigned_to" id="assigned_to" placeholder="Enter or auto-fill name" required>
+      </div>
+    </div>
+
+    <!-- Assignment Date + Notes -->
+    <div class="row mb-3">
+      <div class="col-md-6">
+        <label for="assigned_date" class="form-label">Assignment Date</label>
+        <input type="date" class="form-control" name="assigned_date" id="assigned_date" required>
+      </div>
+      <div class="col-md-6">
+        <label for="notes" class="form-label">Notes (optional)</label>
+        <input type="text" class="form-control" name="notes" id="notes" placeholder="Any additional comments">
+      </div>
+    </div>
+
+    <!-- Product Selection Table -->
+    <div class="mb-3">
+      <label class="form-label">Select Products to Assign</label>
+      <div class="table-responsive">
+        <table class="table table-bordered table-hover align-middle">
+          <thead class="table-light">
+            <tr>
+              <th scope="col">Select</th>
+              <th scope="col">Product Name</th>
+              <th scope="col">Serial ID</th>
+            </tr>
+          </thead>
+          <tbody>
+            {% for product in products %}
+            <tr>
+              <td>
+                <input class="form-check-input" type="checkbox" name="product_ids" value="{{ product.id }}" id="product{{ product.id }}">
+              </td>
+              <td><label for="product{{ product.id }}">{{ product.name }}</label></td>
+              <td>{{ product.serial_id }}</td>
+            </tr>
+            {% endfor %}
+            {% if products|length == 0 %}
+            <tr>
+              <td colspan="3" class="text-center text-muted">All products are currently assigned.</td>
+            </tr>
+            {% endif %}
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <!-- Buttons -->
+    <button type="submit" class="btn btn-primary">Assign Selected Products</button>
+    <a href="{{ url_for('list_products') }}" class="btn btn-secondary ms-2">Cancel</a>
+  </form>
+</div>
+
+<script>
+    document.getElementById('fetch_name_btn').addEventListener('click', function () {
+      const badgeInput = document.getElementById('badge_number');
+      const nameInput = document.getElementById('assigned_to');
+      const badge = badgeInput.value.trim();
+    
+      if (!badge) {
+        alert("Please enter a badge number first.");
+        return;
+      }
+    
+      fetch(`/get-name-by-badge?badge=${encodeURIComponent(badge)}`)
+        .then(response => response.json())
+        .then(data => {
+          if (data.name) {
+            nameInput.value = data.name;
+            nameInput.readOnly = true;  // ❗ Eşleşme varsa readonly yap
+          } else {
+            nameInput.value = "";
+            nameInput.readOnly = false;  // ❗ Yoksa kullanıcı yazabilsin
+            alert("No name found for this badge number.");
+          }
+        })
+        .catch(error => {
+          console.error("Error fetching name:", error);
+          alert("An error occurred while fetching the name.");
+        });
+    });
+    </script>
+    
+{% endblock %}

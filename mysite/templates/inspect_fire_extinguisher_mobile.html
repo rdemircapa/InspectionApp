@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Inspect Fire Extinguisher</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  <style>
+    .btn-option {
+      width: 48%;
+      font-size: 1.2rem;
+      padding: 0.75rem;
+      transition: all 0.2s ease-in-out;
+    }
+
+    .btn-selected-success {
+      background-color: #198754 !important;
+      color: white !important;
+      border: none;
+    }
+
+    .btn-selected-danger {
+      background-color: #dc3545 !important;
+      color: white !important;
+      border: none;
+    }
+
+    .btn-selected-warning {
+      background-color: #ffc107 !important;
+      color: black !important;
+      border: none;
+    }
+  </style>
+</head>
+<body class="bg-light">
+<div class="container py-4">
+    {% with messages = get_flashed_messages(with_categories=true) %}
+  {% if messages %}
+    <div class="mb-3">
+      {% for category, message in messages %}
+        <div class="alert alert-{{ category }} alert-dismissible fade show" role="alert">
+          {{ message }}
+          <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+      {% endfor %}
+    </div>
+  {% endif %}
+{% endwith %}
+
+  <div class="card p-4 shadow-sm">
+
+        <!-- Sayfa Başlığı ve Yeni QR Scan Butonu -->
+    <h4 class="text-center mb-4 d-flex justify-content-between align-items-center">
+      <span>🧯 Inspection for <strong>{{ tag }}</strong></span>
+      <a href="{{ url_for('manual_scan') }}" class="btn btn-outline-primary btn-sm">
+        🔄 New QR Code Scan
+      </a>
+    </h4>
+
+
+    <!-- Extinguisher Info -->
+    <div class="card mb-4">
+      <div class="card-header bg-secondary text-white">Extinguisher Info</div>
+      <div class="card-body">
+        <p><strong>Type:</strong> {{ extinguisher['extinguisher_type'] }}</p>
+        <p><strong>Weight:</strong> {{ extinguisher['capacity'] }}</p>
+        <p><strong>Location:</strong> {{ extinguisher['location'] }} / {{ extinguisher['sub_location'] }}</p>
+        <p><strong>First Inspection:</strong> {{ extinguisher['first_inspection_date'] }}</p>
+        <p><strong>Third Party Inspection:</strong> {{ extinguisher['third_party_inspection_date'] }}</p>
+      </div>
+    </div>
+
+
+
+    {% if show_form %}
+    <!-- Inspection Form (only if logged in) -->
+    <form method="POST" onsubmit="return validateForm();">
+      {% for label, field in {
+        "Pressure Gauge": "pressure_gauge",
+        "Hose Nozzle": "hose_nozzle",
+        "Safety Pin": "safety_pin",
+        "Trigger": "trigger"
+      }.items() %}
+      <div class="form-section mb-3">
+        <label class="form-label d-block mb-2">{{ label }}</label>
+        <div class="d-flex justify-content-between">
+          <button type="button" class="btn btn-outline-success btn-option" onclick="setOption('{{ field }}', 'Pass', this)">✅ Pass</button>
+          <button type="button" class="btn btn-outline-danger btn-option" onclick="setOption('{{ field }}', 'Fail', this)">❌ Fail</button>
+        </div>
+        <input type="hidden" name="{{ field }}" id="{{ field }}" required>
+      </div>
+      {% endfor %}
+
+      <div class="form-section mb-3">
+        <label class="form-label d-block mb-2">Overall Condition</label>
+        <div class="d-flex justify-content-between">
+          <button type="button" class="btn btn-outline-success btn-option" onclick="setOption('overall_condition', 'Good', this)">👍 Good</button>
+          <button type="button" class="btn btn-outline-warning btn-option" onclick="setOption('overall_condition', 'Needs Maintenance', this)">🛠️ Needs Maintenance</button>
+        </div>
+        <input type="hidden" name="overall_condition" id="overall_condition" required>
+      </div>
+
+      <div class="form-section">
+        <label class="form-label">Remarks (optional)</label>
+        <textarea name="remarks" class="form-control" rows="2" placeholder="Write a note..."></textarea>
+      </div>
+
+      <button type="submit" class="btn btn-success w-100 mt-3">✅ Submit Inspection</button>
+    </form>
+    {% else %}
+    <div class="alert alert-warning mt-3 text-center">
+      🔒 To perform inspection, please <a href="{{ url_for('login') }}">log in</a>.
+    </div>
+    {% endif %}
+  </div>
+  <!-- Inspection History -->
+    <div class="card mb-4">
+      <div class="card-header bg-info text-white">📜 Inspection History</div>
+      <div class="card-body">
+        {% if inspections %}
+          <ul class="list-group list-group-flush">
+            {% for insp in inspections %}
+              <li class="list-group-item">
+                <strong>{{ insp['date'] }}:</strong>
+                Pressure: {{ insp['pressure_gauge'] }},
+                Hose: {{ insp['hose_nozzle'] }},
+                Pin: {{ insp['safety_pin'] }},
+                Trigger: {{ insp['trigger'] }},
+                Condition: {{ insp['overall_condition'] }}
+                {% if insp['remarks'] %}
+                  <br><small class="text-muted">💬 {{ insp['remarks'] }}</small>
+                {% endif %}
+              </li>
+            {% endfor %}
+          </ul>
+        {% else %}
+          <p class="text-muted">No past inspections found.</p>
+        {% endif %}
+      </div>
+    </div>
+</div>
+
+<script>
+  function setOption(field, value, btn) {
+    document.getElementById(field).value = value;
+
+    const buttons = btn.parentElement.querySelectorAll('button');
+    buttons.forEach(b => {
+      b.classList.remove('btn-selected-success', 'btn-selected-danger', 'btn-selected-warning');
+    });
+
+    if (value === 'Pass' || value === 'Good') {
+      btn.classList.add('btn-selected-success');
+    } else if (value === 'Fail') {
+      btn.classList.add('btn-selected-danger');
+    } else if (value === 'Needs Maintenance') {
+      btn.classList.add('btn-selected-warning');
+    }
+  }
+
+  function validateForm() {
+    const requiredFields = ['pressure_gauge', 'hose_nozzle', 'safety_pin', 'trigger', 'overall_condition'];
+    for (const field of requiredFields) {
+      if (!document.getElementById(field).value) {
+        alert("Please complete all sections before submitting.");
+        return false;
+      }
+    }
+    return true;
+  }
+</script>
+
+</body>
+</html>

@@ -1,0 +1,39 @@
+{% extends 'base.html' %}
+
+{% block title %}General Inspection{% endblock %}
+
+{% block content %}
+<div class="container mt-4">
+  <h2>Inspection Form</h2>
+  <p><strong>Product:</strong> {{ product.name }} | <strong>Serial ID:</strong> {{ product.serial_id }}</p>
+
+  <form method="POST">
+    <div class="row mb-3">
+      <div class="col-md-4">
+        <label>Inspection Date</label>
+        <input type="date" name="inspection_date" class="form-control" required>
+      </div>
+      <div class="col-md-4">
+        <label>Inspected By</label>
+        <input type="text" name="inspected_by" class="form-control" required>
+      </div>
+      <div class="col-md-4">
+        <label>Inspection Result</label>
+        <select name="inspection_result" class="form-select" required>
+          <option value="Pass">Pass</option>
+          <option value="Fail">Fail</option>
+          <option value="Needs Repair">Needs Repair</option>
+        </select>
+      </div>
+    </div>
+
+    <div class="mb-3">
+      <label>Notes</label>
+      <textarea name="notes" class="form-control" rows="3"></textarea>
+    </div>
+
+    <button type="submit" class="btn btn-success">Submit Inspection</button>
+    <a href="/products" class="btn btn-secondary">Cancel</a>
+  </form>
+</div>
+{% endblock %}

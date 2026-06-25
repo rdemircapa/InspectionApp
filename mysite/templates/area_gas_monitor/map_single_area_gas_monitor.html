@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Gas Monitor Location</title>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- Leaflet CSS -->
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+  <style>
+    html, body { height: 100%; margin: 0; }
+    #map { height: 100%; width: 100%; }
+  </style>
+</head>
+<body>
+
+<div id="map"></div>
+
+<!-- Leaflet JS -->
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+
+<script>
+  const device = {
+    tag_number: {{ tag_number | tojson }},
+    model: {{ model | tojson }},
+    location: {{ location | tojson }},
+    sub_location: {{ sub_location | tojson }},
+    latitude: {{ latitude }},
+    longitude: {{ longitude }}
+  };
+
+  const map = L.map('map').setView([device.latitude, device.longitude], 17);
+
+  L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+    attribution: '&copy; OpenStreetMap contributors'
+  }).addTo(map);
+
+  const marker = L.marker([device.latitude, device.longitude]);
+  marker.bindPopup(`
+    <strong>${device.tag_number}</strong><br>
+    ${device.model || ''}<br>
+    ${device.location || ''} / ${device.sub_location || ''}
+  `).addTo(map).openPopup();
+</script>
+
+
+</body>
+</html>

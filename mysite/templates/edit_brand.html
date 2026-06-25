@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+
+{% block title %}Edit Brand{% endblock %}
+
+{% block content %}
+<div class="container mt-4">
+  <h2>Edit Brand</h2>
+  <form method="POST">
+    <div class="mb-3">
+      <label>Brand Name</label>
+      <input type="text" name="name" class="form-control" value="{{ brand.name }}" required>
+    </div>
+    <button type="submit" class="btn btn-primary">Update Brand</button>
+    <a href="/add-brand" class="btn btn-secondary">Cancel</a>
+  </form>
+</div>
+{% endblock %}

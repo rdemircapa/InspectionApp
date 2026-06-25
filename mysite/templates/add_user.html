@@ -1,0 +1,125 @@
+{% extends 'base.html' %}
+
+{% block title %}Add User{% endblock %}
+
+{% block content %}
+<div class="container py-4">
+  <h2 class="mb-4">Add User to System</h2>
+
+  <!-- Flash mesajları -->
+  {% with messages = get_flashed_messages(with_categories=true) %}
+    {% if messages %}
+      {% for category, message in messages %}
+        <div class="alert alert-{{ category }} alert-dismissible fade show" role="alert">
+          {{ message|safe }}
+          <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+      {% endfor %}
+    {% endif %}
+  {% endwith %}
+
+  <!-- 🟦 Tekli kullanıcı ekleme formu -->
+  <form method="POST" action="{{ url_for('add_user') }}" class="mb-5">
+    <div class="row mb-3">
+      <div class="col-md-6">
+        <label for="badge_number" class="form-label">Badge Number</label>
+        <input type="text" class="form-control" name="badge_number" id="badge_number" placeholder="e.g., 12345" required>
+      </div>
+      <div class="col-md-6">
+        <label for="full_name" class="form-label">Full Name</label>
+        <input type="text" class="form-control" name="full_name" id="full_name" placeholder="e.g., John Doe" required>
+      </div>
+    </div>
+    <button type="submit" class="btn btn-primary">Add User</button>
+  </form>
+
+  <!-- 🟨 Excel dosyasıyla toplu yükleme -->
+  <h5 class="mb-3">Or Upload Users in Bulk</h5>
+  <form method="POST" action="{{ url_for('add_user') }}" enctype="multipart/form-data" class="mb-5">
+    <div class="mb-3">
+      <label for="bulk_file" class="form-label">Upload Excel File (.xlsx)</label>
+      <input type="file" class="form-control" name="bulk_file" id="bulk_file" accept=".xlsx" required>
+    </div>
+    <button type="submit" name="bulk_submit" class="btn btn-success">Upload Users</button>
+  </form>
+
+  <!-- ⚠️ Badge çakışmaları tablosu -->
+  {% if conflicts %}
+<hr class="my-4">
+<h5>⚠️ Conflicting Badges (Skipped)</h5>
+<div class="table-responsive">
+  <table id="usersTable" class="table table-bordered table-striped">
+    <thead class="table-light">
+      <tr>
+        <th>Badge Number</th>
+        <th>Name in Excel</th>
+        <th>Registered in System</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for conflict in conflicts %}
+      {% set parts = conflict.split("→") %}
+      {% if parts|length > 1 %}
+        {% set badge = parts[0].strip() %}
+        {% set names = parts[1].split("/System:") %}
+        <tr>
+          <td>{{ badge }}</td>
+          <td>{{ names[0].replace('Excel:', '').strip() }}</td>
+          <td>{{ names[1].strip() if names|length > 1 else 'N/A' }}</td>
+        </tr>
+      {% else %}
+        <tr>
+          <td colspan="3" class="text-danger">⚠ Invalid conflict entry: {{ conflict }}</td>
+        </tr>
+      {% endif %}
+      {% endfor %}
+    </tbody>
+  </table>
+</div>
+{% endif %}
+
+
+  <!-- 🟩 Kullanıcı listesi -->
+  <hr class="my-4">
+  <h5>Current Users</h5>
+  <div class="table-responsive">
+    <table id="usersTable" class="table table-bordered table-striped">
+      <thead class="table-light">
+        <tr>
+          <th>Badge Number</th>
+          <th>Full Name</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for user in users %}
+        <tr>
+          <td>{{ user['badge_number'] }}</td>
+          <td>{{ user['full_name'] }}</td>
+        </tr>
+        {% endfor %}
+        {% if users|length == 0 %}
+        <tr>
+          <td colspan="2" class="text-center text-muted">No users found.</td>
+        </tr>
+        {% endif %}
+      </tbody>
+    </table>
+  </div>
+  <script>
+    $(document).ready(function () {
+      $('#usersTable').DataTable({
+        pageLength: 10,
+        lengthMenu: [5, 10, 25, 50, 100],
+        order: [[1, 'asc']],  // İkinci sütun (isim) varsayılan sıralama
+        language: {
+          search: "Filter:",
+          lengthMenu: "Show _MENU_ entries",
+          info: "Showing _START_ to _END_ of _TOTAL_ users",
+        }
+      });
+    });
+  </script>
+  
+  
+</div>
+{% endblock %}

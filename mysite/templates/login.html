@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="row justify-content-center mt-5">
+  <div class="col-md-4">
+    <h3 class="text-center mb-4">🔐 User Login</h3>
+    <form method="post">
+      <div class="mb-3">
+        <label class="form-label">Badge Number</label>
+        <input type="text" name="username" class="form-control" placeholder="Enter your badge number" required>
+      </div>
+      <div class="mb-3">
+        <label class="form-label">Password</label>
+        <input type="password" name="password" class="form-control" placeholder="Enter your password" required>
+      </div>
+      <button type="submit" class="btn btn-dark w-100">Login</button>
+    </form>
+    {% if error %}
+      <div class="alert alert-danger mt-3" role="alert">
+        {{ error }}
+      </div>
+    {% endif %}
+  </div>
+</div>
+{% endblock %}

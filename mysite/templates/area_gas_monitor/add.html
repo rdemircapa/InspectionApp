@@ -1,0 +1,87 @@
+{% extends "base.html" %}
+{% block title %}Add Area Gas Monitor{% endblock %}
+{% block content %}
+<div class="container py-4">
+  <h2 class="mb-4">Add Area Gas Monitor</h2>
+  <form method="POST">
+    <div class="row g-3">
+      <div class="col-md-6">
+        <label for="tag_number" class="form-label">Tag Number</label>
+        <input name="tag_number" id="tag_number" class="form-control" required value="{{ tag_number }}">
+      </div>
+      <div class="col-md-6">
+        <label for="serial_number" class="form-label">Serial Number</label>
+        <input name="serial_number" id="serial_number" class="form-control" value="{{ serial_number }}">
+      </div>
+      <div class="col-md-6">
+        <label for="sensor_serial_number" class="form-label">Sensor Serial Number</label>
+        <input name="sensor_serial_number" id="sensor_serial_number" class="form-control" value="{{ sensor_serial_number }}">
+      </div>
+      <div class="col-md-6">
+        <label for="location" class="form-label">Location</label>
+        <input name="location" id="location" class="form-control" placeholder="e.g. GOP" value="{{ location }}">
+      </div>
+      <div class="col-md-6">
+        <label for="sub_location" class="form-label">Sub-Location</label>
+        <input name="sub_location" id="sub_location" class="form-control" value="{{ sub_location }}">
+      </div>
+      <div class="col-md-6">
+        <label for="model" class="form-label">Model</label>
+        <input name="model" id="model" class="form-control" value="{{ model }}">
+      </div>
+      <div class="col-md-6">
+        <label for="gas_type" class="form-label">Gas Type</label>
+        <input name="gas_type" id="gas_type" class="form-control" value="{{ gas_type }}">
+      </div>
+      <div class="col-md-6">
+        <label for="calibration_date" class="form-label">Calibration Date</label>
+        <input name="calibration_date" id="calibration_date" type="date" class="form-control" value="{{ calibration_date }}">
+      </div>
+      <div class="col-md-6">
+        <label for="due_date" class="form-label">Due Date (Auto-calculated)</label>
+        <input name="due_date" id="due_date" type="date" class="form-control" readonly value="{{ due_date }}">
+      </div>
+      <div class="col-md-6">
+        <label for="status" class="form-label">Status</label>
+        <select name="status" id="status" class="form-select">
+          <option value="Active" {% if status == 'Active' %}selected{% endif %}>Active</option>
+          <option value="Inactive" {% if status == 'Inactive' %}selected{% endif %}>Inactive</option>
+          <option value="Service" {% if status == 'Service' %}selected{% endif %}>Service</option>
+        </select>
+      </div>
+      <div class="col-md-12">
+        <label for="remarks" class="form-label">Remarks</label>
+        <textarea name="remarks" id="remarks" class="form-control" rows="3">{{ remarks }}</textarea>
+      </div>
+    </div>
+
+    <div class="mt-4 d-flex justify-content-start">
+      <button type="submit" class="btn btn-primary me-2">
+        <i class="bi bi-plus-circle"></i> Add Monitor
+      </button>
+      <a href="{{ url_for('area_gas_monitor.list_area_gas_monitors') }}" class="btn btn-secondary">
+        <i class="bi bi-arrow-left-circle"></i> Back to List
+      </a>
+    </div>
+  </form>
+</div>
+
+<script>
+document.addEventListener("DOMContentLoaded", function() {
+  const calibrationInput = document.getElementById("calibration_date");
+  const dueDateInput = document.getElementById("due_date");
+
+  calibrationInput.addEventListener("change", function() {
+    const selectedDate = new Date(this.value);
+    if (!isNaN(selectedDate)) {
+      const dueDate = new Date(selectedDate);
+      dueDate.setDate(dueDate.getDate() + 180);
+      const yyyy = dueDate.getFullYear();
+      const mm = String(dueDate.getMonth() + 1).padStart(2, '0');
+      const dd = String(dueDate.getDate()).padStart(2, '0');
+      dueDateInput.value = `${yyyy}-${mm}-${dd}`;
+    }
+  });
+});
+</script>
+{% endblock %}

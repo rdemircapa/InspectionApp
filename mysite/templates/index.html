@@ -1,0 +1,208 @@
+{% extends "base.html" %}
+{% block title %}Dashboard{% endblock %}
+
+{% block content %}
+<div class="container-fluid py-4">
+  <h2 class="fw-bold text-center mb-4">🛟Safety Equipment Dashboard</h2>
+
+
+
+  <!-- Quick Stats -->
+  <div class="row g-4 mb-4">
+    <div class="col-md-4">
+      <div class="card border-start border-primary border-4 shadow-sm">
+        <div class="card-body">
+          <h5 class="card-title"><i class="bi bi-box-seam"></i> Total SCBA</h5>
+          <p class="fw-bold text-primary fs-4">{{ total_scba }}</p>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-4">
+      <div class="card border-start border-danger border-4 shadow-sm">
+        <div class="card-body">
+          <h5 class="card-title"><i class="bi bi-fire"></i> Total Extinguishers</h5>
+          <p class="fw-bold text-danger fs-4">{{ total_extinguishers }}</p>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-4">
+      <div class="card border-start border-success border-4 shadow-sm">
+        <div class="card-body">
+          <h5 class="card-title"><i class="bi bi-cloud-fog2"></i> Total Area Gas Monitors</h5>
+          <p class="fw-bold text-success fs-4">{{ total_monitors }}</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Charts -->
+  <div class="row g-4">
+    <div class="col-md-6">
+      <div class="card shadow-sm">
+        <div class="card-body">
+          <h6 class="card-title">🔯 Extinguisher Condition Breakdown</h6>
+          <div style="height: 300px;">
+            <canvas id="extinguisherPie"></canvas>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-md-6">
+      <div class="card shadow-sm">
+        <div class="card-body">
+          <h6 class="card-title">🗕️ 3rd Party Due Status</h6>
+          <div style="height: 300px;">
+            <canvas id="thirdPartyDueChart"></canvas>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-md-6">
+      <div class="card shadow-sm">
+        <div class="card-body">
+          <h6 class="card-title">🗖️ Monthly Inspection Due Status</h6>
+          <div style="height: 300px;">
+            <canvas id="monthlyDueChart"></canvas>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-md-6">
+      <div class="card shadow-sm">
+        <div class="card-body">
+          <h6 class="card-title">🧪 SCBA Refilling per Month</h6>
+          <div style="height: 300px;">
+            <canvas id="scbaBar"></canvas>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-md-6">
+      <div class="card shadow-sm">
+        <div class="card-body">
+          <h6 class="card-title">🌬️ Gas Monitor Status</h6>
+          <div style="height: 300px;">
+            <canvas id="monitorStatus"></canvas>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-md-6">
+      <div class="card shadow-sm">
+        <div class="card-body">
+          <h6 class="card-title">⛽ Gas Type Distribution</h6>
+          <div style="height: 300px;">
+            <canvas id="gasTypeBar"></canvas>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Chart.js -->
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+
+<script>
+  let extinguisherPie, monitorStatus, thirdPartyDueChart, monthlyDueChart;
+
+  document.addEventListener("DOMContentLoaded", function () {
+    extinguisherPie = new Chart(document.getElementById('extinguisherPie'), {
+      type: 'pie',
+      data: {
+        labels: ['Good', 'Needs Maintenance'],
+        datasets: [{
+          data: {{ extinguisher_condition_counts | tojson }},
+          backgroundColor: ['#198754', '#ffc107']
+        }]
+      },
+      options: {
+        responsive: true,
+        plugins: { legend: { position: 'bottom' } }
+      }
+    });
+
+    thirdPartyDueChart = new Chart(document.getElementById('thirdPartyDueChart'), {
+      type: 'doughnut',
+      data: {
+        labels: ['OK', 'Due Soon', 'Overdue'],
+        datasets: [{
+          data: {{ third_party_due_counts | tojson }},
+          backgroundColor: ['#198754', '#ffc107', '#dc3545']
+        }]
+      },
+      options: {
+        responsive: true,
+        plugins: { legend: { position: 'bottom' } }
+      }
+    });
+
+    monthlyDueChart = new Chart(document.getElementById('monthlyDueChart'), {
+      type: 'doughnut',
+      data: {
+        labels: ['OK', 'Due Soon', 'Overdue'],
+        datasets: [{
+          data: {{ monthly_due_counts | tojson }},
+          backgroundColor: ['#198754', '#ffc107', '#dc3545']
+        }]
+      },
+      options: {
+        responsive: true,
+        plugins: { legend: { position: 'bottom' } }
+      }
+    });
+
+    new Chart(document.getElementById('scbaBar'), {
+      type: 'bar',
+      data: {
+        labels: {{ scba_months | tojson }},
+        datasets: [{
+          label: 'SCBA Refilled',
+          data: {{ scba_counts | tojson }},
+          backgroundColor: '#0d6efd'
+        }]
+      },
+      options: {
+        responsive: true,
+        plugins: { legend: { display: false } }
+      }
+    });
+
+    monitorStatus = new Chart(document.getElementById('monitorStatus'), {
+      type: 'doughnut',
+      data: {
+        labels: ['Active', 'Inactive', 'Service'],
+        datasets: [{
+          data: {{ monitor_status_counts | tojson }},
+          backgroundColor: ['#198754', '#6c757d', '#ffc107']
+        }]
+      },
+      options: {
+        responsive: true,
+        plugins: { legend: { position: 'bottom' } }
+      }
+    });
+
+    new Chart(document.getElementById('gasTypeBar'), {
+      type: 'bar',
+      data: {
+        labels: {{ gas_types | tojson }},
+        datasets: [{
+          label: 'Monitors per Gas Type',
+          data: {{ gas_type_counts | tojson }},
+          backgroundColor: '#20c997'
+        }]
+      },
+      options: {
+        responsive: true,
+        plugins: { legend: { display: false } }
+      }
+    });
+  });
+</script>
+{% endblock %}

@@ -1,0 +1,130 @@
+{% extends 'base.html' %}
+{% block title %}SCBA List{% endblock %}
+
+{% block content %}
+
+<link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.datatables.net/1.13.5/css/jquery.dataTables.min.css">
+<script src="https://code.jquery.com/jquery-3.7.0.min.js"></script>
+<script src="https://cdn.datatables.net/1.13.5/js/jquery.dataTables.min.js"></script>
+
+<div class="d-flex justify-content-between align-items-center mb-3">
+  <h2 class="mb-0">
+    SCBA Units [{{ scbas|length }}] NoS
+  </h2>
+
+  <div class="d-flex gap-2">
+    <a href="{{ url_for('manual_scan_scba') }}" class="btn btn-outline-primary">📷 Scan QR Code</a>
+    <a href="{{ url_for('export_scba_pdf') }}" class="btn btn-outline-secondary">📄 Export to PDF</a>
+    <a href="{{ url_for('export_scba_excel') }}" class="btn btn-outline-success">📥 Export to Excel</a>
+    <a href="{{ url_for('list_scba', only_fails='1') if not only_fails else url_for('list_scba') }}"
+       class="btn btn-outline-danger">
+      {% if only_fails %}
+        Show All
+      {% else %}
+        Show Only Failures
+      {% endif %}
+    </a>
+  </div>
+</div>
+
+<!-- 🔍 Search Bar -->
+<div class="mb-3">
+  <input type="text" id="searchInput" class="form-control" placeholder="🔍 Search by Tag, Brand, Serial, or Location...">
+</div>
+
+<!-- 📋 Table -->
+<div class="table-responsive">
+  <table id="scbaTable" class="table table-bordered table-striped">
+    <thead class="table-light">
+      <tr>
+        <th>Tag</th>
+        <th>Brand</th>
+        <th>Model</th>
+        <th>Capacity</th>
+        <th>Pressure</th>
+        <th>Refiling Date</th>
+        <th>Hydro Test Date</th>
+        <th>Cylinder Serial</th>
+        <th>Regulator Serial</th>
+        <th>Last Inspection</th>
+        <th>Location</th>
+        <th>Remarks</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for s in scbas %}
+      <tr>
+        <td>{{ s['tag_number'] or '-' }}</td>
+        <td>{{ s['brand'] }}</td>
+        <td>{{ s['model'] }}</td>
+        <td>{{ s['cylinder_capacity'] }}</td>
+        <td>{{ s['cylinder_pressure'] }}</td>
+        <td class="{{ 'text-danger fw-bold' if s['refiling_alert'] else '' }}">
+          {{ s['refiling_date'] }}
+          {% if s['refiling_alert'] %}
+            <i class="bi bi-exclamation-triangle-fill ms-1" title="Refiling overdue"></i>
+          {% endif %}
+        </td>
+        <td class="{{ 'text-danger fw-bold' if s['hydro_alert'] else '' }}">
+          {{ s['hydro_test_date'] }}
+          {% if s['hydro_alert'] %}
+            <i class="bi bi-clock-fill ms-1" title="Hydro test due soon or expired"></i>
+          {% endif %}
+        </td>
+        <td>{{ s['cylinder_serial'] }}</td>
+        <td>{{ s['regulator_serial'] }}</td>
+        <td>
+          {% if s['last_inspection'] %}
+            <span class="{% if s['days_old'] > 30 %}text-danger fw-bold{% else %}text-success fw-bold{% endif %}">
+              {{ s['last_inspection'] }}
+            </span>
+          {% else %}
+            <span class="text-danger fw-bold">Not Inspected Yet</span>
+          {% endif %}
+        </td>
+        <td>{{ s['location'] }}</td>
+        <td>
+          {{ s['remarks'] | default('-') }}
+          {% if s['has_fail'] %}
+            <i class="bi bi-exclamation-triangle-fill text-danger ms-1" style="font-size: 1rem;" title="One or more inspection tests failed"></i>
+            <span class="text-danger small ms-1">Needs attention</span>
+          {% endif %}
+        </td>
+                   <td class="text-nowrap">
+  <div class="btn-group" role="group">
+    <a href="{{ url_for('inspect_scba', scba_id=s['id']) }}"
+       class="btn btn-sm btn-outline-primary" title="Inspect">🕵️</a>
+    <a href="{{ url_for('edit_scba', scba_id=s['id']) }}"
+       class="btn btn-sm btn-outline-warning" title="Edit">✏️</a>
+    <form method="POST" action="{{ url_for('delete_scba', scba_id=s['id']) }}" style="display:inline;" onsubmit="return confirm('Are you sure?');">
+      <button type="submit" class="btn btn-sm btn-outline-danger" title="Delete">🗑️</button>
+    </form>
+    <a href="{{ url_for('scba_report', scba_id=s['id']) }}"
+       class="btn btn-sm btn-outline-dark" title="PDF">📄</a>
+  </div>
+</td>
+
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+</div>
+
+<!-- 🔧 DataTables & Search Logic -->
+<script>
+  $(document).ready(function () {
+    const table = $('#scbaTable').DataTable({
+      pageLength: 10,
+      order: [[0, 'asc']]
+    });
+
+    $('#searchInput').on('keyup', function () {
+      const query = this.value.trim();
+      table.search(query).draw();
+    });
+  });
+</script>
+
+{% endblock %}
