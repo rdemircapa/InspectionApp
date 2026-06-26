@@ -2,8 +2,8 @@ __pycache__/
 *.pyc
 
 # Secrets / credentials
-mysite/.env
-mysite/deft-citizen-466607-q7-a0a53ceeef2a.json
+.env
+deft-citizen-466607-q7-a0a53ceeef2a.json
 
 # Databases (local data, not source)
 *.db
