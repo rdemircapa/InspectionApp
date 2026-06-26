@@ -1,8 +1,15 @@
 .git
 .gitignore
+.env
 README.txt
+CLAUDE.md
+ARCHITECTURE.md
 **/__pycache__
 **/*.pyc
-mysite/.env
-mysite/deft-citizen-466607-q7-a0a53ceeef2a.json
-mysite/database.db
+deft-citizen-466607-q7-a0a53ceeef2a.json
+database.db
+output/
+uploads/
+logs/
+screenshots/
+Inspection App/

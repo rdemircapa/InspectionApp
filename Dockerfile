@@ -10,15 +10,13 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
 
 WORKDIR /app
 
-COPY mysite/requirements.txt ./requirements.txt
+COPY requirements.txt .
 RUN pip install --no-cache-dir -r requirements.txt
 
-COPY mysite/ ./mysite/
-
-WORKDIR /app/mysite
+COPY . .
 
 ENV PYTHONUNBUFFERED=1 \
-    PYTHONPATH=/app/mysite
+    PYTHONPATH=/app
 
 EXPOSE 8000
 
