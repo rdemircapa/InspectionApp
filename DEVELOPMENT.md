@@ -28,3 +28,16 @@
 ### Status
 Equipment inspection workflows complete: SCBA, Fire Extinguisher (100% coverage)
 Equipment with gaps: EEBA, Area Gas Monitors, Personal Gas Monitors (0% coverage)
+
+### Progress Journal
+
+#### 2026-06-27 15:00 — P0 Critical Bugs Fixed (Commit 202efa2)
+- ✅ /inspect-scba-tag @login_required
+- ✅ /inspect-scba-new @login_required
+- ✅ Remove dead update_fire_extinguisher()
+- ✅ Fix SCBA PDF QR URL (request.host_url)
+- ✅ Fix git hook (no recursive amend)
+- 📊 Risk: EEBA + Personal Gas Monitors still have 0 inspection records
+
+#### Next: EEBA Complete Workflow (Target: 4 hours)
+Starting with inspection route + history table...
