@@ -4,15 +4,24 @@
   "graph": {},
   "nodes": [
     {
+      "label": "app.json",
+      "file_type": "code",
+      "source_file": "Inspection App/.obsidian/app.json",
+      "source_location": "L1",
+      "_origin": "ast",
+      "id": "obsidian_app",
+      "community": 23,
+      "norm_label": "app.json"
+    },
+    {
       "label": "app.py",
       "file_type": "code",
       "source_file": "app.py",
       "source_location": "L1",
       "_origin": "ast",
-      "community": 1,
-      "norm_label": "app.py",
       "id": "app",
-      "community_name": "Community 1"
+      "community": 1,
+      "norm_label": "app.py"
     },
     {
       "label": "todatetime()",
@@ -20,10 +29,9 @@
       "source_file": "app.py",
       "source_location": "L51",
       "_origin": "ast",
-      "community": 1,
-      "norm_label": "todatetime()",
       "id": "app_todatetime",
-      "community_name": "Community 1"
+      "community": 1,
+      "norm_label": "todatetime()"
     },
     {
       "label": "requires_roles()",
@@ -31,10 +39,9 @@
       "source_file": "app.py",
       "source_location": "L66",
       "_origin": "ast",
-      "community": 1,
-      "norm_label": "requires_roles()",
       "id": "app_requires_roles",
-      "community_name": "Community 1"
+      "community": 1,
+      "norm_label": "requires_roles()"
     },
     {
       "label": "inject_now()",
@@ -42,10 +49,9 @@
       "source_file": "app.py",
       "source_location": "L89",
       "_origin": "ast",
-      "community": 1,
-      "norm_label": "inject_now()",
       "id": "app_inject_now",
-      "community_name": "Community 1"
+      "community": 1,
+      "norm_label": "inject_now()"
     },
     {
       "label": "login()",
@@ -53,10 +59,9 @@
       "source_file": "app.py",
       "source_location": "L104",
       "_origin": "ast",
-      "community": 1,
-      "norm_label": "login()",
       "id": "app_login",
-      "community_name": "Community 1"
+      "community": 1,
+      "norm_label": "login()"
     },
     {
       "label": "logout()",
@@ -64,10 +69,9 @@
       "source_file": "app.py",
       "source_location": "L131",
       "_origin": "ast",
-      "community": 1,
-      "norm_label": "logout()",
       "id": "app_logout",
-      "community_name": "Community 1"
+      "community": 1,
+      "norm_label": "logout()"
     },
     {
       "label": "format_date_custom()",
@@ -75,10 +79,9 @@
       "source_file": "app.py",
       "source_location": "L180",
       "_origin": "ast",
-      "community": 1,
-      "norm_label": "format_date_custom()",
       "id": "app_format_date_custom",
-      "community_name": "Community 1"
+      "community": 1,
+      "norm_label": "format_date_custom()"
     },
     {
       "label": "format_date_dd_mmm_yyyy()",
@@ -86,10 +89,9 @@
       "source_file": "app.py",
       "source_location": "L192",
       "_origin": "ast",
-      "community": 8,
-      "norm_label": "format_date_dd_mmm_yyyy()",
       "id": "app_format_date_dd_mmm_yyyy",
-      "community_name": "Community 8"
+      "community": 10,
+      "norm_label": "format_date_dd_mmm_yyyy()"
     },
     {
       "label": "get_db()",
@@ -97,10 +99,9 @@
       "source_file": "app.py",
       "source_location": "L200",
       "_origin": "ast",
-      "community": 2,
-      "norm_label": "get_db()",
       "id": "app_get_db",
-      "community_name": "Community 2"
+      "community": 7,
+      "norm_label": "get_db()"
     },
     {
       "label": "query_db()",
@@ -108,10 +109,9 @@
       "source_file": "app.py",
       "source_location": "L207",
       "_origin": "ast",
-      "community": 2,
-      "norm_label": "query_db()",
       "id": "app_query_db",
-      "community_name": "Community 2"
+      "community": 7,
+      "norm_label": "query_db()"
     },
     {
       "label": "init_db()",
@@ -119,10 +119,9 @@
       "source_file": "app.py",
       "source_location": "L215",
       "_origin": "ast",
-      "community": 9,
-      "norm_label": "init_db()",
       "id": "app_init_db",
-      "community_name": "Community 9"
+      "community": 11,
+      "norm_label": "init_db()"
     },
     {
       "label": "get_db_connection()",
@@ -130,10 +129,9 @@
       "source_file": "app.py",
       "source_location": "L219",
       "_origin": "ast",
-      "community": 0,
-      "norm_label": "get_db_connection()",
       "id": "app_get_db_connection",
-      "community_name": "Community 0"
+      "community": 0,
+      "norm_label": "get_db_connection()"
     },
     {
       "label": "initialize_database()",
@@ -141,835 +139,869 @@
       "source_file": "app.py",
       "source_location": "L227",
       "_origin": "ast",
-      "community": 9,
-      "norm_label": "initialize_database()",
       "id": "app_initialize_database",
-      "community_name": "Community 9"
+      "community": 11,
+      "norm_label": "initialize_database()"
     },
     {
       "label": "get_name_by_badge()",
       "file_type": "code",
       "source_file": "app.py",
-      "source_location": "L384",
+      "source_location": "L390",
       "_origin": "ast",
-      "community": 2,
-      "norm_label": "get_name_by_badge()",
       "id": "app_get_name_by_badge",
-      "community_name": "Community 2"
+      "community": 7,
+      "norm_label": "get_name_by_badge()"
     },
     {
       "label": "delete_user()",
       "file_type": "code",
       "source_file": "app.py",
-      "source_location": "L394",
+      "source_location": "L400",
       "_origin": "ast",
-      "community": 0,
-      "norm_label": "delete_user()",
       "id": "app_delete_user",
-      "community_name": "Community 0"
+      "community": 1,
+      "norm_label": "delete_user()"
     },
     {
       "label": "delete_company()",
       "file_type": "code",
       "source_file": "app.py",
-      "source_location": "L405",
+      "source_location": "L411",
       "_origin": "ast",
-      "community": 1,
-      "norm_label": "delete_company()",
       "id": "app_delete_company",
-      "community_name": "Community 1"
+      "community": 0,
+      "norm_label": "delete_company()"
     },
     {
       "label": "edit_user()",
       "file_type": "code",
       "source_file": "app.py",
-      "source_location": "L417",
+      "source_location": "L423",
       "_origin": "ast",
-      "community": 0,
-      "norm_label": "edit_user()",
       "id": "app_edit_user",
-      "community_name": "Community 0"
+      "community": 1,
+      "norm_label": "edit_user()"
     },
     {
       "label": "generate_next_scba_tag()",
       "file_type": "code",
       "source_file": "app.py",
-      "source_location": "L437",
+      "source_location": "L443",
       "_origin": "ast",
-      "community": 1,
-      "norm_label": "generate_next_scba_tag()",
       "id": "app_generate_next_scba_tag",
-      "community_name": "Community 1"
+      "community": 1,
+      "norm_label": "generate_next_scba_tag()"
     },
     {
       "label": "get_scba_id()",
       "file_type": "code",
       "source_file": "app.py",
-      "source_location": "L462",
+      "source_location": "L468",
       "_origin": "ast",
-      "community": 0,
-      "norm_label": "get_scba_id()",
       "id": "app_get_scba_id",
-      "community_name": "Community 0"
+      "community": 1,
+      "norm_label": "get_scba_id()"
     },
     {
       "label": "inspect_scba_logic()",
       "file_type": "code",
       "source_file": "app.py",
-      "source_location": "L482",
+      "source_location": "L488",
       "_origin": "ast",
-      "community": 1,
-      "norm_label": "inspect_scba_logic()",
       "id": "app_inspect_scba_logic",
-      "community_name": "Community 1"
+      "community": 1,
+      "norm_label": "inspect_scba_logic()"
     },
     {
       "label": "add_scba()",
       "file_type": "code",
       "source_file": "app.py",
-      "source_location": "L536",
+      "source_location": "L542",
       "_origin": "ast",
-      "community": 0,
-      "norm_label": "add_scba()",
       "id": "app_add_scba",
-      "community_name": "Community 0"
+      "community": 1,
+      "norm_label": "add_scba()"
     },
     {
       "label": "test_session()",
       "file_type": "code",
       "source_file": "app.py",
-      "source_location": "L615",
+      "source_location": "L621",
       "_origin": "ast",
-      "community": 1,
-      "norm_label": "test_session()",
       "id": "app_test_session",
-      "community_name": "Community 1"
+      "community": 1,
+      "norm_label": "test_session()"
     },
     {
       "label": "list_scba()",
       "file_type": "code",
       "source_file": "app.py",
-      "source_location": "L631",
+      "source_location": "L637",
       "_origin": "ast",
-      "community": 0,
-      "norm_label": "list_scba()",
       "id": "app_list_scba",
-      "community_name": "Community 0"
+      "community": 0,
+      "norm_label": "list_scba()"
     },
     {
       "label": "scba_report()",
       "file_type": "code",
       "source_file": "app.py",
-      "source_location": "L736",
+      "source_location": "L742",
       "_origin": "ast",
-      "community": 8,
-      "norm_label": "scba_report()",
       "id": "app_scba_report",
-      "community_name": "Community 8"
+      "community": 10,
+      "norm_label": "scba_report()"
     },
     {
       "label": "delete_fire_extinguisher()",
       "file_type": "code",
       "source_file": "app.py",
-      "source_location": "L857",
+      "source_location": "L863",
       "_origin": "ast",
-      "community": 0,
-      "norm_label": "delete_fire_extinguisher()",
       "id": "app_delete_fire_extinguisher",
-      "community_name": "Community 0"
+      "community": 0,
+      "norm_label": "delete_fire_extinguisher()"
     },
     {
       "label": "inspect_scba_by_tag()",
       "file_type": "code",
       "source_file": "app.py",
-      "source_location": "L894",
+      "source_location": "L901",
       "_origin": "ast",
-      "community": 0,
-      "norm_label": "inspect_scba_by_tag()",
       "id": "app_inspect_scba_by_tag",
-      "community_name": "Community 0"
+      "community": 0,
+      "norm_label": "inspect_scba_by_tag()"
     },
     {
       "label": "inspect_assembly()",
       "file_type": "code",
       "source_file": "app.py",
-      "source_location": "L934",
+      "source_location": "L942",
       "_origin": "ast",
-      "community": 0,
-      "norm_label": "inspect_assembly()",
       "id": "app_inspect_assembly",
-      "community_name": "Community 0"
+      "community": 0,
+      "norm_label": "inspect_assembly()"
     },
     {
       "label": "list_assemblies()",
       "file_type": "code",
       "source_file": "app.py",
-      "source_location": "L994",
+      "source_location": "L1002",
       "_origin": "ast",
-      "community": 0,
-      "norm_label": "list_assemblies()",
       "id": "app_list_assemblies",
-      "community_name": "Community 0"
+      "community": 0,
+      "norm_label": "list_assemblies()"
     },
     {
       "label": "export_scba_excel()",
       "file_type": "code",
       "source_file": "app.py",
-      "source_location": "L1048",
+      "source_location": "L1056",
       "_origin": "ast",
-      "community": 1,
-      "norm_label": "export_scba_excel()",
       "id": "app_export_scba_excel",
-      "community_name": "Community 1"
+      "community": 1,
+      "norm_label": "export_scba_excel()"
     },
     {
       "label": "inspect_scba()",
       "file_type": "code",
       "source_file": "app.py",
-      "source_location": "L1080",
+      "source_location": "L1088",
       "_origin": "ast",
-      "community": 0,
-      "norm_label": "inspect_scba()",
       "id": "app_inspect_scba",
-      "community_name": "Community 0"
+      "community": 0,
+      "norm_label": "inspect_scba()"
     },
     {
       "label": "export_scba_pdf()",
       "file_type": "code",
       "source_file": "app.py",
-      "source_location": "L1170",
+      "source_location": "L1178",
       "_origin": "ast",
-      "community": 1,
-      "norm_label": "export_scba_pdf()",
       "id": "app_export_scba_pdf",
-      "community_name": "Community 1"
+      "community": 1,
+      "norm_label": "export_scba_pdf()"
     },
     {
       "label": "edit_scba()",
       "file_type": "code",
       "source_file": "app.py",
-      "source_location": "L1298",
+      "source_location": "L1306",
       "_origin": "ast",
-      "community": 1,
-      "norm_label": "edit_scba()",
       "id": "app_edit_scba",
-      "community_name": "Community 1"
+      "community": 1,
+      "norm_label": "edit_scba()"
     },
     {
       "label": "delete_scba()",
       "file_type": "code",
       "source_file": "app.py",
-      "source_location": "L1350",
+      "source_location": "L1358",
       "_origin": "ast",
-      "community": 0,
-      "norm_label": "delete_scba()",
       "id": "app_delete_scba",
-      "community_name": "Community 0"
+      "community": 1,
+      "norm_label": "delete_scba()"
     },
     {
       "label": "upload_scba()",
       "file_type": "code",
       "source_file": "app.py",
-      "source_location": "L1365",
+      "source_location": "L1373",
       "_origin": "ast",
-      "community": 0,
-      "norm_label": "upload_scba()",
       "id": "app_upload_scba",
-      "community_name": "Community 0"
+      "community": 0,
+      "norm_label": "upload_scba()"
     },
     {
       "label": "home()",
       "file_type": "code",
       "source_file": "app.py",
-      "source_location": "L1448",
+      "source_location": "L1456",
       "_origin": "ast",
-      "community": 0,
-      "norm_label": "home()",
       "id": "app_home",
-      "community_name": "Community 0"
+      "community": 0,
+      "norm_label": "home()"
     },
     {
       "label": "api_extinguisher_conditions()",
       "file_type": "code",
       "source_file": "app.py",
-      "source_location": "L1557",
+      "source_location": "L1565",
       "_origin": "ast",
-      "community": 0,
-      "norm_label": "api_extinguisher_conditions()",
       "id": "app_api_extinguisher_conditions",
-      "community_name": "Community 0"
+      "community": 1,
+      "norm_label": "api_extinguisher_conditions()"
     },
     {
       "label": "api_monitor_status()",
       "file_type": "code",
       "source_file": "app.py",
-      "source_location": "L1603",
+      "source_location": "L1611",
       "_origin": "ast",
-      "community": 0,
-      "norm_label": "api_monitor_status()",
       "id": "app_api_monitor_status",
-      "community_name": "Community 0"
+      "community": 0,
+      "norm_label": "api_monitor_status()"
     },
     {
       "label": "add_user()",
       "file_type": "code",
       "source_file": "app.py",
-      "source_location": "L1625",
+      "source_location": "L1633",
       "_origin": "ast",
-      "community": 0,
-      "norm_label": "add_user()",
       "id": "app_add_user",
-      "community_name": "Community 0"
+      "community": 0,
+      "norm_label": "add_user()"
     },
     {
       "label": "list_products()",
       "file_type": "code",
       "source_file": "app.py",
-      "source_location": "L1712",
+      "source_location": "L1720",
       "_origin": "ast",
-      "community": 2,
-      "norm_label": "list_products()",
       "id": "app_list_products",
-      "community_name": "Community 2"
+      "community": 7,
+      "norm_label": "list_products()"
     },
     {
       "label": "inspect_product()",
       "file_type": "code",
       "source_file": "app.py",
-      "source_location": "L1770",
+      "source_location": "L1778",
       "_origin": "ast",
-      "community": 0,
-      "norm_label": "inspect_product()",
       "id": "app_inspect_product",
-      "community_name": "Community 0"
+      "community": 0,
+      "norm_label": "inspect_product()"
     },
     {
       "label": "inspection_log()",
       "file_type": "code",
       "source_file": "app.py",
-      "source_location": "L1813",
+      "source_location": "L1821",
       "_origin": "ast",
-      "community": 0,
-      "norm_label": "inspection_log()",
       "id": "app_inspection_log",
-      "community_name": "Community 0"
+      "community": 0,
+      "norm_label": "inspection_log()"
     },
     {
       "label": "assign_product()",
       "file_type": "code",
       "source_file": "app.py",
-      "source_location": "L1827",
+      "source_location": "L1835",
       "_origin": "ast",
-      "community": 2,
-      "norm_label": "assign_product()",
       "id": "app_assign_product",
-      "community_name": "Community 2"
+      "community": 7,
+      "norm_label": "assign_product()"
     },
     {
       "label": "list_assignments()",
       "file_type": "code",
       "source_file": "app.py",
-      "source_location": "L1889",
+      "source_location": "L1897",
       "_origin": "ast",
-      "community": 2,
-      "norm_label": "list_assignments()",
       "id": "app_list_assignments",
-      "community_name": "Community 2"
+      "community": 7,
+      "norm_label": "list_assignments()"
     },
     {
       "label": "generate_pdf()",
       "file_type": "code",
       "source_file": "app.py",
-      "source_location": "L1923",
+      "source_location": "L1931",
       "_origin": "ast",
-      "community": 2,
-      "norm_label": "generate_pdf()",
       "id": "app_generate_pdf",
-      "community_name": "Community 2"
+      "community": 7,
+      "norm_label": "generate_pdf()"
     },
     {
       "label": "return_product()",
       "file_type": "code",
       "source_file": "app.py",
-      "source_location": "L2084",
+      "source_location": "L2092",
       "_origin": "ast",
-      "community": 2,
-      "norm_label": "return_product()",
       "id": "app_return_product",
-      "community_name": "Community 2"
+      "community": 7,
+      "norm_label": "return_product()"
     },
     {
       "label": "add_brand()",
       "file_type": "code",
       "source_file": "app.py",
-      "source_location": "L2103",
+      "source_location": "L2111",
       "_origin": "ast",
-      "community": 0,
-      "norm_label": "add_brand()",
       "id": "app_add_brand",
-      "community_name": "Community 0"
+      "community": 0,
+      "norm_label": "add_brand()"
     },
     {
       "label": "add_product()",
       "file_type": "code",
       "source_file": "app.py",
-      "source_location": "L2121",
+      "source_location": "L2129",
       "_origin": "ast",
-      "community": 0,
-      "norm_label": "add_product()",
       "id": "app_add_product",
-      "community_name": "Community 0"
+      "community": 0,
+      "norm_label": "add_product()"
     },
     {
       "label": "manual_scan_scba()",
       "file_type": "code",
       "source_file": "app.py",
-      "source_location": "L2163",
+      "source_location": "L2171",
       "_origin": "ast",
-      "community": 1,
-      "norm_label": "manual_scan_scba()",
       "id": "app_manual_scan_scba",
-      "community_name": "Community 1"
+      "community": 1,
+      "norm_label": "manual_scan_scba()"
     },
     {
       "label": "add_bulk()",
       "file_type": "code",
       "source_file": "app.py",
-      "source_location": "L2172",
+      "source_location": "L2180",
       "_origin": "ast",
-      "community": 1,
-      "norm_label": "add_bulk()",
       "id": "app_add_bulk",
-      "community_name": "Community 1"
+      "community": 1,
+      "norm_label": "add_bulk()"
     },
     {
       "label": "add_company()",
       "file_type": "code",
       "source_file": "app.py",
-      "source_location": "L2218",
+      "source_location": "L2226",
       "_origin": "ast",
-      "community": 1,
-      "norm_label": "add_company()",
       "id": "app_add_company",
-      "community_name": "Community 1"
+      "community": 0,
+      "norm_label": "add_company()"
     },
     {
       "label": "delete_product()",
       "file_type": "code",
       "source_file": "app.py",
-      "source_location": "L2237",
+      "source_location": "L2245",
       "_origin": "ast",
-      "community": 0,
-      "norm_label": "delete_product()",
       "id": "app_delete_product",
-      "community_name": "Community 0"
+      "community": 0,
+      "norm_label": "delete_product()"
     },
     {
       "label": "edit_product()",
       "file_type": "code",
       "source_file": "app.py",
-      "source_location": "L2249",
+      "source_location": "L2257",
       "_origin": "ast",
-      "community": 1,
-      "norm_label": "edit_product()",
       "id": "app_edit_product",
-      "community_name": "Community 1"
+      "community": 0,
+      "norm_label": "edit_product()"
     },
     {
       "label": "add_product_type()",
       "file_type": "code",
       "source_file": "app.py",
-      "source_location": "L2284",
+      "source_location": "L2292",
       "_origin": "ast",
-      "community": 0,
-      "norm_label": "add_product_type()",
       "id": "app_add_product_type",
-      "community_name": "Community 0"
+      "community": 0,
+      "norm_label": "add_product_type()"
     },
     {
       "label": "delete_product_type()",
       "file_type": "code",
       "source_file": "app.py",
-      "source_location": "L2303",
+      "source_location": "L2311",
       "_origin": "ast",
-      "community": 0,
-      "norm_label": "delete_product_type()",
       "id": "app_delete_product_type",
-      "community_name": "Community 0"
+      "community": 0,
+      "norm_label": "delete_product_type()"
     },
     {
       "label": "dashboard()",
       "file_type": "code",
       "source_file": "app.py",
-      "source_location": "L2319",
+      "source_location": "L2327",
       "_origin": "ast",
-      "community": 0,
-      "norm_label": "dashboard()",
       "id": "app_dashboard",
-      "community_name": "Community 0"
+      "community": 0,
+      "norm_label": "dashboard()"
     },
     {
       "label": "extinguisher_summary()",
       "file_type": "code",
       "source_file": "app.py",
-      "source_location": "L2394",
+      "source_location": "L2402",
       "_origin": "ast",
-      "community": 0,
-      "norm_label": "extinguisher_summary()",
       "id": "app_extinguisher_summary",
-      "community_name": "Community 0"
+      "community": 0,
+      "norm_label": "extinguisher_summary()"
     },
     {
       "label": "extinguisher_monthly_summary()",
       "file_type": "code",
       "source_file": "app.py",
-      "source_location": "L2434",
+      "source_location": "L2442",
       "_origin": "ast",
-      "community": 1,
-      "norm_label": "extinguisher_monthly_summary()",
       "id": "app_extinguisher_monthly_summary",
-      "community_name": "Community 1"
+      "community": 0,
+      "norm_label": "extinguisher_monthly_summary()"
     },
     {
       "label": "add_fire_extinguisher()",
       "file_type": "code",
       "source_file": "app.py",
-      "source_location": "L2492",
+      "source_location": "L2500",
       "_origin": "ast",
-      "community": 1,
-      "norm_label": "add_fire_extinguisher()",
       "id": "app_add_fire_extinguisher",
-      "community_name": "Community 1"
+      "community": 0,
+      "norm_label": "add_fire_extinguisher()"
     },
     {
       "label": "list_fire_extinguishers()",
       "file_type": "code",
       "source_file": "app.py",
-      "source_location": "L2554",
+      "source_location": "L2562",
       "_origin": "ast",
-      "community": 0,
-      "norm_label": "list_fire_extinguishers()",
       "id": "app_list_fire_extinguishers",
-      "community_name": "Community 0"
+      "community": 0,
+      "norm_label": "list_fire_extinguishers()"
     },
     {
       "label": "todate()",
       "file_type": "code",
       "source_file": "app.py",
-      "source_location": "L2612",
+      "source_location": "L2620",
       "_origin": "ast",
-      "community": 1,
-      "norm_label": "todate()",
       "id": "app_todate",
-      "community_name": "Community 1"
+      "community": 1,
+      "norm_label": "todate()"
     },
     {
       "label": "get_extinguisher_summary_data()",
       "file_type": "code",
       "source_file": "app.py",
-      "source_location": "L2623",
+      "source_location": "L2631",
       "_origin": "ast",
-      "community": 7,
-      "norm_label": "get_extinguisher_summary_data()",
       "id": "app_get_extinguisher_summary_data",
-      "community_name": "Community 7"
+      "community": 9,
+      "norm_label": "get_extinguisher_summary_data()"
     },
     {
       "label": "extinguisher_summary_pdf()",
       "file_type": "code",
       "source_file": "app.py",
-      "source_location": "L2647",
+      "source_location": "L2655",
       "_origin": "ast",
-      "community": 7,
-      "norm_label": "extinguisher_summary_pdf()",
       "id": "app_extinguisher_summary_pdf",
-      "community_name": "Community 7"
-    },
-    {
-      "label": "update_fire_extinguisher()",
-      "file_type": "code",
-      "source_file": "app.py",
-      "source_location": "L2744",
-      "_origin": "ast",
-      "community": 0,
-      "norm_label": "update_fire_extinguisher()",
-      "id": "app_update_fire_extinguisher",
-      "community_name": "Community 0"
+      "community": 9,
+      "norm_label": "extinguisher_summary_pdf()"
     },
     {
       "label": "edit_fire_extinguisher()",
       "file_type": "code",
       "source_file": "app.py",
-      "source_location": "L2788",
+      "source_location": "L2752",
       "_origin": "ast",
-      "community": 0,
-      "norm_label": "edit_fire_extinguisher()",
       "id": "app_edit_fire_extinguisher",
-      "community_name": "Community 0"
+      "community": 1,
+      "norm_label": "edit_fire_extinguisher()"
     },
     {
       "label": "upload_fire_extinguisher()",
       "file_type": "code",
       "source_file": "app.py",
-      "source_location": "L2876",
+      "source_location": "L2840",
       "_origin": "ast",
-      "community": 3,
-      "norm_label": "upload_fire_extinguisher()",
       "id": "app_upload_fire_extinguisher",
-      "community_name": "Community 3"
+      "community": 3,
+      "norm_label": "upload_fire_extinguisher()"
     },
     {
       "label": "inspect_fire_extinguisher()",
       "file_type": "code",
       "source_file": "app.py",
-      "source_location": "L2988",
+      "source_location": "L2952",
       "_origin": "ast",
-      "community": 3,
-      "norm_label": "inspect_fire_extinguisher()",
       "id": "app_inspect_fire_extinguisher",
-      "community_name": "Community 3"
+      "community": 3,
+      "norm_label": "inspect_fire_extinguisher()"
     },
     {
       "label": "bulk_inspect_fire_extinguishers()",
       "file_type": "code",
       "source_file": "app.py",
-      "source_location": "L3054",
+      "source_location": "L3018",
       "_origin": "ast",
-      "community": 3,
-      "norm_label": "bulk_inspect_fire_extinguishers()",
       "id": "app_bulk_inspect_fire_extinguishers",
-      "community_name": "Community 3"
+      "community": 3,
+      "norm_label": "bulk_inspect_fire_extinguishers()"
     },
     {
       "label": "export_fire_extinguishers_pdf()",
       "file_type": "code",
       "source_file": "app.py",
-      "source_location": "L3130",
+      "source_location": "L3108",
       "_origin": "ast",
-      "community": 1,
-      "norm_label": "export_fire_extinguishers_pdf()",
       "id": "app_export_fire_extinguishers_pdf",
-      "community_name": "Community 1"
+      "community": 1,
+      "norm_label": "export_fire_extinguishers_pdf()"
     },
     {
       "label": "export_fire_extinguishers_excel()",
       "file_type": "code",
       "source_file": "app.py",
-      "source_location": "L3255",
+      "source_location": "L3233",
       "_origin": "ast",
-      "community": 0,
-      "norm_label": "export_fire_extinguishers_excel()",
       "id": "app_export_fire_extinguishers_excel",
-      "community_name": "Community 0"
+      "community": 1,
+      "norm_label": "export_fire_extinguishers_excel()"
     },
     {
       "label": "edit_brand()",
       "file_type": "code",
       "source_file": "app.py",
-      "source_location": "L3294",
+      "source_location": "L3272",
       "_origin": "ast",
-      "community": 0,
-      "norm_label": "edit_brand()",
       "id": "app_edit_brand",
-      "community_name": "Community 0"
+      "community": 0,
+      "norm_label": "edit_brand()"
     },
     {
       "label": "delete_brand()",
       "file_type": "code",
       "source_file": "app.py",
-      "source_location": "L3309",
+      "source_location": "L3287",
       "_origin": "ast",
-      "community": 0,
-      "norm_label": "delete_brand()",
       "id": "app_delete_brand",
-      "community_name": "Community 0"
+      "community": 0,
+      "norm_label": "delete_brand()"
     },
     {
       "label": "sync_users_from_assignments()",
       "file_type": "code",
       "source_file": "app.py",
-      "source_location": "L3317",
+      "source_location": "L3295",
       "_origin": "ast",
-      "community": 0,
-      "norm_label": "sync_users_from_assignments()",
       "id": "app_sync_users_from_assignments",
-      "community_name": "Community 0"
+      "community": 1,
+      "norm_label": "sync_users_from_assignments()"
     },
     {
       "label": "generate_tags_and_save()",
       "file_type": "code",
       "source_file": "app.py",
-      "source_location": "L3335",
+      "source_location": "L3313",
       "_origin": "ast",
-      "community": 4,
-      "norm_label": "generate_tags_and_save()",
       "id": "app_generate_tags_and_save",
-      "community_name": "Community 4"
+      "community": 8,
+      "norm_label": "generate_tags_and_save()"
     },
     {
       "label": "get_last_tag_number()",
       "file_type": "code",
       "source_file": "app.py",
-      "source_location": "L3344",
+      "source_location": "L3322",
       "_origin": "ast",
-      "community": 4,
-      "norm_label": "get_last_tag_number()",
       "id": "app_get_last_tag_number",
-      "community_name": "Community 4"
+      "community": 8,
+      "norm_label": "get_last_tag_number()"
     },
     {
       "label": "manual_scan()",
       "file_type": "code",
       "source_file": "app.py",
-      "source_location": "L3357",
+      "source_location": "L3335",
       "_origin": "ast",
-      "community": 0,
-      "norm_label": "manual_scan()",
       "id": "app_manual_scan",
-      "community_name": "Community 0"
+      "community": 0,
+      "norm_label": "manual_scan()"
     },
     {
       "label": "inspect_tag()",
       "file_type": "code",
       "source_file": "app.py",
-      "source_location": "L3397",
+      "source_location": "L3375",
       "_origin": "ast",
-      "community": 3,
-      "norm_label": "inspect_tag()",
       "id": "app_inspect_tag",
-      "community_name": "Community 3"
+      "community": 3,
+      "norm_label": "inspect_tag()"
     },
     {
       "label": "draw_card()",
       "file_type": "code",
       "source_file": "app.py",
-      "source_location": "L3489",
+      "source_location": "L3467",
       "_origin": "ast",
-      "community": 4,
-      "norm_label": "draw_card()",
       "id": "app_draw_card",
-      "community_name": "Community 4"
+      "community": 8,
+      "norm_label": "draw_card()"
     },
     {
       "label": "generate_pdfs()",
       "file_type": "code",
       "source_file": "app.py",
-      "source_location": "L3511",
+      "source_location": "L3489",
       "_origin": "ast",
-      "community": 4,
-      "norm_label": "generate_pdfs()",
       "id": "app_generate_pdfs",
-      "community_name": "Community 4"
+      "community": 8,
+      "norm_label": "generate_pdfs()"
     },
     {
       "label": "generate_tags()",
       "file_type": "code",
       "source_file": "app.py",
-      "source_location": "L3552",
+      "source_location": "L3530",
       "_origin": "ast",
-      "community": 4,
-      "norm_label": "generate_tags()",
       "id": "app_generate_tags",
-      "community_name": "Community 4"
+      "community": 8,
+      "norm_label": "generate_tags()"
     },
     {
       "label": "generate_scba_tags()",
       "file_type": "code",
       "source_file": "app.py",
-      "source_location": "L3576",
+      "source_location": "L3554",
       "_origin": "ast",
-      "community": 1,
-      "norm_label": "generate_scba_tags()",
       "id": "app_generate_scba_tags",
-      "community_name": "Community 1"
+      "community": 1,
+      "norm_label": "generate_scba_tags()"
     },
     {
       "label": "inspect_fire_extinguisher_desktop()",
       "file_type": "code",
       "source_file": "app.py",
-      "source_location": "L3656",
+      "source_location": "L3634",
       "_origin": "ast",
-      "community": 0,
-      "norm_label": "inspect_fire_extinguisher_desktop()",
       "id": "app_inspect_fire_extinguisher_desktop",
-      "community_name": "Community 0"
-    },
-    {
-      "label": "inspect_fire_extinguisher_mobile()",
-      "file_type": "code",
-      "source_file": "app.py",
-      "source_location": "L3713",
-      "_origin": "ast",
       "community": 1,
-      "norm_label": "inspect_fire_extinguisher_mobile()",
-      "id": "app_inspect_fire_extinguisher_mobile",
-      "community_name": "Community 1"
+      "norm_label": "inspect_fire_extinguisher_desktop()"
     },
     {
       "label": "auth_users()",
       "file_type": "code",
       "source_file": "app.py",
-      "source_location": "L3798",
+      "source_location": "L3694",
       "_origin": "ast",
-      "community": 1,
-      "norm_label": "auth_users()",
       "id": "app_auth_users",
-      "community_name": "Community 1"
+      "community": 0,
+      "norm_label": "auth_users()"
     },
     {
       "label": "add_auth_user()",
       "file_type": "code",
       "source_file": "app.py",
-      "source_location": "L3807",
+      "source_location": "L3703",
       "_origin": "ast",
-      "community": 0,
-      "norm_label": "add_auth_user()",
       "id": "app_add_auth_user",
-      "community_name": "Community 0"
+      "community": 0,
+      "norm_label": "add_auth_user()"
     },
     {
       "label": "delete_auth_user()",
       "file_type": "code",
       "source_file": "app.py",
-      "source_location": "L3831",
+      "source_location": "L3727",
       "_origin": "ast",
-      "community": 0,
-      "norm_label": "delete_auth_user()",
       "id": "app_delete_auth_user",
-      "community_name": "Community 0"
+      "community": 0,
+      "norm_label": "delete_auth_user()"
     },
     {
       "label": "update_auth_password()",
       "file_type": "code",
       "source_file": "app.py",
-      "source_location": "L3842",
+      "source_location": "L3738",
       "_origin": "ast",
-      "community": 0,
-      "norm_label": "update_auth_password()",
       "id": "app_update_auth_password",
-      "community_name": "Community 0"
+      "community": 1,
+      "norm_label": "update_auth_password()"
     },
     {
       "label": "change_password()",
       "file_type": "code",
       "source_file": "app.py",
-      "source_location": "L3874",
+      "source_location": "L3770",
       "_origin": "ast",
-      "community": 0,
-      "norm_label": "change_password()",
       "id": "app_change_password",
-      "community_name": "Community 0"
+      "community": 1,
+      "norm_label": "change_password()"
     },
     {
       "label": "thanks()",
       "file_type": "code",
       "source_file": "app.py",
-      "source_location": "L3907",
+      "source_location": "L3803",
       "_origin": "ast",
-      "community": 1,
-      "norm_label": "thanks()",
       "id": "app_thanks",
-      "community_name": "Community 1"
+      "community": 1,
+      "norm_label": "thanks()"
+    },
+    {
+      "label": "__init__.py",
+      "file_type": "code",
+      "source_file": "area_gas_monitor/__init__.py",
+      "source_location": "L1",
+      "_origin": "ast",
+      "id": "area_gas_monitor_init",
+      "community": 2,
+      "norm_label": "__init__.py"
+    },
+    {
+      "label": "routes.py",
+      "file_type": "code",
+      "source_file": "area_gas_monitor/routes.py",
+      "source_location": "L1",
+      "_origin": "ast",
+      "id": "area_gas_monitor_routes",
+      "community": 2,
+      "norm_label": "routes.py"
+    },
+    {
+      "label": "todatetime()",
+      "file_type": "code",
+      "source_file": "area_gas_monitor/routes.py",
+      "source_location": "L20",
+      "_origin": "ast",
+      "id": "area_gas_monitor_routes_todatetime",
+      "community": 2,
+      "norm_label": "todatetime()"
+    },
+    {
+      "label": "list_area_gas_monitors()",
+      "file_type": "code",
+      "source_file": "area_gas_monitor/routes.py",
+      "source_location": "L33",
+      "_origin": "ast",
+      "id": "area_gas_monitor_routes_list_area_gas_monitors",
+      "community": 2,
+      "norm_label": "list_area_gas_monitors()"
+    },
+    {
+      "label": "map_all_area_gas_monitors()",
+      "file_type": "code",
+      "source_file": "area_gas_monitor/routes.py",
+      "source_location": "L103",
+      "_origin": "ast",
+      "id": "area_gas_monitor_routes_map_all_area_gas_monitors",
+      "community": 2,
+      "norm_label": "map_all_area_gas_monitors()"
+    },
+    {
+      "label": "view_single_area_gas_monitor()",
+      "file_type": "code",
+      "source_file": "area_gas_monitor/routes.py",
+      "source_location": "L143",
+      "_origin": "ast",
+      "id": "area_gas_monitor_routes_view_single_area_gas_monitor",
+      "community": 2,
+      "norm_label": "view_single_area_gas_monitor()"
+    },
+    {
+      "label": "add_area_gas_monitor()",
+      "file_type": "code",
+      "source_file": "area_gas_monitor/routes.py",
+      "source_location": "L196",
+      "_origin": "ast",
+      "id": "area_gas_monitor_routes_add_area_gas_monitor",
+      "community": 2,
+      "norm_label": "add_area_gas_monitor()"
+    },
+    {
+      "label": "edit_area_gas_monitor()",
+      "file_type": "code",
+      "source_file": "area_gas_monitor/routes.py",
+      "source_location": "L282",
+      "_origin": "ast",
+      "id": "area_gas_monitor_routes_edit_area_gas_monitor",
+      "community": 2,
+      "norm_label": "edit_area_gas_monitor()"
+    },
+    {
+      "label": "delete_area_gas_monitor()",
+      "file_type": "code",
+      "source_file": "area_gas_monitor/routes.py",
+      "source_location": "L351",
+      "_origin": "ast",
+      "id": "area_gas_monitor_routes_delete_area_gas_monitor",
+      "community": 2,
+      "norm_label": "delete_area_gas_monitor()"
+    },
+    {
+      "label": "manual_scan_area_monitor()",
+      "file_type": "code",
+      "source_file": "area_gas_monitor/routes.py",
+      "source_location": "L363",
+      "_origin": "ast",
+      "id": "area_gas_monitor_routes_manual_scan_area_monitor",
+      "community": 2,
+      "norm_label": "manual_scan_area_monitor()"
+    },
+    {
+      "label": "inspect_area_monitor()",
+      "file_type": "code",
+      "source_file": "area_gas_monitor/routes.py",
+      "source_location": "L388",
+      "_origin": "ast",
+      "id": "area_gas_monitor_routes_inspect_area_monitor",
+      "community": 2,
+      "norm_label": "inspect_area_monitor()"
+    },
+    {
+      "label": "update_status()",
+      "file_type": "code",
+      "source_file": "area_gas_monitor/routes.py",
+      "source_location": "L434",
+      "_origin": "ast",
+      "id": "area_gas_monitor_routes_update_status",
+      "community": 2,
+      "norm_label": "update_status()"
+    },
+    {
+      "label": "filter_area_gas_monitors()",
+      "file_type": "code",
+      "source_file": "area_gas_monitor/routes.py",
+      "source_location": "L466",
+      "_origin": "ast",
+      "id": "area_gas_monitor_routes_filter_area_gas_monitors",
+      "community": 2,
+      "norm_label": "filter_area_gas_monitors()"
     },
     {
       "label": "auth_utils.py",
@@ -977,10 +1009,9 @@
       "source_file": "auth_utils.py",
       "source_location": "L1",
       "_origin": "ast",
-      "community": 5,
-      "norm_label": "auth_utils.py",
-      "id": "auth_utils",
-      "community_name": "Community 5"
+      "id": "c_inspectionapp_code_only_auth_utils_py",
+      "community": 2,
+      "norm_label": "auth_utils.py"
     },
     {
       "label": "login_required()",
@@ -988,10 +1019,9 @@
       "source_file": "auth_utils.py",
       "source_location": "L5",
       "_origin": "ast",
-      "community": 5,
-      "norm_label": "login_required()",
-      "id": "auth_utils_login_required",
-      "community_name": "Community 5"
+      "id": "code_only_auth_utils_login_required",
+      "community": 2,
+      "norm_label": "login_required()"
     },
     {
       "label": "role_required()",
@@ -999,10 +1029,89 @@
       "source_file": "auth_utils.py",
       "source_location": "L14",
       "_origin": "ast",
-      "community": 5,
-      "norm_label": "role_required()",
-      "id": "auth_utils_role_required",
-      "community_name": "Community 5"
+      "id": "code_only_auth_utils_role_required",
+      "community": 2,
+      "norm_label": "role_required()"
+    },
+    {
+      "label": "__init__.py",
+      "file_type": "code",
+      "source_file": "blueprints/__init__.py",
+      "source_location": "L1",
+      "_origin": "ast",
+      "id": "blueprints_init",
+      "community": 16,
+      "norm_label": "__init__.py"
+    },
+    {
+      "label": "fire_extinguisher.py",
+      "file_type": "code",
+      "source_file": "blueprints/fire_extinguisher.py",
+      "source_location": "L1",
+      "_origin": "ast",
+      "id": "blueprints_fire_extinguisher",
+      "community": 3,
+      "norm_label": "fire_extinguisher.py"
+    },
+    {
+      "label": "get_db_connection()",
+      "file_type": "code",
+      "source_file": "blueprints/fire_extinguisher.py",
+      "source_location": "L7",
+      "_origin": "ast",
+      "id": "blueprints_fire_extinguisher_get_db_connection",
+      "community": 3,
+      "norm_label": "get_db_connection()"
+    },
+    {
+      "label": "parse_date()",
+      "file_type": "code",
+      "source_file": "blueprints/fire_extinguisher.py",
+      "source_location": "L12",
+      "_origin": "ast",
+      "id": "blueprints_fire_extinguisher_parse_date",
+      "community": 3,
+      "norm_label": "parse_date()"
+    },
+    {
+      "label": "add_fire_extinguisher()",
+      "file_type": "code",
+      "source_file": "blueprints/fire_extinguisher.py",
+      "source_location": "L21",
+      "_origin": "ast",
+      "id": "blueprints_fire_extinguisher_add_fire_extinguisher",
+      "community": 3,
+      "norm_label": "add_fire_extinguisher()"
+    },
+    {
+      "label": "list_fire_extinguishers()",
+      "file_type": "code",
+      "source_file": "blueprints/fire_extinguisher.py",
+      "source_location": "L73",
+      "_origin": "ast",
+      "id": "blueprints_fire_extinguisher_list_fire_extinguishers",
+      "community": 3,
+      "norm_label": "list_fire_extinguishers()"
+    },
+    {
+      "label": "fire_extinguisher_matrix()",
+      "file_type": "code",
+      "source_file": "blueprints/fire_extinguisher.py",
+      "source_location": "L117",
+      "_origin": "ast",
+      "id": "blueprints_fire_extinguisher_fire_extinguisher_matrix",
+      "community": 3,
+      "norm_label": "fire_extinguisher_matrix()"
+    },
+    {
+      "label": "upload_fire_extinguisher()",
+      "file_type": "code",
+      "source_file": "blueprints/fire_extinguisher.py",
+      "source_location": "L125",
+      "_origin": "ast",
+      "id": "blueprints_fire_extinguisher_upload_fire_extinguisher",
+      "community": 3,
+      "norm_label": "upload_fire_extinguisher()"
     },
     {
       "label": "config.py",
@@ -1010,10 +1119,9 @@
       "source_file": "config.py",
       "source_location": "L1",
       "_origin": "ast",
-      "community": 10,
-      "norm_label": "config.py",
-      "id": "config",
-      "community_name": "Community 10"
+      "id": "c_inspectionapp_code_only_config_py",
+      "community": 12,
+      "norm_label": "config.py"
     },
     {
       "label": "Config",
@@ -1021,10 +1129,139 @@
       "source_file": "config.py",
       "source_location": "L3",
       "_origin": "ast",
-      "community": 10,
-      "norm_label": "config",
-      "id": "config_config",
-      "community_name": "Community 10"
+      "id": "code_only_config_config",
+      "community": 12,
+      "norm_label": "config"
+    },
+    {
+      "label": "routes.py",
+      "file_type": "code",
+      "source_file": "eeba/routes.py",
+      "source_location": "L1",
+      "_origin": "ast",
+      "id": "eeba_routes",
+      "community": 4,
+      "norm_label": "routes.py"
+    },
+    {
+      "label": "get_db()",
+      "file_type": "code",
+      "source_file": "eeba/routes.py",
+      "source_location": "L14",
+      "_origin": "ast",
+      "id": "eeba_routes_get_db",
+      "community": 4,
+      "norm_label": "get_db()"
+    },
+    {
+      "label": "add_eeba()",
+      "file_type": "code",
+      "source_file": "eeba/routes.py",
+      "source_location": "L21",
+      "_origin": "ast",
+      "id": "eeba_routes_add_eeba",
+      "community": 4,
+      "norm_label": "add_eeba()"
+    },
+    {
+      "label": "upload_eeba()",
+      "file_type": "code",
+      "source_file": "eeba/routes.py",
+      "source_location": "L101",
+      "_origin": "ast",
+      "id": "eeba_routes_upload_eeba",
+      "community": 4,
+      "norm_label": "upload_eeba()"
+    },
+    {
+      "label": "list_eeba()",
+      "file_type": "code",
+      "source_file": "eeba/routes.py",
+      "source_location": "L300",
+      "_origin": "ast",
+      "id": "eeba_routes_list_eeba",
+      "community": 4,
+      "norm_label": "list_eeba()"
+    },
+    {
+      "label": "manual_scan_eeba()",
+      "file_type": "code",
+      "source_file": "eeba/routes.py",
+      "source_location": "L307",
+      "_origin": "ast",
+      "id": "eeba_routes_manual_scan_eeba",
+      "community": 4,
+      "norm_label": "manual_scan_eeba()"
+    },
+    {
+      "label": "eeba_detail_by_tag()",
+      "file_type": "code",
+      "source_file": "eeba/routes.py",
+      "source_location": "L315",
+      "_origin": "ast",
+      "id": "eeba_routes_eeba_detail_by_tag",
+      "community": 4,
+      "norm_label": "eeba_detail_by_tag()"
+    },
+    {
+      "label": "download_eeba_template()",
+      "file_type": "code",
+      "source_file": "eeba/routes.py",
+      "source_location": "L365",
+      "_origin": "ast",
+      "id": "eeba_routes_download_eeba_template",
+      "community": 4,
+      "norm_label": "download_eeba_template()"
+    },
+    {
+      "label": "eeba_edit_redirect()",
+      "file_type": "code",
+      "source_file": "eeba/routes.py",
+      "source_location": "L389",
+      "_origin": "ast",
+      "id": "eeba_routes_eeba_edit_redirect",
+      "community": 4,
+      "norm_label": "eeba_edit_redirect()"
+    },
+    {
+      "label": "delete_eeba()",
+      "file_type": "code",
+      "source_file": "eeba/routes.py",
+      "source_location": "L408",
+      "_origin": "ast",
+      "id": "eeba_routes_delete_eeba",
+      "community": 4,
+      "norm_label": "delete_eeba()"
+    },
+    {
+      "label": "__init__.py",
+      "file_type": "code",
+      "source_file": "gps_module/__init__.py",
+      "source_location": "L1",
+      "_origin": "ast",
+      "id": "gps_module_init",
+      "community": 21,
+      "norm_label": "__init__.py"
+    },
+    {
+      "label": "routes.py",
+      "file_type": "code",
+      "source_file": "gps_module/routes.py",
+      "source_location": "L1",
+      "_origin": "ast",
+      "id": "gps_module_routes",
+      "community": 14,
+      "norm_label": "routes.py"
+    },
+    {
+      "label": "show_gps()",
+      "file_type": "code",
+      "source_file": "gps_module/routes.py",
+      "source_location": "L7",
+      "_origin": "ast",
+      "id": "gps_module_routes_show_gps",
+      "community": 14,
+      "norm_label": "show_gps()"
     },
     {
       "label": "init_eebas_db.py",
@@ -1032,10 +1269,9 @@
       "source_file": "init_eebas_db.py",
       "source_location": "L1",
       "_origin": "ast",
-      "community": 6,
-      "norm_label": "init_eebas_db.py",
-      "id": "init_eebas_db",
-      "community_name": "Community 6"
+      "id": "c_inspectionapp_code_only_init_eebas_db_py",
+      "community": 4,
+      "norm_label": "init_eebas_db.py"
     },
     {
       "label": "init_db()",
@@ -1043,10 +1279,9 @@
       "source_file": "init_eebas_db.py",
       "source_location": "L82",
       "_origin": "ast",
-      "community": 6,
-      "norm_label": "init_db()",
-      "id": "init_eebas_db_init_db",
-      "community_name": "Community 6"
+      "id": "code_only_init_eebas_db_init_db",
+      "community": 4,
+      "norm_label": "init_db()"
     },
     {
       "label": "Path",
@@ -1054,10 +1289,169 @@
       "source_file": "",
       "source_location": "",
       "_origin": "ast",
-      "community": 6,
-      "norm_label": "path",
       "id": "path",
-      "community_name": "Community 6"
+      "community": 4,
+      "norm_label": "path"
+    },
+    {
+      "label": "__init__.py",
+      "file_type": "code",
+      "source_file": "new_module/__init__.py",
+      "source_location": "L1",
+      "_origin": "ast",
+      "id": "new_module_init",
+      "community": 22,
+      "norm_label": "__init__.py"
+    },
+    {
+      "label": "routes.py",
+      "file_type": "code",
+      "source_file": "new_module/routes.py",
+      "source_location": "L1",
+      "_origin": "ast",
+      "id": "new_module_routes",
+      "community": 15,
+      "norm_label": "routes.py"
+    },
+    {
+      "label": "example_route()",
+      "file_type": "code",
+      "source_file": "new_module/routes.py",
+      "source_location": "L9",
+      "_origin": "ast",
+      "id": "new_module_routes_example_route",
+      "community": 15,
+      "norm_label": "example_route()"
+    },
+    {
+      "label": "__init__.py",
+      "file_type": "code",
+      "source_file": "personal_gas_monitor/__init__.py",
+      "source_location": "L1",
+      "_origin": "ast",
+      "id": "personal_gas_monitor_init",
+      "community": 5,
+      "norm_label": "__init__.py"
+    },
+    {
+      "label": "routes.py",
+      "file_type": "code",
+      "source_file": "personal_gas_monitor/routes.py",
+      "source_location": "L1",
+      "_origin": "ast",
+      "id": "personal_gas_monitor_routes",
+      "community": 5,
+      "norm_label": "routes.py"
+    },
+    {
+      "label": "get_db_connection()",
+      "file_type": "code",
+      "source_file": "personal_gas_monitor/routes.py",
+      "source_location": "L12",
+      "_origin": "ast",
+      "id": "personal_gas_monitor_routes_get_db_connection",
+      "community": 5,
+      "norm_label": "get_db_connection()"
+    },
+    {
+      "label": "to_date()",
+      "file_type": "code",
+      "source_file": "personal_gas_monitor/routes.py",
+      "source_location": "L18",
+      "_origin": "ast",
+      "id": "personal_gas_monitor_routes_to_date",
+      "community": 5,
+      "norm_label": "to_date()"
+    },
+    {
+      "label": "to_iso()",
+      "file_type": "code",
+      "source_file": "personal_gas_monitor/routes.py",
+      "source_location": "L25",
+      "_origin": "ast",
+      "id": "personal_gas_monitor_routes_to_iso",
+      "community": 5,
+      "norm_label": "to_iso()"
+    },
+    {
+      "label": "date",
+      "file_type": "code",
+      "source_file": "",
+      "source_location": "",
+      "_origin": "ast",
+      "id": "date",
+      "community": 5,
+      "norm_label": "date"
+    },
+    {
+      "label": "add_personal_gas_monitor()",
+      "file_type": "code",
+      "source_file": "personal_gas_monitor/routes.py",
+      "source_location": "L35",
+      "_origin": "ast",
+      "id": "personal_gas_monitor_routes_add_personal_gas_monitor",
+      "community": 5,
+      "norm_label": "add_personal_gas_monitor()"
+    },
+    {
+      "label": "edit_personal_gas_monitor()",
+      "file_type": "code",
+      "source_file": "personal_gas_monitor/routes.py",
+      "source_location": "L111",
+      "_origin": "ast",
+      "id": "personal_gas_monitor_routes_edit_personal_gas_monitor",
+      "community": 5,
+      "norm_label": "edit_personal_gas_monitor()"
+    },
+    {
+      "label": "delete_personal_gas_monitor()",
+      "file_type": "code",
+      "source_file": "personal_gas_monitor/routes.py",
+      "source_location": "L203",
+      "_origin": "ast",
+      "id": "personal_gas_monitor_routes_delete_personal_gas_monitor",
+      "community": 5,
+      "norm_label": "delete_personal_gas_monitor()"
+    },
+    {
+      "label": "get_user_name()",
+      "file_type": "code",
+      "source_file": "personal_gas_monitor/routes.py",
+      "source_location": "L220",
+      "_origin": "ast",
+      "id": "personal_gas_monitor_routes_get_user_name",
+      "community": 5,
+      "norm_label": "get_user_name()"
+    },
+    {
+      "label": "list_personal_gas_monitor()",
+      "file_type": "code",
+      "source_file": "personal_gas_monitor/routes.py",
+      "source_location": "L237",
+      "_origin": "ast",
+      "id": "personal_gas_monitor_routes_list_personal_gas_monitor",
+      "community": 5,
+      "norm_label": "list_personal_gas_monitor()"
+    },
+    {
+      "label": "YYYY-MM-DD' -> date | None",
+      "file_type": "rationale",
+      "source_file": "personal_gas_monitor/routes.py",
+      "source_location": "L19",
+      "_origin": "ast",
+      "id": "personal_gas_monitor_routes_rationale_19",
+      "community": 5,
+      "norm_label": "yyyy-mm-dd' -> date | none"
+    },
+    {
+      "label": "date -> 'YYYY-MM-DD' | None",
+      "file_type": "rationale",
+      "source_file": "personal_gas_monitor/routes.py",
+      "source_location": "L26",
+      "_origin": "ast",
+      "id": "personal_gas_monitor_routes_rationale_26",
+      "community": 5,
+      "norm_label": "date -> 'yyyy-mm-dd' | none"
     },
     {
       "label": "scba_tablolari.py",
@@ -1065,10 +1459,9 @@
       "source_file": "scba_tablolari.py",
       "source_location": "L1",
       "_origin": "ast",
-      "community": 12,
-      "norm_label": "scba_tablolari.py",
-      "id": "scba_tablolari",
-      "community_name": "Community 12"
+      "id": "c_inspectionapp_code_only_scba_tablolari_py",
+      "community": 17,
+      "norm_label": "scba_tablolari.py"
     },
     {
       "label": "scba_tag_number.py",
@@ -1076,10 +1469,9 @@
       "source_file": "scba_tag_number.py",
       "source_location": "L1",
       "_origin": "ast",
-      "community": 11,
-      "norm_label": "scba_tag_number.py",
-      "id": "scba_tag_number",
-      "community_name": "Community 11"
+      "id": "c_inspectionapp_code_only_scba_tag_number_py",
+      "community": 13,
+      "norm_label": "scba_tag_number.py"
     },
     {
       "label": "assign_scba_tags()",
@@ -1087,10 +1479,99 @@
       "source_file": "scba_tag_number.py",
       "source_location": "L6",
       "_origin": "ast",
-      "community": 11,
-      "norm_label": "assign_scba_tags()",
-      "id": "scba_tag_number_assign_scba_tags",
-      "community_name": "Community 11"
+      "id": "code_only_scba_tag_number_assign_scba_tags",
+      "community": 13,
+      "norm_label": "assign_scba_tags()"
+    },
+    {
+      "label": "manifest.json",
+      "file_type": "code",
+      "source_file": "static/manifest.json",
+      "source_location": "L1",
+      "_origin": "ast",
+      "id": "static_manifest",
+      "community": 6,
+      "norm_label": "manifest.json"
+    },
+    {
+      "label": "name",
+      "file_type": "code",
+      "source_file": "static/manifest.json",
+      "source_location": "L2",
+      "_origin": "ast",
+      "id": "static_manifest_name",
+      "community": 6,
+      "norm_label": "name"
+    },
+    {
+      "label": "short_name",
+      "file_type": "code",
+      "source_file": "static/manifest.json",
+      "source_location": "L3",
+      "_origin": "ast",
+      "id": "static_manifest_short_name",
+      "community": 6,
+      "norm_label": "short_name"
+    },
+    {
+      "label": "start_url",
+      "file_type": "code",
+      "source_file": "static/manifest.json",
+      "source_location": "L4",
+      "_origin": "ast",
+      "id": "static_manifest_start_url",
+      "community": 6,
+      "norm_label": "start_url"
+    },
+    {
+      "label": "scope",
+      "file_type": "code",
+      "source_file": "static/manifest.json",
+      "source_location": "L5",
+      "_origin": "ast",
+      "id": "static_manifest_scope",
+      "community": 6,
+      "norm_label": "scope"
+    },
+    {
+      "label": "display",
+      "file_type": "code",
+      "source_file": "static/manifest.json",
+      "source_location": "L6",
+      "_origin": "ast",
+      "id": "static_manifest_display",
+      "community": 6,
+      "norm_label": "display"
+    },
+    {
+      "label": "background_color",
+      "file_type": "code",
+      "source_file": "static/manifest.json",
+      "source_location": "L7",
+      "_origin": "ast",
+      "id": "static_manifest_background_color",
+      "community": 6,
+      "norm_label": "background_color"
+    },
+    {
+      "label": "theme_color",
+      "file_type": "code",
+      "source_file": "static/manifest.json",
+      "source_location": "L8",
+      "_origin": "ast",
+      "id": "static_manifest_theme_color",
+      "community": 6,
+      "norm_label": "theme_color"
+    },
+    {
+      "label": "icons",
+      "file_type": "code",
+      "source_file": "static/manifest.json",
+      "source_location": "L9",
+      "_origin": "ast",
+      "id": "static_manifest_icons",
+      "community": 6,
+      "norm_label": "icons"
     },
     {
       "label": "sync_scba_units_to_cylinders_and_regulators.py",
@@ -1098,10 +1579,9 @@
       "source_file": "sync_scba_units_to_cylinders_and_regulators.py",
       "source_location": "L1",
       "_origin": "ast",
-      "community": 13,
-      "norm_label": "sync_scba_units_to_cylinders_and_regulators.py",
-      "id": "sync_scba_units_to_cylinders_and_regulators",
-      "community_name": "Community 13"
+      "id": "c_inspectionapp_code_only_sync_scba_units_to_cylinders_and_regulators_py",
+      "community": 18,
+      "norm_label": "sync_scba_units_to_cylinders_and_regulators.py"
     },
     {
       "label": "tagcheck.py",
@@ -1109,10 +1589,9 @@
       "source_file": "tagcheck.py",
       "source_location": "L1",
       "_origin": "ast",
-      "community": 14,
-      "norm_label": "tagcheck.py",
-      "id": "tagcheck",
-      "community_name": "Community 14"
+      "id": "c_inspectionapp_code_only_tagcheck_py",
+      "community": 19,
+      "norm_label": "tagcheck.py"
     },
     {
       "label": "upload_to_bigquery.py",
@@ -1120,10 +1599,9 @@
       "source_file": "upload_to_bigquery.py",
       "source_location": "L1",
       "_origin": "ast",
-      "community": 15,
-      "norm_label": "upload_to_bigquery.py",
-      "id": "upload_to_bigquery",
-      "community_name": "Community 15"
+      "id": "c_inspectionapp_code_only_upload_to_bigquery_py",
+      "community": 20,
+      "norm_label": "upload_to_bigquery.py"
     },
     {
       "label": "utils.py",
@@ -1131,10 +1609,9 @@
       "source_file": "utils.py",
       "source_location": "L1",
       "_origin": "ast",
+      "id": "c_inspectionapp_code_only_utils_py",
       "community": 3,
-      "norm_label": "utils.py",
-      "id": "utils",
-      "community_name": "Community 3"
+      "norm_label": "utils.py"
     },
     {
       "label": "normalize_result()",
@@ -1142,10 +1619,9 @@
       "source_file": "utils.py",
       "source_location": "L5",
       "_origin": "ast",
+      "id": "code_only_utils_normalize_result",
       "community": 3,
-      "norm_label": "normalize_result()",
-      "id": "utils_normalize_result",
-      "community_name": "Community 3"
+      "norm_label": "normalize_result()"
     }
   ],
   "links": [
@@ -1153,371 +1629,371 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "app.py",
-      "source_location": "L3807",
+      "source_location": "L3703",
       "weight": 1.0,
-      "confidence_score": 1.0,
       "source": "app",
-      "target": "app_add_auth_user"
+      "target": "app_add_auth_user",
+      "confidence_score": 1.0
     },
     {
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "app.py",
-      "source_location": "L2103",
+      "source_location": "L2111",
       "weight": 1.0,
-      "confidence_score": 1.0,
       "source": "app",
-      "target": "app_add_brand"
+      "target": "app_add_brand",
+      "confidence_score": 1.0
     },
     {
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "app.py",
-      "source_location": "L2172",
+      "source_location": "L2180",
       "weight": 1.0,
-      "confidence_score": 1.0,
       "source": "app",
-      "target": "app_add_bulk"
+      "target": "app_add_bulk",
+      "confidence_score": 1.0
     },
     {
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "app.py",
-      "source_location": "L2218",
+      "source_location": "L2226",
       "weight": 1.0,
-      "confidence_score": 1.0,
       "source": "app",
-      "target": "app_add_company"
+      "target": "app_add_company",
+      "confidence_score": 1.0
     },
     {
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "app.py",
-      "source_location": "L2492",
+      "source_location": "L2500",
       "weight": 1.0,
-      "confidence_score": 1.0,
       "source": "app",
-      "target": "app_add_fire_extinguisher"
+      "target": "app_add_fire_extinguisher",
+      "confidence_score": 1.0
     },
     {
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "app.py",
-      "source_location": "L2121",
+      "source_location": "L2129",
       "weight": 1.0,
-      "confidence_score": 1.0,
       "source": "app",
-      "target": "app_add_product"
+      "target": "app_add_product",
+      "confidence_score": 1.0
     },
     {
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "app.py",
-      "source_location": "L2284",
+      "source_location": "L2292",
       "weight": 1.0,
-      "confidence_score": 1.0,
       "source": "app",
-      "target": "app_add_product_type"
+      "target": "app_add_product_type",
+      "confidence_score": 1.0
     },
     {
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "app.py",
-      "source_location": "L536",
+      "source_location": "L542",
       "weight": 1.0,
-      "confidence_score": 1.0,
       "source": "app",
-      "target": "app_add_scba"
+      "target": "app_add_scba",
+      "confidence_score": 1.0
     },
     {
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "app.py",
-      "source_location": "L1625",
+      "source_location": "L1633",
       "weight": 1.0,
-      "confidence_score": 1.0,
       "source": "app",
-      "target": "app_add_user"
+      "target": "app_add_user",
+      "confidence_score": 1.0
     },
     {
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "app.py",
-      "source_location": "L1557",
+      "source_location": "L1565",
       "weight": 1.0,
-      "confidence_score": 1.0,
       "source": "app",
-      "target": "app_api_extinguisher_conditions"
+      "target": "app_api_extinguisher_conditions",
+      "confidence_score": 1.0
     },
     {
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "app.py",
-      "source_location": "L1603",
+      "source_location": "L1611",
       "weight": 1.0,
-      "confidence_score": 1.0,
       "source": "app",
-      "target": "app_api_monitor_status"
+      "target": "app_api_monitor_status",
+      "confidence_score": 1.0
     },
     {
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "app.py",
-      "source_location": "L1827",
+      "source_location": "L1835",
       "weight": 1.0,
-      "confidence_score": 1.0,
       "source": "app",
-      "target": "app_assign_product"
+      "target": "app_assign_product",
+      "confidence_score": 1.0
     },
     {
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "app.py",
-      "source_location": "L3798",
+      "source_location": "L3694",
       "weight": 1.0,
-      "confidence_score": 1.0,
       "source": "app",
-      "target": "app_auth_users"
+      "target": "app_auth_users",
+      "confidence_score": 1.0
     },
     {
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "app.py",
-      "source_location": "L3054",
+      "source_location": "L3018",
       "weight": 1.0,
-      "confidence_score": 1.0,
       "source": "app",
-      "target": "app_bulk_inspect_fire_extinguishers"
+      "target": "app_bulk_inspect_fire_extinguishers",
+      "confidence_score": 1.0
     },
     {
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "app.py",
-      "source_location": "L3874",
+      "source_location": "L3770",
       "weight": 1.0,
-      "confidence_score": 1.0,
       "source": "app",
-      "target": "app_change_password"
+      "target": "app_change_password",
+      "confidence_score": 1.0
     },
     {
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "app.py",
-      "source_location": "L2319",
+      "source_location": "L2327",
       "weight": 1.0,
-      "confidence_score": 1.0,
       "source": "app",
-      "target": "app_dashboard"
+      "target": "app_dashboard",
+      "confidence_score": 1.0
     },
     {
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "app.py",
-      "source_location": "L3831",
+      "source_location": "L3727",
       "weight": 1.0,
-      "confidence_score": 1.0,
       "source": "app",
-      "target": "app_delete_auth_user"
+      "target": "app_delete_auth_user",
+      "confidence_score": 1.0
     },
     {
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "app.py",
-      "source_location": "L3309",
+      "source_location": "L3287",
       "weight": 1.0,
-      "confidence_score": 1.0,
       "source": "app",
-      "target": "app_delete_brand"
+      "target": "app_delete_brand",
+      "confidence_score": 1.0
     },
     {
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "app.py",
-      "source_location": "L405",
+      "source_location": "L411",
       "weight": 1.0,
-      "confidence_score": 1.0,
       "source": "app",
-      "target": "app_delete_company"
+      "target": "app_delete_company",
+      "confidence_score": 1.0
     },
     {
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "app.py",
-      "source_location": "L857",
+      "source_location": "L863",
       "weight": 1.0,
-      "confidence_score": 1.0,
       "source": "app",
-      "target": "app_delete_fire_extinguisher"
+      "target": "app_delete_fire_extinguisher",
+      "confidence_score": 1.0
     },
     {
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "app.py",
-      "source_location": "L2237",
+      "source_location": "L2245",
       "weight": 1.0,
-      "confidence_score": 1.0,
       "source": "app",
-      "target": "app_delete_product"
+      "target": "app_delete_product",
+      "confidence_score": 1.0
     },
     {
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "app.py",
-      "source_location": "L2303",
+      "source_location": "L2311",
       "weight": 1.0,
-      "confidence_score": 1.0,
       "source": "app",
-      "target": "app_delete_product_type"
+      "target": "app_delete_product_type",
+      "confidence_score": 1.0
     },
     {
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "app.py",
-      "source_location": "L1350",
+      "source_location": "L1358",
       "weight": 1.0,
-      "confidence_score": 1.0,
       "source": "app",
-      "target": "app_delete_scba"
+      "target": "app_delete_scba",
+      "confidence_score": 1.0
     },
     {
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "app.py",
-      "source_location": "L394",
+      "source_location": "L400",
       "weight": 1.0,
-      "confidence_score": 1.0,
       "source": "app",
-      "target": "app_delete_user"
+      "target": "app_delete_user",
+      "confidence_score": 1.0
     },
     {
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "app.py",
-      "source_location": "L3489",
+      "source_location": "L3467",
       "weight": 1.0,
-      "confidence_score": 1.0,
       "source": "app",
-      "target": "app_draw_card"
+      "target": "app_draw_card",
+      "confidence_score": 1.0
     },
     {
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "app.py",
-      "source_location": "L3294",
+      "source_location": "L3272",
       "weight": 1.0,
-      "confidence_score": 1.0,
       "source": "app",
-      "target": "app_edit_brand"
+      "target": "app_edit_brand",
+      "confidence_score": 1.0
     },
     {
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "app.py",
-      "source_location": "L2788",
+      "source_location": "L2752",
       "weight": 1.0,
-      "confidence_score": 1.0,
       "source": "app",
-      "target": "app_edit_fire_extinguisher"
+      "target": "app_edit_fire_extinguisher",
+      "confidence_score": 1.0
     },
     {
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "app.py",
-      "source_location": "L2249",
+      "source_location": "L2257",
       "weight": 1.0,
-      "confidence_score": 1.0,
       "source": "app",
-      "target": "app_edit_product"
+      "target": "app_edit_product",
+      "confidence_score": 1.0
     },
     {
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "app.py",
-      "source_location": "L1298",
+      "source_location": "L1306",
       "weight": 1.0,
-      "confidence_score": 1.0,
       "source": "app",
-      "target": "app_edit_scba"
+      "target": "app_edit_scba",
+      "confidence_score": 1.0
     },
     {
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "app.py",
-      "source_location": "L417",
+      "source_location": "L423",
       "weight": 1.0,
-      "confidence_score": 1.0,
       "source": "app",
-      "target": "app_edit_user"
+      "target": "app_edit_user",
+      "confidence_score": 1.0
     },
     {
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "app.py",
-      "source_location": "L3255",
+      "source_location": "L3233",
       "weight": 1.0,
-      "confidence_score": 1.0,
       "source": "app",
-      "target": "app_export_fire_extinguishers_excel"
+      "target": "app_export_fire_extinguishers_excel",
+      "confidence_score": 1.0
     },
     {
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "app.py",
-      "source_location": "L3130",
+      "source_location": "L3108",
       "weight": 1.0,
-      "confidence_score": 1.0,
       "source": "app",
-      "target": "app_export_fire_extinguishers_pdf"
+      "target": "app_export_fire_extinguishers_pdf",
+      "confidence_score": 1.0
     },
     {
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "app.py",
-      "source_location": "L1048",
+      "source_location": "L1056",
       "weight": 1.0,
-      "confidence_score": 1.0,
       "source": "app",
-      "target": "app_export_scba_excel"
+      "target": "app_export_scba_excel",
+      "confidence_score": 1.0
     },
     {
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "app.py",
-      "source_location": "L1170",
+      "source_location": "L1178",
       "weight": 1.0,
-      "confidence_score": 1.0,
       "source": "app",
-      "target": "app_export_scba_pdf"
+      "target": "app_export_scba_pdf",
+      "confidence_score": 1.0
     },
     {
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "app.py",
-      "source_location": "L2434",
+      "source_location": "L2442",
       "weight": 1.0,
-      "confidence_score": 1.0,
       "source": "app",
-      "target": "app_extinguisher_monthly_summary"
+      "target": "app_extinguisher_monthly_summary",
+      "confidence_score": 1.0
     },
     {
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "app.py",
-      "source_location": "L2394",
+      "source_location": "L2402",
       "weight": 1.0,
-      "confidence_score": 1.0,
       "source": "app",
-      "target": "app_extinguisher_summary"
+      "target": "app_extinguisher_summary",
+      "confidence_score": 1.0
     },
     {
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "app.py",
-      "source_location": "L2647",
+      "source_location": "L2655",
       "weight": 1.0,
-      "confidence_score": 1.0,
       "source": "app",
-      "target": "app_extinguisher_summary_pdf"
+      "target": "app_extinguisher_summary_pdf",
+      "confidence_score": 1.0
     },
     {
       "relation": "contains",
@@ -1525,9 +2001,9 @@
       "source_file": "app.py",
       "source_location": "L180",
       "weight": 1.0,
-      "confidence_score": 1.0,
       "source": "app",
-      "target": "app_format_date_custom"
+      "target": "app_format_date_custom",
+      "confidence_score": 1.0
     },
     {
       "relation": "contains",
@@ -1535,69 +2011,69 @@
       "source_file": "app.py",
       "source_location": "L192",
       "weight": 1.0,
-      "confidence_score": 1.0,
       "source": "app",
-      "target": "app_format_date_dd_mmm_yyyy"
+      "target": "app_format_date_dd_mmm_yyyy",
+      "confidence_score": 1.0
     },
     {
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "app.py",
-      "source_location": "L437",
+      "source_location": "L443",
       "weight": 1.0,
-      "confidence_score": 1.0,
       "source": "app",
-      "target": "app_generate_next_scba_tag"
+      "target": "app_generate_next_scba_tag",
+      "confidence_score": 1.0
     },
     {
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "app.py",
-      "source_location": "L1923",
+      "source_location": "L1931",
       "weight": 1.0,
-      "confidence_score": 1.0,
       "source": "app",
-      "target": "app_generate_pdf"
+      "target": "app_generate_pdf",
+      "confidence_score": 1.0
     },
     {
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "app.py",
-      "source_location": "L3511",
+      "source_location": "L3489",
       "weight": 1.0,
-      "confidence_score": 1.0,
       "source": "app",
-      "target": "app_generate_pdfs"
+      "target": "app_generate_pdfs",
+      "confidence_score": 1.0
     },
     {
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "app.py",
-      "source_location": "L3576",
+      "source_location": "L3554",
       "weight": 1.0,
-      "confidence_score": 1.0,
       "source": "app",
-      "target": "app_generate_scba_tags"
+      "target": "app_generate_scba_tags",
+      "confidence_score": 1.0
     },
     {
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "app.py",
-      "source_location": "L3552",
+      "source_location": "L3530",
       "weight": 1.0,
-      "confidence_score": 1.0,
       "source": "app",
-      "target": "app_generate_tags"
+      "target": "app_generate_tags",
+      "confidence_score": 1.0
     },
     {
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "app.py",
-      "source_location": "L3335",
+      "source_location": "L3313",
       "weight": 1.0,
-      "confidence_score": 1.0,
       "source": "app",
-      "target": "app_generate_tags_and_save"
+      "target": "app_generate_tags_and_save",
+      "confidence_score": 1.0
     },
     {
       "relation": "contains",
@@ -1605,9 +2081,9 @@
       "source_file": "app.py",
       "source_location": "L200",
       "weight": 1.0,
-      "confidence_score": 1.0,
       "source": "app",
-      "target": "app_get_db"
+      "target": "app_get_db",
+      "confidence_score": 1.0
     },
     {
       "relation": "contains",
@@ -1615,59 +2091,59 @@
       "source_file": "app.py",
       "source_location": "L219",
       "weight": 1.0,
-      "confidence_score": 1.0,
       "source": "app",
-      "target": "app_get_db_connection"
+      "target": "app_get_db_connection",
+      "confidence_score": 1.0
     },
     {
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "app.py",
-      "source_location": "L2623",
+      "source_location": "L2631",
       "weight": 1.0,
-      "confidence_score": 1.0,
       "source": "app",
-      "target": "app_get_extinguisher_summary_data"
+      "target": "app_get_extinguisher_summary_data",
+      "confidence_score": 1.0
     },
     {
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "app.py",
-      "source_location": "L3344",
+      "source_location": "L3322",
       "weight": 1.0,
-      "confidence_score": 1.0,
       "source": "app",
-      "target": "app_get_last_tag_number"
+      "target": "app_get_last_tag_number",
+      "confidence_score": 1.0
     },
     {
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "app.py",
-      "source_location": "L384",
+      "source_location": "L390",
       "weight": 1.0,
-      "confidence_score": 1.0,
       "source": "app",
-      "target": "app_get_name_by_badge"
+      "target": "app_get_name_by_badge",
+      "confidence_score": 1.0
     },
     {
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "app.py",
-      "source_location": "L462",
+      "source_location": "L468",
       "weight": 1.0,
-      "confidence_score": 1.0,
       "source": "app",
-      "target": "app_get_scba_id"
+      "target": "app_get_scba_id",
+      "confidence_score": 1.0
     },
     {
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "app.py",
-      "source_location": "L1448",
+      "source_location": "L1456",
       "weight": 1.0,
-      "confidence_score": 1.0,
       "source": "app",
-      "target": "app_home"
+      "target": "app_home",
+      "confidence_score": 1.0
     },
     {
       "relation": "contains",
@@ -1675,9 +2151,9 @@
       "source_file": "app.py",
       "source_location": "L215",
       "weight": 1.0,
-      "confidence_score": 1.0,
       "source": "app",
-      "target": "app_init_db"
+      "target": "app_init_db",
+      "confidence_score": 1.0
     },
     {
       "relation": "contains",
@@ -1685,9 +2161,9 @@
       "source_file": "app.py",
       "source_location": "L227",
       "weight": 1.0,
-      "confidence_score": 1.0,
       "source": "app",
-      "target": "app_initialize_database"
+      "target": "app_initialize_database",
+      "confidence_score": 1.0
     },
     {
       "relation": "contains",
@@ -1695,159 +2171,149 @@
       "source_file": "app.py",
       "source_location": "L89",
       "weight": 1.0,
-      "confidence_score": 1.0,
       "source": "app",
-      "target": "app_inject_now"
+      "target": "app_inject_now",
+      "confidence_score": 1.0
     },
     {
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "app.py",
-      "source_location": "L934",
+      "source_location": "L942",
       "weight": 1.0,
-      "confidence_score": 1.0,
       "source": "app",
-      "target": "app_inspect_assembly"
+      "target": "app_inspect_assembly",
+      "confidence_score": 1.0
     },
     {
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "app.py",
-      "source_location": "L2988",
+      "source_location": "L2952",
       "weight": 1.0,
-      "confidence_score": 1.0,
       "source": "app",
-      "target": "app_inspect_fire_extinguisher"
+      "target": "app_inspect_fire_extinguisher",
+      "confidence_score": 1.0
     },
     {
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "app.py",
-      "source_location": "L3656",
+      "source_location": "L3634",
       "weight": 1.0,
-      "confidence_score": 1.0,
       "source": "app",
-      "target": "app_inspect_fire_extinguisher_desktop"
+      "target": "app_inspect_fire_extinguisher_desktop",
+      "confidence_score": 1.0
     },
     {
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "app.py",
-      "source_location": "L3713",
+      "source_location": "L1778",
       "weight": 1.0,
-      "confidence_score": 1.0,
       "source": "app",
-      "target": "app_inspect_fire_extinguisher_mobile"
+      "target": "app_inspect_product",
+      "confidence_score": 1.0
     },
     {
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "app.py",
-      "source_location": "L1770",
+      "source_location": "L1088",
       "weight": 1.0,
-      "confidence_score": 1.0,
       "source": "app",
-      "target": "app_inspect_product"
+      "target": "app_inspect_scba",
+      "confidence_score": 1.0
     },
     {
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "app.py",
-      "source_location": "L1080",
+      "source_location": "L901",
       "weight": 1.0,
-      "confidence_score": 1.0,
       "source": "app",
-      "target": "app_inspect_scba"
+      "target": "app_inspect_scba_by_tag",
+      "confidence_score": 1.0
     },
     {
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "app.py",
-      "source_location": "L894",
+      "source_location": "L488",
       "weight": 1.0,
-      "confidence_score": 1.0,
       "source": "app",
-      "target": "app_inspect_scba_by_tag"
+      "target": "app_inspect_scba_logic",
+      "confidence_score": 1.0
     },
     {
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "app.py",
-      "source_location": "L482",
+      "source_location": "L3375",
       "weight": 1.0,
-      "confidence_score": 1.0,
       "source": "app",
-      "target": "app_inspect_scba_logic"
+      "target": "app_inspect_tag",
+      "confidence_score": 1.0
     },
     {
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "app.py",
-      "source_location": "L3397",
+      "source_location": "L1821",
       "weight": 1.0,
-      "confidence_score": 1.0,
       "source": "app",
-      "target": "app_inspect_tag"
+      "target": "app_inspection_log",
+      "confidence_score": 1.0
     },
     {
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "app.py",
-      "source_location": "L1813",
+      "source_location": "L1002",
       "weight": 1.0,
-      "confidence_score": 1.0,
       "source": "app",
-      "target": "app_inspection_log"
+      "target": "app_list_assemblies",
+      "confidence_score": 1.0
     },
     {
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "app.py",
-      "source_location": "L994",
+      "source_location": "L1897",
       "weight": 1.0,
-      "confidence_score": 1.0,
       "source": "app",
-      "target": "app_list_assemblies"
+      "target": "app_list_assignments",
+      "confidence_score": 1.0
     },
     {
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "app.py",
-      "source_location": "L1889",
+      "source_location": "L2562",
       "weight": 1.0,
-      "confidence_score": 1.0,
       "source": "app",
-      "target": "app_list_assignments"
+      "target": "app_list_fire_extinguishers",
+      "confidence_score": 1.0
     },
     {
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "app.py",
-      "source_location": "L2554",
+      "source_location": "L1720",
       "weight": 1.0,
-      "confidence_score": 1.0,
       "source": "app",
-      "target": "app_list_fire_extinguishers"
+      "target": "app_list_products",
+      "confidence_score": 1.0
     },
     {
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "app.py",
-      "source_location": "L1712",
+      "source_location": "L637",
       "weight": 1.0,
-      "confidence_score": 1.0,
       "source": "app",
-      "target": "app_list_products"
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "app.py",
-      "source_location": "L631",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "app",
-      "target": "app_list_scba"
+      "target": "app_list_scba",
+      "confidence_score": 1.0
     },
     {
       "relation": "contains",
@@ -1855,9 +2321,9 @@
       "source_file": "app.py",
       "source_location": "L104",
       "weight": 1.0,
-      "confidence_score": 1.0,
       "source": "app",
-      "target": "app_login"
+      "target": "app_login",
+      "confidence_score": 1.0
     },
     {
       "relation": "contains",
@@ -1865,29 +2331,29 @@
       "source_file": "app.py",
       "source_location": "L131",
       "weight": 1.0,
-      "confidence_score": 1.0,
       "source": "app",
-      "target": "app_logout"
+      "target": "app_logout",
+      "confidence_score": 1.0
     },
     {
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "app.py",
-      "source_location": "L3357",
+      "source_location": "L3335",
       "weight": 1.0,
-      "confidence_score": 1.0,
       "source": "app",
-      "target": "app_manual_scan"
+      "target": "app_manual_scan",
+      "confidence_score": 1.0
     },
     {
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "app.py",
-      "source_location": "L2163",
+      "source_location": "L2171",
       "weight": 1.0,
-      "confidence_score": 1.0,
       "source": "app",
-      "target": "app_manual_scan_scba"
+      "target": "app_manual_scan_scba",
+      "confidence_score": 1.0
     },
     {
       "relation": "contains",
@@ -1895,9 +2361,9 @@
       "source_file": "app.py",
       "source_location": "L207",
       "weight": 1.0,
-      "confidence_score": 1.0,
       "source": "app",
-      "target": "app_query_db"
+      "target": "app_query_db",
+      "confidence_score": 1.0
     },
     {
       "relation": "contains",
@@ -1905,69 +2371,69 @@
       "source_file": "app.py",
       "source_location": "L66",
       "weight": 1.0,
-      "confidence_score": 1.0,
       "source": "app",
-      "target": "app_requires_roles"
+      "target": "app_requires_roles",
+      "confidence_score": 1.0
     },
     {
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "app.py",
-      "source_location": "L2084",
+      "source_location": "L2092",
       "weight": 1.0,
-      "confidence_score": 1.0,
       "source": "app",
-      "target": "app_return_product"
+      "target": "app_return_product",
+      "confidence_score": 1.0
     },
     {
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "app.py",
-      "source_location": "L736",
+      "source_location": "L742",
       "weight": 1.0,
-      "confidence_score": 1.0,
       "source": "app",
-      "target": "app_scba_report"
+      "target": "app_scba_report",
+      "confidence_score": 1.0
     },
     {
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "app.py",
-      "source_location": "L3317",
+      "source_location": "L3295",
       "weight": 1.0,
-      "confidence_score": 1.0,
       "source": "app",
-      "target": "app_sync_users_from_assignments"
+      "target": "app_sync_users_from_assignments",
+      "confidence_score": 1.0
     },
     {
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "app.py",
-      "source_location": "L615",
+      "source_location": "L621",
       "weight": 1.0,
-      "confidence_score": 1.0,
       "source": "app",
-      "target": "app_test_session"
+      "target": "app_test_session",
+      "confidence_score": 1.0
     },
     {
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "app.py",
-      "source_location": "L3907",
+      "source_location": "L3803",
       "weight": 1.0,
-      "confidence_score": 1.0,
       "source": "app",
-      "target": "app_thanks"
+      "target": "app_thanks",
+      "confidence_score": 1.0
     },
     {
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "app.py",
-      "source_location": "L2612",
+      "source_location": "L2620",
       "weight": 1.0,
-      "confidence_score": 1.0,
       "source": "app",
-      "target": "app_todate"
+      "target": "app_todate",
+      "confidence_score": 1.0
     },
     {
       "relation": "contains",
@@ -1975,60 +2441,50 @@
       "source_file": "app.py",
       "source_location": "L51",
       "weight": 1.0,
-      "confidence_score": 1.0,
       "source": "app",
-      "target": "app_todatetime"
+      "target": "app_todatetime",
+      "confidence_score": 1.0
     },
     {
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "app.py",
-      "source_location": "L3842",
+      "source_location": "L3738",
       "weight": 1.0,
-      "confidence_score": 1.0,
       "source": "app",
-      "target": "app_update_auth_password"
+      "target": "app_update_auth_password",
+      "confidence_score": 1.0
     },
     {
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "app.py",
-      "source_location": "L2744",
+      "source_location": "L2840",
       "weight": 1.0,
-      "confidence_score": 1.0,
       "source": "app",
-      "target": "app_update_fire_extinguisher"
+      "target": "app_upload_fire_extinguisher",
+      "confidence_score": 1.0
     },
     {
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "app.py",
-      "source_location": "L2876",
+      "source_location": "L1373",
       "weight": 1.0,
-      "confidence_score": 1.0,
       "source": "app",
-      "target": "app_upload_fire_extinguisher"
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "app.py",
-      "source_location": "L1365",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "app",
-      "target": "app_upload_scba"
+      "target": "app_upload_scba",
+      "confidence_score": 1.0
     },
     {
       "relation": "imports_from",
       "context": "import",
       "confidence": "EXTRACTED",
       "source_file": "app.py",
-      "source_location": "L1443",
+      "source_location": "L15",
       "weight": 1.0,
-      "confidence_score": 1.0,
       "source": "app",
-      "target": "auth_utils"
+      "target": "area_gas_monitor_routes",
+      "confidence_score": 1.0
     },
     {
       "relation": "imports",
@@ -2037,9 +2493,9 @@
       "source_file": "app.py",
       "source_location": "L2",
       "weight": 1.0,
-      "confidence_score": 1.0,
       "source": "app",
-      "target": "auth_utils_login_required"
+      "target": "code_only_auth_utils_login_required",
+      "confidence_score": 1.0
     },
     {
       "relation": "imports",
@@ -2048,86 +2504,97 @@
       "source_file": "app.py",
       "source_location": "L2",
       "weight": 1.0,
-      "confidence_score": 1.0,
       "source": "app",
-      "target": "auth_utils_role_required"
-    },
-    {
-      "relation": "imports_from",
-      "context": "import",
-      "confidence": "EXTRACTED",
-      "source_file": "app.py",
-      "source_location": "L2871",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "app",
-      "target": "utils"
+      "target": "code_only_auth_utils_role_required",
+      "confidence_score": 1.0
     },
     {
       "relation": "imports",
       "context": "import",
       "confidence": "EXTRACTED",
       "source_file": "app.py",
-      "source_location": "L2861",
+      "source_location": "L2825",
       "weight": 1.0,
-      "confidence_score": 1.0,
       "source": "app",
-      "target": "utils_normalize_result"
+      "target": "code_only_utils_normalize_result",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "app.py",
+      "source_location": "L19",
+      "weight": 1.0,
+      "source": "app",
+      "target": "eeba_routes",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "app.py",
+      "source_location": "L17",
+      "weight": 1.0,
+      "source": "app",
+      "target": "new_module_routes",
+      "confidence_score": 1.0
     },
     {
       "relation": "calls",
       "context": "call",
       "confidence": "EXTRACTED",
       "source_file": "app.py",
-      "source_location": "L782",
+      "source_location": "L788",
       "weight": 1.0,
-      "confidence_score": 1.0,
       "source": "app_scba_report",
-      "target": "app_format_date_dd_mmm_yyyy"
+      "target": "app_format_date_dd_mmm_yyyy",
+      "confidence_score": 1.0
     },
     {
       "relation": "calls",
       "context": "call",
       "confidence": "EXTRACTED",
       "source_file": "app.py",
-      "source_location": "L1828",
+      "source_location": "L1836",
       "weight": 1.0,
-      "confidence_score": 1.0,
       "source": "app_assign_product",
-      "target": "app_get_db"
+      "target": "app_get_db",
+      "confidence_score": 1.0
     },
     {
       "relation": "calls",
       "context": "call",
       "confidence": "EXTRACTED",
       "source_file": "app.py",
-      "source_location": "L1924",
+      "source_location": "L1932",
       "weight": 1.0,
-      "confidence_score": 1.0,
       "source": "app_generate_pdf",
-      "target": "app_get_db"
+      "target": "app_get_db",
+      "confidence_score": 1.0
     },
     {
       "relation": "calls",
       "context": "call",
       "confidence": "EXTRACTED",
       "source_file": "app.py",
-      "source_location": "L386",
+      "source_location": "L392",
       "weight": 1.0,
-      "confidence_score": 1.0,
       "source": "app_get_name_by_badge",
-      "target": "app_get_db"
+      "target": "app_get_db",
+      "confidence_score": 1.0
     },
     {
       "relation": "calls",
       "context": "call",
       "confidence": "EXTRACTED",
       "source_file": "app.py",
-      "source_location": "L1890",
+      "source_location": "L1898",
       "weight": 1.0,
-      "confidence_score": 1.0,
       "source": "app_list_assignments",
-      "target": "app_get_db"
+      "target": "app_get_db",
+      "confidence_score": 1.0
     },
     {
       "relation": "calls",
@@ -2136,31 +2603,31 @@
       "source_file": "app.py",
       "source_location": "L208",
       "weight": 1.0,
-      "confidence_score": 1.0,
       "source": "app_query_db",
-      "target": "app_get_db"
+      "target": "app_get_db",
+      "confidence_score": 1.0
     },
     {
       "relation": "calls",
       "context": "call",
       "confidence": "EXTRACTED",
       "source_file": "app.py",
-      "source_location": "L2085",
+      "source_location": "L2093",
       "weight": 1.0,
-      "confidence_score": 1.0,
       "source": "app_return_product",
-      "target": "app_get_db"
+      "target": "app_get_db",
+      "confidence_score": 1.0
     },
     {
       "relation": "calls",
       "context": "call",
       "confidence": "EXTRACTED",
       "source_file": "app.py",
-      "source_location": "L1742",
+      "source_location": "L1750",
       "weight": 1.0,
-      "confidence_score": 1.0,
       "source": "app_list_products",
-      "target": "app_query_db"
+      "target": "app_query_db",
+      "confidence_score": 1.0
     },
     {
       "relation": "calls",
@@ -2169,559 +2636,548 @@
       "source_file": "app.py",
       "source_location": "L216",
       "weight": 1.0,
-      "confidence_score": 1.0,
       "source": "app_init_db",
-      "target": "app_initialize_database"
+      "target": "app_initialize_database",
+      "confidence_score": 1.0
     },
     {
       "relation": "calls",
       "context": "call",
       "confidence": "EXTRACTED",
       "source_file": "app.py",
-      "source_location": "L3816",
+      "source_location": "L3712",
       "weight": 1.0,
-      "confidence_score": 1.0,
       "source": "app_add_auth_user",
-      "target": "app_get_db_connection"
+      "target": "app_get_db_connection",
+      "confidence_score": 1.0
     },
     {
       "relation": "calls",
       "context": "call",
       "confidence": "EXTRACTED",
       "source_file": "app.py",
-      "source_location": "L2104",
+      "source_location": "L2112",
       "weight": 1.0,
-      "confidence_score": 1.0,
       "source": "app_add_brand",
-      "target": "app_get_db_connection"
+      "target": "app_get_db_connection",
+      "confidence_score": 1.0
     },
     {
       "relation": "calls",
       "context": "call",
       "confidence": "EXTRACTED",
       "source_file": "app.py",
-      "source_location": "L2219",
+      "source_location": "L2227",
       "weight": 1.0,
-      "confidence_score": 1.0,
       "source": "app_add_company",
-      "target": "app_get_db_connection"
+      "target": "app_get_db_connection",
+      "confidence_score": 1.0
     },
     {
       "relation": "calls",
       "context": "call",
       "confidence": "EXTRACTED",
       "source_file": "app.py",
-      "source_location": "L2493",
+      "source_location": "L2501",
       "weight": 1.0,
-      "confidence_score": 1.0,
       "source": "app_add_fire_extinguisher",
-      "target": "app_get_db_connection"
+      "target": "app_get_db_connection",
+      "confidence_score": 1.0
     },
     {
       "relation": "calls",
       "context": "call",
       "confidence": "EXTRACTED",
       "source_file": "app.py",
-      "source_location": "L2122",
+      "source_location": "L2130",
       "weight": 1.0,
-      "confidence_score": 1.0,
       "source": "app_add_product",
-      "target": "app_get_db_connection"
+      "target": "app_get_db_connection",
+      "confidence_score": 1.0
     },
     {
       "relation": "calls",
       "context": "call",
       "confidence": "EXTRACTED",
       "source_file": "app.py",
-      "source_location": "L2285",
+      "source_location": "L2293",
       "weight": 1.0,
-      "confidence_score": 1.0,
       "source": "app_add_product_type",
-      "target": "app_get_db_connection"
+      "target": "app_get_db_connection",
+      "confidence_score": 1.0
     },
     {
       "relation": "calls",
       "context": "call",
       "confidence": "EXTRACTED",
       "source_file": "app.py",
-      "source_location": "L537",
+      "source_location": "L543",
       "weight": 1.0,
-      "confidence_score": 1.0,
       "source": "app_add_scba",
-      "target": "app_get_db_connection"
+      "target": "app_get_db_connection",
+      "confidence_score": 1.0
     },
     {
       "relation": "calls",
       "context": "call",
       "confidence": "EXTRACTED",
       "source_file": "app.py",
-      "source_location": "L1626",
+      "source_location": "L1634",
       "weight": 1.0,
-      "confidence_score": 1.0,
       "source": "app_add_user",
-      "target": "app_get_db_connection"
+      "target": "app_get_db_connection",
+      "confidence_score": 1.0
     },
     {
       "relation": "calls",
       "context": "call",
       "confidence": "EXTRACTED",
       "source_file": "app.py",
-      "source_location": "L1559",
+      "source_location": "L1567",
       "weight": 1.0,
-      "confidence_score": 1.0,
       "source": "app_api_extinguisher_conditions",
-      "target": "app_get_db_connection"
+      "target": "app_get_db_connection",
+      "confidence_score": 1.0
     },
     {
       "relation": "calls",
       "context": "call",
       "confidence": "EXTRACTED",
       "source_file": "app.py",
-      "source_location": "L1604",
+      "source_location": "L1612",
       "weight": 1.0,
-      "confidence_score": 1.0,
       "source": "app_api_monitor_status",
-      "target": "app_get_db_connection"
+      "target": "app_get_db_connection",
+      "confidence_score": 1.0
     },
     {
       "relation": "calls",
       "context": "call",
       "confidence": "EXTRACTED",
       "source_file": "app.py",
-      "source_location": "L3799",
+      "source_location": "L3695",
       "weight": 1.0,
-      "confidence_score": 1.0,
       "source": "app_auth_users",
-      "target": "app_get_db_connection"
+      "target": "app_get_db_connection",
+      "confidence_score": 1.0
     },
     {
       "relation": "calls",
       "context": "call",
       "confidence": "EXTRACTED",
       "source_file": "app.py",
-      "source_location": "L3882",
+      "source_location": "L3778",
       "weight": 1.0,
-      "confidence_score": 1.0,
       "source": "app_change_password",
-      "target": "app_get_db_connection"
+      "target": "app_get_db_connection",
+      "confidence_score": 1.0
     },
     {
       "relation": "calls",
       "context": "call",
       "confidence": "EXTRACTED",
       "source_file": "app.py",
-      "source_location": "L2320",
+      "source_location": "L2328",
       "weight": 1.0,
-      "confidence_score": 1.0,
       "source": "app_dashboard",
-      "target": "app_get_db_connection"
+      "target": "app_get_db_connection",
+      "confidence_score": 1.0
     },
     {
       "relation": "calls",
       "context": "call",
       "confidence": "EXTRACTED",
       "source_file": "app.py",
-      "source_location": "L3832",
+      "source_location": "L3728",
       "weight": 1.0,
-      "confidence_score": 1.0,
       "source": "app_delete_auth_user",
-      "target": "app_get_db_connection"
+      "target": "app_get_db_connection",
+      "confidence_score": 1.0
     },
     {
       "relation": "calls",
       "context": "call",
       "confidence": "EXTRACTED",
       "source_file": "app.py",
-      "source_location": "L3310",
+      "source_location": "L3288",
       "weight": 1.0,
-      "confidence_score": 1.0,
       "source": "app_delete_brand",
-      "target": "app_get_db_connection"
+      "target": "app_get_db_connection",
+      "confidence_score": 1.0
     },
     {
       "relation": "calls",
       "context": "call",
       "confidence": "EXTRACTED",
       "source_file": "app.py",
-      "source_location": "L406",
+      "source_location": "L412",
       "weight": 1.0,
-      "confidence_score": 1.0,
       "source": "app_delete_company",
-      "target": "app_get_db_connection"
+      "target": "app_get_db_connection",
+      "confidence_score": 1.0
     },
     {
       "relation": "calls",
       "context": "call",
       "confidence": "EXTRACTED",
       "source_file": "app.py",
-      "source_location": "L862",
+      "source_location": "L868",
       "weight": 1.0,
-      "confidence_score": 1.0,
       "source": "app_delete_fire_extinguisher",
-      "target": "app_get_db_connection"
+      "target": "app_get_db_connection",
+      "confidence_score": 1.0
     },
     {
       "relation": "calls",
       "context": "call",
       "confidence": "EXTRACTED",
       "source_file": "app.py",
-      "source_location": "L2238",
+      "source_location": "L2246",
       "weight": 1.0,
-      "confidence_score": 1.0,
       "source": "app_delete_product",
-      "target": "app_get_db_connection"
+      "target": "app_get_db_connection",
+      "confidence_score": 1.0
     },
     {
       "relation": "calls",
       "context": "call",
       "confidence": "EXTRACTED",
       "source_file": "app.py",
-      "source_location": "L2304",
+      "source_location": "L2312",
       "weight": 1.0,
-      "confidence_score": 1.0,
       "source": "app_delete_product_type",
-      "target": "app_get_db_connection"
+      "target": "app_get_db_connection",
+      "confidence_score": 1.0
     },
     {
       "relation": "calls",
       "context": "call",
       "confidence": "EXTRACTED",
       "source_file": "app.py",
-      "source_location": "L1351",
+      "source_location": "L1359",
       "weight": 1.0,
-      "confidence_score": 1.0,
       "source": "app_delete_scba",
-      "target": "app_get_db_connection"
+      "target": "app_get_db_connection",
+      "confidence_score": 1.0
     },
     {
       "relation": "calls",
       "context": "call",
       "confidence": "EXTRACTED",
       "source_file": "app.py",
-      "source_location": "L395",
+      "source_location": "L401",
       "weight": 1.0,
-      "confidence_score": 1.0,
       "source": "app_delete_user",
-      "target": "app_get_db_connection"
+      "target": "app_get_db_connection",
+      "confidence_score": 1.0
     },
     {
       "relation": "calls",
       "context": "call",
       "confidence": "EXTRACTED",
       "source_file": "app.py",
-      "source_location": "L3295",
+      "source_location": "L3273",
       "weight": 1.0,
-      "confidence_score": 1.0,
       "source": "app_edit_brand",
-      "target": "app_get_db_connection"
+      "target": "app_get_db_connection",
+      "confidence_score": 1.0
     },
     {
       "relation": "calls",
       "context": "call",
       "confidence": "EXTRACTED",
       "source_file": "app.py",
-      "source_location": "L2789",
+      "source_location": "L2753",
       "weight": 1.0,
-      "confidence_score": 1.0,
       "source": "app_edit_fire_extinguisher",
-      "target": "app_get_db_connection"
+      "target": "app_get_db_connection",
+      "confidence_score": 1.0
     },
     {
       "relation": "calls",
       "context": "call",
       "confidence": "EXTRACTED",
       "source_file": "app.py",
-      "source_location": "L2250",
+      "source_location": "L2258",
       "weight": 1.0,
-      "confidence_score": 1.0,
       "source": "app_edit_product",
-      "target": "app_get_db_connection"
+      "target": "app_get_db_connection",
+      "confidence_score": 1.0
     },
     {
       "relation": "calls",
       "context": "call",
       "confidence": "EXTRACTED",
       "source_file": "app.py",
-      "source_location": "L1299",
+      "source_location": "L1307",
       "weight": 1.0,
-      "confidence_score": 1.0,
       "source": "app_edit_scba",
-      "target": "app_get_db_connection"
+      "target": "app_get_db_connection",
+      "confidence_score": 1.0
     },
     {
       "relation": "calls",
       "context": "call",
       "confidence": "EXTRACTED",
       "source_file": "app.py",
-      "source_location": "L418",
+      "source_location": "L424",
       "weight": 1.0,
-      "confidence_score": 1.0,
       "source": "app_edit_user",
-      "target": "app_get_db_connection"
+      "target": "app_get_db_connection",
+      "confidence_score": 1.0
     },
     {
       "relation": "calls",
       "context": "call",
       "confidence": "EXTRACTED",
       "source_file": "app.py",
-      "source_location": "L3260",
+      "source_location": "L3238",
       "weight": 1.0,
-      "confidence_score": 1.0,
       "source": "app_export_fire_extinguishers_excel",
-      "target": "app_get_db_connection"
+      "target": "app_get_db_connection",
+      "confidence_score": 1.0
     },
     {
       "relation": "calls",
       "context": "call",
       "confidence": "EXTRACTED",
       "source_file": "app.py",
-      "source_location": "L2439",
+      "source_location": "L2447",
       "weight": 1.0,
-      "confidence_score": 1.0,
       "source": "app_extinguisher_monthly_summary",
-      "target": "app_get_db_connection"
+      "target": "app_get_db_connection",
+      "confidence_score": 1.0
     },
     {
       "relation": "calls",
       "context": "call",
       "confidence": "EXTRACTED",
       "source_file": "app.py",
-      "source_location": "L2396",
+      "source_location": "L2404",
       "weight": 1.0,
-      "confidence_score": 1.0,
       "source": "app_extinguisher_summary",
-      "target": "app_get_db_connection"
+      "target": "app_get_db_connection",
+      "confidence_score": 1.0
     },
     {
       "relation": "calls",
       "context": "call",
       "confidence": "EXTRACTED",
       "source_file": "app.py",
-      "source_location": "L3587",
+      "source_location": "L3565",
       "weight": 1.0,
-      "confidence_score": 1.0,
       "source": "app_generate_scba_tags",
-      "target": "app_get_db_connection"
+      "target": "app_get_db_connection",
+      "confidence_score": 1.0
     },
     {
       "relation": "calls",
       "context": "call",
       "confidence": "EXTRACTED",
       "source_file": "app.py",
-      "source_location": "L2624",
+      "source_location": "L2632",
       "weight": 1.0,
-      "confidence_score": 1.0,
       "source": "app_get_extinguisher_summary_data",
-      "target": "app_get_db_connection"
+      "target": "app_get_db_connection",
+      "confidence_score": 1.0
     },
     {
       "relation": "calls",
       "context": "call",
       "confidence": "EXTRACTED",
       "source_file": "app.py",
-      "source_location": "L463",
+      "source_location": "L469",
       "weight": 1.0,
-      "confidence_score": 1.0,
       "source": "app_get_scba_id",
-      "target": "app_get_db_connection"
+      "target": "app_get_db_connection",
+      "confidence_score": 1.0
     },
     {
       "relation": "calls",
       "context": "call",
       "confidence": "EXTRACTED",
       "source_file": "app.py",
-      "source_location": "L1452",
+      "source_location": "L1460",
       "weight": 1.0,
-      "confidence_score": 1.0,
       "source": "app_home",
-      "target": "app_get_db_connection"
+      "target": "app_get_db_connection",
+      "confidence_score": 1.0
     },
     {
       "relation": "calls",
       "context": "call",
       "confidence": "EXTRACTED",
       "source_file": "app.py",
-      "source_location": "L935",
+      "source_location": "L943",
       "weight": 1.0,
-      "confidence_score": 1.0,
       "source": "app_inspect_assembly",
-      "target": "app_get_db_connection"
+      "target": "app_get_db_connection",
+      "confidence_score": 1.0
     },
     {
       "relation": "calls",
       "context": "call",
       "confidence": "EXTRACTED",
       "source_file": "app.py",
-      "source_location": "L3658",
+      "source_location": "L3636",
       "weight": 1.0,
-      "confidence_score": 1.0,
       "source": "app_inspect_fire_extinguisher_desktop",
-      "target": "app_get_db_connection"
+      "target": "app_get_db_connection",
+      "confidence_score": 1.0
     },
     {
       "relation": "calls",
       "context": "call",
       "confidence": "EXTRACTED",
       "source_file": "app.py",
-      "source_location": "L1771",
+      "source_location": "L1779",
       "weight": 1.0,
-      "confidence_score": 1.0,
       "source": "app_inspect_product",
-      "target": "app_get_db_connection"
+      "target": "app_get_db_connection",
+      "confidence_score": 1.0
     },
     {
       "relation": "calls",
       "context": "call",
       "confidence": "EXTRACTED",
       "source_file": "app.py",
-      "source_location": "L1082",
+      "source_location": "L1090",
       "weight": 1.0,
-      "confidence_score": 1.0,
       "source": "app_inspect_scba",
-      "target": "app_get_db_connection"
+      "target": "app_get_db_connection",
+      "confidence_score": 1.0
     },
     {
       "relation": "calls",
       "context": "call",
       "confidence": "EXTRACTED",
       "source_file": "app.py",
-      "source_location": "L897",
+      "source_location": "L904",
       "weight": 1.0,
-      "confidence_score": 1.0,
       "source": "app_inspect_scba_by_tag",
-      "target": "app_get_db_connection"
+      "target": "app_get_db_connection",
+      "confidence_score": 1.0
     },
     {
       "relation": "calls",
       "context": "call",
       "confidence": "EXTRACTED",
       "source_file": "app.py",
-      "source_location": "L3398",
+      "source_location": "L3376",
       "weight": 1.0,
-      "confidence_score": 1.0,
       "source": "app_inspect_tag",
-      "target": "app_get_db_connection"
+      "target": "app_get_db_connection",
+      "confidence_score": 1.0
     },
     {
       "relation": "calls",
       "context": "call",
       "confidence": "EXTRACTED",
       "source_file": "app.py",
-      "source_location": "L1814",
+      "source_location": "L1822",
       "weight": 1.0,
-      "confidence_score": 1.0,
       "source": "app_inspection_log",
-      "target": "app_get_db_connection"
+      "target": "app_get_db_connection",
+      "confidence_score": 1.0
     },
     {
       "relation": "calls",
       "context": "call",
       "confidence": "EXTRACTED",
       "source_file": "app.py",
-      "source_location": "L996",
+      "source_location": "L1004",
       "weight": 1.0,
-      "confidence_score": 1.0,
       "source": "app_list_assemblies",
-      "target": "app_get_db_connection"
+      "target": "app_get_db_connection",
+      "confidence_score": 1.0
     },
     {
       "relation": "calls",
       "context": "call",
       "confidence": "EXTRACTED",
       "source_file": "app.py",
-      "source_location": "L2556",
+      "source_location": "L2564",
       "weight": 1.0,
-      "confidence_score": 1.0,
       "source": "app_list_fire_extinguishers",
-      "target": "app_get_db_connection"
+      "target": "app_get_db_connection",
+      "confidence_score": 1.0
     },
     {
       "relation": "calls",
       "context": "call",
       "confidence": "EXTRACTED",
       "source_file": "app.py",
-      "source_location": "L635",
+      "source_location": "L641",
       "weight": 1.0,
-      "confidence_score": 1.0,
       "source": "app_list_scba",
-      "target": "app_get_db_connection"
+      "target": "app_get_db_connection",
+      "confidence_score": 1.0
     },
     {
       "relation": "calls",
       "context": "call",
       "confidence": "EXTRACTED",
       "source_file": "app.py",
-      "source_location": "L3369",
+      "source_location": "L3347",
       "weight": 1.0,
-      "confidence_score": 1.0,
       "source": "app_manual_scan",
-      "target": "app_get_db_connection"
+      "target": "app_get_db_connection",
+      "confidence_score": 1.0
     },
     {
       "relation": "calls",
       "context": "call",
       "confidence": "EXTRACTED",
       "source_file": "app.py",
-      "source_location": "L748",
+      "source_location": "L754",
       "weight": 1.0,
-      "confidence_score": 1.0,
       "source": "app_scba_report",
-      "target": "app_get_db_connection"
+      "target": "app_get_db_connection",
+      "confidence_score": 1.0
     },
     {
       "relation": "calls",
       "context": "call",
       "confidence": "EXTRACTED",
       "source_file": "app.py",
-      "source_location": "L3318",
+      "source_location": "L3296",
       "weight": 1.0,
-      "confidence_score": 1.0,
       "source": "app_sync_users_from_assignments",
-      "target": "app_get_db_connection"
+      "target": "app_get_db_connection",
+      "confidence_score": 1.0
     },
     {
       "relation": "calls",
       "context": "call",
       "confidence": "EXTRACTED",
       "source_file": "app.py",
-      "source_location": "L3843",
+      "source_location": "L3739",
       "weight": 1.0,
-      "confidence_score": 1.0,
       "source": "app_update_auth_password",
-      "target": "app_get_db_connection"
+      "target": "app_get_db_connection",
+      "confidence_score": 1.0
     },
     {
       "relation": "calls",
       "context": "call",
       "confidence": "EXTRACTED",
       "source_file": "app.py",
-      "source_location": "L2745",
+      "source_location": "L1374",
       "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "app_update_fire_extinguisher",
-      "target": "app_get_db_connection"
-    },
-    {
-      "relation": "calls",
-      "context": "call",
-      "confidence": "EXTRACTED",
-      "source_file": "app.py",
-      "source_location": "L1366",
-      "weight": 1.0,
-      "confidence_score": 1.0,
       "source": "app_upload_scba",
-      "target": "app_get_db_connection"
+      "target": "app_get_db_connection",
+      "confidence_score": 1.0
     },
     {
       "relation": "calls",
       "context": "call",
       "confidence": "EXTRACTED",
       "source_file": "app.py",
-      "source_location": "L2655",
+      "source_location": "L2663",
       "weight": 1.0,
-      "confidence_score": 1.0,
       "source": "app_extinguisher_summary_pdf",
-      "target": "app_get_extinguisher_summary_data"
+      "target": "app_get_extinguisher_summary_data",
+      "confidence_score": 1.0
     },
     {
       "relation": "calls",
@@ -2729,21 +3185,21 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "app.py",
-      "source_location": "L2907",
+      "source_location": "L2871",
       "weight": 1.0,
       "source": "app_upload_fire_extinguisher",
-      "target": "utils_normalize_result"
+      "target": "code_only_utils_normalize_result"
     },
     {
       "relation": "calls",
       "context": "call",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
+      "confidence": "INFERRED",
+      "confidence_score": 0.8,
       "source_file": "app.py",
-      "source_location": "L2996",
+      "source_location": "L2972",
       "weight": 1.0,
       "source": "app_inspect_fire_extinguisher",
-      "target": "utils_normalize_result"
+      "target": "blueprints_fire_extinguisher_parse_date"
     },
     {
       "relation": "calls",
@@ -2751,32 +3207,43 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "app.py",
-      "source_location": "L3082",
+      "source_location": "L2960",
+      "weight": 1.0,
+      "source": "app_inspect_fire_extinguisher",
+      "target": "code_only_utils_normalize_result"
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "app.py",
+      "source_location": "L3046",
       "weight": 1.0,
       "source": "app_bulk_inspect_fire_extinguishers",
-      "target": "utils_normalize_result"
+      "target": "code_only_utils_normalize_result"
     },
     {
       "relation": "calls",
       "context": "call",
       "confidence": "EXTRACTED",
       "source_file": "app.py",
-      "source_location": "L3563",
+      "source_location": "L3541",
       "weight": 1.0,
-      "confidence_score": 1.0,
       "source": "app_generate_tags",
-      "target": "app_generate_tags_and_save"
+      "target": "app_generate_tags_and_save",
+      "confidence_score": 1.0
     },
     {
       "relation": "calls",
       "context": "call",
       "confidence": "EXTRACTED",
       "source_file": "app.py",
-      "source_location": "L3336",
+      "source_location": "L3314",
       "weight": 1.0,
-      "confidence_score": 1.0,
       "source": "app_generate_tags_and_save",
-      "target": "app_get_last_tag_number"
+      "target": "app_get_last_tag_number",
+      "confidence_score": 1.0
     },
     {
       "relation": "calls",
@@ -2784,32 +3251,186 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "app.py",
-      "source_location": "L3426",
+      "source_location": "L3404",
       "weight": 1.0,
       "source": "app_inspect_tag",
-      "target": "utils_normalize_result"
+      "target": "code_only_utils_normalize_result"
     },
     {
       "relation": "calls",
       "context": "call",
       "confidence": "EXTRACTED",
       "source_file": "app.py",
-      "source_location": "L3540",
+      "source_location": "L3518",
       "weight": 1.0,
-      "confidence_score": 1.0,
       "source": "app_generate_pdfs",
-      "target": "app_draw_card"
+      "target": "app_draw_card",
+      "confidence_score": 1.0
     },
     {
       "relation": "calls",
       "context": "call",
       "confidence": "EXTRACTED",
       "source_file": "app.py",
-      "source_location": "L3564",
+      "source_location": "L3542",
       "weight": 1.0,
-      "confidence_score": 1.0,
       "source": "app_generate_tags",
-      "target": "app_generate_pdfs"
+      "target": "app_generate_pdfs",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "area_gas_monitor/__init__.py",
+      "source_location": "L6",
+      "weight": 1.0,
+      "source": "area_gas_monitor_init",
+      "target": "area_gas_monitor_init",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports_from",
+      "context": "submodule_import",
+      "confidence": "EXTRACTED",
+      "source_file": "area_gas_monitor/__init__.py",
+      "source_location": "L6",
+      "weight": 1.0,
+      "source": "area_gas_monitor_init",
+      "target": "area_gas_monitor_routes",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "area_gas_monitor/routes.py",
+      "source_location": "L196",
+      "weight": 1.0,
+      "source": "area_gas_monitor_routes",
+      "target": "area_gas_monitor_routes_add_area_gas_monitor",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "area_gas_monitor/routes.py",
+      "source_location": "L351",
+      "weight": 1.0,
+      "source": "area_gas_monitor_routes",
+      "target": "area_gas_monitor_routes_delete_area_gas_monitor",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "area_gas_monitor/routes.py",
+      "source_location": "L282",
+      "weight": 1.0,
+      "source": "area_gas_monitor_routes",
+      "target": "area_gas_monitor_routes_edit_area_gas_monitor",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "area_gas_monitor/routes.py",
+      "source_location": "L466",
+      "weight": 1.0,
+      "source": "area_gas_monitor_routes",
+      "target": "area_gas_monitor_routes_filter_area_gas_monitors",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "area_gas_monitor/routes.py",
+      "source_location": "L388",
+      "weight": 1.0,
+      "source": "area_gas_monitor_routes",
+      "target": "area_gas_monitor_routes_inspect_area_monitor",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "area_gas_monitor/routes.py",
+      "source_location": "L33",
+      "weight": 1.0,
+      "source": "area_gas_monitor_routes",
+      "target": "area_gas_monitor_routes_list_area_gas_monitors",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "area_gas_monitor/routes.py",
+      "source_location": "L363",
+      "weight": 1.0,
+      "source": "area_gas_monitor_routes",
+      "target": "area_gas_monitor_routes_manual_scan_area_monitor",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "area_gas_monitor/routes.py",
+      "source_location": "L103",
+      "weight": 1.0,
+      "source": "area_gas_monitor_routes",
+      "target": "area_gas_monitor_routes_map_all_area_gas_monitors",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "area_gas_monitor/routes.py",
+      "source_location": "L20",
+      "weight": 1.0,
+      "source": "area_gas_monitor_routes",
+      "target": "area_gas_monitor_routes_todatetime",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "area_gas_monitor/routes.py",
+      "source_location": "L434",
+      "weight": 1.0,
+      "source": "area_gas_monitor_routes",
+      "target": "area_gas_monitor_routes_update_status",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "area_gas_monitor/routes.py",
+      "source_location": "L143",
+      "weight": 1.0,
+      "source": "area_gas_monitor_routes",
+      "target": "area_gas_monitor_routes_view_single_area_gas_monitor",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "area_gas_monitor/routes.py",
+      "source_location": "L3",
+      "weight": 1.0,
+      "source": "area_gas_monitor_routes",
+      "target": "code_only_auth_utils_login_required",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "area_gas_monitor/routes.py",
+      "source_location": "L3",
+      "weight": 1.0,
+      "source": "area_gas_monitor_routes",
+      "target": "code_only_auth_utils_role_required",
+      "confidence_score": 1.0
     },
     {
       "relation": "contains",
@@ -2817,9 +3438,9 @@
       "source_file": "auth_utils.py",
       "source_location": "L5",
       "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "auth_utils",
-      "target": "auth_utils_login_required"
+      "source": "c_inspectionapp_code_only_auth_utils_py",
+      "target": "code_only_auth_utils_login_required",
+      "confidence_score": 1.0
     },
     {
       "relation": "contains",
@@ -2827,9 +3448,135 @@
       "source_file": "auth_utils.py",
       "source_location": "L14",
       "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "auth_utils",
-      "target": "auth_utils_role_required"
+      "source": "c_inspectionapp_code_only_auth_utils_py",
+      "target": "code_only_auth_utils_role_required",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "personal_gas_monitor/routes.py",
+      "source_location": "L2",
+      "weight": 1.0,
+      "source": "personal_gas_monitor_routes",
+      "target": "code_only_auth_utils_login_required",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "personal_gas_monitor/routes.py",
+      "source_location": "L2",
+      "weight": 1.0,
+      "source": "personal_gas_monitor_routes",
+      "target": "code_only_auth_utils_role_required",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "blueprints/fire_extinguisher.py",
+      "source_location": "L21",
+      "weight": 1.0,
+      "source": "blueprints_fire_extinguisher",
+      "target": "blueprints_fire_extinguisher_add_fire_extinguisher",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "blueprints/fire_extinguisher.py",
+      "source_location": "L117",
+      "weight": 1.0,
+      "source": "blueprints_fire_extinguisher",
+      "target": "blueprints_fire_extinguisher_fire_extinguisher_matrix",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "blueprints/fire_extinguisher.py",
+      "source_location": "L7",
+      "weight": 1.0,
+      "source": "blueprints_fire_extinguisher",
+      "target": "blueprints_fire_extinguisher_get_db_connection",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "blueprints/fire_extinguisher.py",
+      "source_location": "L73",
+      "weight": 1.0,
+      "source": "blueprints_fire_extinguisher",
+      "target": "blueprints_fire_extinguisher_list_fire_extinguishers",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "blueprints/fire_extinguisher.py",
+      "source_location": "L12",
+      "weight": 1.0,
+      "source": "blueprints_fire_extinguisher",
+      "target": "blueprints_fire_extinguisher_parse_date",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "blueprints/fire_extinguisher.py",
+      "source_location": "L125",
+      "weight": 1.0,
+      "source": "blueprints_fire_extinguisher",
+      "target": "blueprints_fire_extinguisher_upload_fire_extinguisher",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "blueprints/fire_extinguisher.py",
+      "source_location": "L22",
+      "weight": 1.0,
+      "source": "blueprints_fire_extinguisher_add_fire_extinguisher",
+      "target": "blueprints_fire_extinguisher_get_db_connection",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "blueprints/fire_extinguisher.py",
+      "source_location": "L74",
+      "weight": 1.0,
+      "source": "blueprints_fire_extinguisher_list_fire_extinguishers",
+      "target": "blueprints_fire_extinguisher_get_db_connection",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "blueprints/fire_extinguisher.py",
+      "source_location": "L131",
+      "weight": 1.0,
+      "source": "blueprints_fire_extinguisher_upload_fire_extinguisher",
+      "target": "blueprints_fire_extinguisher_get_db_connection",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "blueprints/fire_extinguisher.py",
+      "source_location": "L104",
+      "weight": 1.0,
+      "source": "blueprints_fire_extinguisher_list_fire_extinguishers",
+      "target": "blueprints_fire_extinguisher_parse_date",
+      "confidence_score": 1.0
     },
     {
       "relation": "contains",
@@ -2837,9 +3584,186 @@
       "source_file": "config.py",
       "source_location": "L3",
       "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "config",
-      "target": "config_config"
+      "source": "c_inspectionapp_code_only_config_py",
+      "target": "code_only_config_config",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "eeba/routes.py",
+      "source_location": "L21",
+      "weight": 1.0,
+      "source": "eeba_routes",
+      "target": "eeba_routes_add_eeba",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "eeba/routes.py",
+      "source_location": "L408",
+      "weight": 1.0,
+      "source": "eeba_routes",
+      "target": "eeba_routes_delete_eeba",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "eeba/routes.py",
+      "source_location": "L365",
+      "weight": 1.0,
+      "source": "eeba_routes",
+      "target": "eeba_routes_download_eeba_template",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "eeba/routes.py",
+      "source_location": "L315",
+      "weight": 1.0,
+      "source": "eeba_routes",
+      "target": "eeba_routes_eeba_detail_by_tag",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "eeba/routes.py",
+      "source_location": "L389",
+      "weight": 1.0,
+      "source": "eeba_routes",
+      "target": "eeba_routes_eeba_edit_redirect",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "eeba/routes.py",
+      "source_location": "L14",
+      "weight": 1.0,
+      "source": "eeba_routes",
+      "target": "eeba_routes_get_db",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "eeba/routes.py",
+      "source_location": "L300",
+      "weight": 1.0,
+      "source": "eeba_routes",
+      "target": "eeba_routes_list_eeba",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "eeba/routes.py",
+      "source_location": "L307",
+      "weight": 1.0,
+      "source": "eeba_routes",
+      "target": "eeba_routes_manual_scan_eeba",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "eeba/routes.py",
+      "source_location": "L101",
+      "weight": 1.0,
+      "source": "eeba_routes",
+      "target": "eeba_routes_upload_eeba",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "eeba/routes.py",
+      "source_location": "L52",
+      "weight": 1.0,
+      "source": "eeba_routes_add_eeba",
+      "target": "eeba_routes_get_db",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "eeba/routes.py",
+      "source_location": "L409",
+      "weight": 1.0,
+      "source": "eeba_routes_delete_eeba",
+      "target": "eeba_routes_get_db",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "eeba/routes.py",
+      "source_location": "L318",
+      "weight": 1.0,
+      "source": "eeba_routes_eeba_detail_by_tag",
+      "target": "eeba_routes_get_db",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "eeba/routes.py",
+      "source_location": "L390",
+      "weight": 1.0,
+      "source": "eeba_routes_eeba_edit_redirect",
+      "target": "eeba_routes_get_db",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "eeba/routes.py",
+      "source_location": "L301",
+      "weight": 1.0,
+      "source": "eeba_routes_list_eeba",
+      "target": "eeba_routes_get_db",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "eeba/routes.py",
+      "source_location": "L238",
+      "weight": 1.0,
+      "source": "eeba_routes_upload_eeba",
+      "target": "eeba_routes_get_db",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "INFERRED",
+      "confidence_score": 0.8,
+      "source_file": "eeba/routes.py",
+      "source_location": "L112",
+      "weight": 1.0,
+      "source": "eeba_routes_upload_eeba",
+      "target": "path"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "gps_module/routes.py",
+      "source_location": "L7",
+      "weight": 1.0,
+      "source": "gps_module_routes",
+      "target": "gps_module_routes_show_gps",
+      "confidence_score": 1.0
     },
     {
       "relation": "contains",
@@ -2847,9 +3771,9 @@
       "source_file": "init_eebas_db.py",
       "source_location": "L82",
       "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "init_eebas_db",
-      "target": "init_eebas_db_init_db"
+      "source": "c_inspectionapp_code_only_init_eebas_db_py",
+      "target": "code_only_init_eebas_db_init_db",
+      "confidence_score": 1.0
     },
     {
       "relation": "references",
@@ -2858,9 +3782,284 @@
       "source_file": "init_eebas_db.py",
       "source_location": "L82",
       "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "init_eebas_db_init_db",
-      "target": "path"
+      "source": "code_only_init_eebas_db_init_db",
+      "target": "path",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "new_module/routes.py",
+      "source_location": "L9",
+      "weight": 1.0,
+      "source": "new_module_routes",
+      "target": "new_module_routes_example_route",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "personal_gas_monitor/__init__.py",
+      "source_location": "L9",
+      "weight": 1.0,
+      "source": "personal_gas_monitor_init",
+      "target": "personal_gas_monitor_init",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports_from",
+      "context": "submodule_import",
+      "confidence": "EXTRACTED",
+      "source_file": "personal_gas_monitor/__init__.py",
+      "source_location": "L9",
+      "weight": 1.0,
+      "source": "personal_gas_monitor_init",
+      "target": "personal_gas_monitor_routes",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "personal_gas_monitor/routes.py",
+      "source_location": "L35",
+      "weight": 1.0,
+      "source": "personal_gas_monitor_routes",
+      "target": "personal_gas_monitor_routes_add_personal_gas_monitor",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "personal_gas_monitor/routes.py",
+      "source_location": "L203",
+      "weight": 1.0,
+      "source": "personal_gas_monitor_routes",
+      "target": "personal_gas_monitor_routes_delete_personal_gas_monitor",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "personal_gas_monitor/routes.py",
+      "source_location": "L111",
+      "weight": 1.0,
+      "source": "personal_gas_monitor_routes",
+      "target": "personal_gas_monitor_routes_edit_personal_gas_monitor",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "personal_gas_monitor/routes.py",
+      "source_location": "L12",
+      "weight": 1.0,
+      "source": "personal_gas_monitor_routes",
+      "target": "personal_gas_monitor_routes_get_db_connection",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "personal_gas_monitor/routes.py",
+      "source_location": "L220",
+      "weight": 1.0,
+      "source": "personal_gas_monitor_routes",
+      "target": "personal_gas_monitor_routes_get_user_name",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "personal_gas_monitor/routes.py",
+      "source_location": "L237",
+      "weight": 1.0,
+      "source": "personal_gas_monitor_routes",
+      "target": "personal_gas_monitor_routes_list_personal_gas_monitor",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "personal_gas_monitor/routes.py",
+      "source_location": "L18",
+      "weight": 1.0,
+      "source": "personal_gas_monitor_routes",
+      "target": "personal_gas_monitor_routes_to_date",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "personal_gas_monitor/routes.py",
+      "source_location": "L25",
+      "weight": 1.0,
+      "source": "personal_gas_monitor_routes",
+      "target": "personal_gas_monitor_routes_to_iso",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "personal_gas_monitor/routes.py",
+      "source_location": "L72",
+      "weight": 1.0,
+      "source": "personal_gas_monitor_routes_add_personal_gas_monitor",
+      "target": "personal_gas_monitor_routes_get_db_connection",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "personal_gas_monitor/routes.py",
+      "source_location": "L204",
+      "weight": 1.0,
+      "source": "personal_gas_monitor_routes_delete_personal_gas_monitor",
+      "target": "personal_gas_monitor_routes_get_db_connection",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "personal_gas_monitor/routes.py",
+      "source_location": "L112",
+      "weight": 1.0,
+      "source": "personal_gas_monitor_routes_edit_personal_gas_monitor",
+      "target": "personal_gas_monitor_routes_get_db_connection",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "personal_gas_monitor/routes.py",
+      "source_location": "L222",
+      "weight": 1.0,
+      "source": "personal_gas_monitor_routes_get_user_name",
+      "target": "personal_gas_monitor_routes_get_db_connection",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "personal_gas_monitor/routes.py",
+      "source_location": "L238",
+      "weight": 1.0,
+      "source": "personal_gas_monitor_routes_list_personal_gas_monitor",
+      "target": "personal_gas_monitor_routes_get_db_connection",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "personal_gas_monitor/routes.py",
+      "source_location": "L55",
+      "weight": 1.0,
+      "source": "personal_gas_monitor_routes_add_personal_gas_monitor",
+      "target": "personal_gas_monitor_routes_to_date",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "personal_gas_monitor/routes.py",
+      "source_location": "L139",
+      "weight": 1.0,
+      "source": "personal_gas_monitor_routes_edit_personal_gas_monitor",
+      "target": "personal_gas_monitor_routes_to_date",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "personal_gas_monitor/routes.py",
+      "source_location": "L250",
+      "weight": 1.0,
+      "source": "personal_gas_monitor_routes_list_personal_gas_monitor",
+      "target": "personal_gas_monitor_routes_to_date",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "rationale_for",
+      "confidence": "EXTRACTED",
+      "source_file": "personal_gas_monitor/routes.py",
+      "source_location": "L19",
+      "weight": 1.0,
+      "source": "personal_gas_monitor_routes_rationale_19",
+      "target": "personal_gas_monitor_routes_to_date",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "personal_gas_monitor/routes.py",
+      "source_location": "L21",
+      "weight": 1.0,
+      "source": "personal_gas_monitor_routes_to_date",
+      "target": "date",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "personal_gas_monitor/routes.py",
+      "source_location": "L60",
+      "weight": 1.0,
+      "source": "personal_gas_monitor_routes_add_personal_gas_monitor",
+      "target": "personal_gas_monitor_routes_to_iso",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "personal_gas_monitor/routes.py",
+      "source_location": "L144",
+      "weight": 1.0,
+      "source": "personal_gas_monitor_routes_edit_personal_gas_monitor",
+      "target": "personal_gas_monitor_routes_to_iso",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "personal_gas_monitor/routes.py",
+      "source_location": "L265",
+      "weight": 1.0,
+      "source": "personal_gas_monitor_routes_list_personal_gas_monitor",
+      "target": "personal_gas_monitor_routes_to_iso",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "rationale_for",
+      "confidence": "EXTRACTED",
+      "source_file": "personal_gas_monitor/routes.py",
+      "source_location": "L26",
+      "weight": 1.0,
+      "source": "personal_gas_monitor_routes_rationale_26",
+      "target": "personal_gas_monitor_routes_to_iso",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "references",
+      "context": "parameter_type",
+      "confidence": "EXTRACTED",
+      "source_file": "personal_gas_monitor/routes.py",
+      "source_location": "L25",
+      "weight": 1.0,
+      "source": "personal_gas_monitor_routes_to_iso",
+      "target": "date",
+      "confidence_score": 1.0
     },
     {
       "relation": "contains",
@@ -2868,9 +4067,89 @@
       "source_file": "scba_tag_number.py",
       "source_location": "L6",
       "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "scba_tag_number",
-      "target": "scba_tag_number_assign_scba_tags"
+      "source": "c_inspectionapp_code_only_scba_tag_number_py",
+      "target": "code_only_scba_tag_number_assign_scba_tags",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "static/manifest.json",
+      "source_location": "L7",
+      "weight": 1.0,
+      "source": "static_manifest",
+      "target": "static_manifest_background_color",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "static/manifest.json",
+      "source_location": "L6",
+      "weight": 1.0,
+      "source": "static_manifest",
+      "target": "static_manifest_display",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "static/manifest.json",
+      "source_location": "L9",
+      "weight": 1.0,
+      "source": "static_manifest",
+      "target": "static_manifest_icons",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "static/manifest.json",
+      "source_location": "L2",
+      "weight": 1.0,
+      "source": "static_manifest",
+      "target": "static_manifest_name",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "static/manifest.json",
+      "source_location": "L5",
+      "weight": 1.0,
+      "source": "static_manifest",
+      "target": "static_manifest_scope",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "static/manifest.json",
+      "source_location": "L3",
+      "weight": 1.0,
+      "source": "static_manifest",
+      "target": "static_manifest_short_name",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "static/manifest.json",
+      "source_location": "L4",
+      "weight": 1.0,
+      "source": "static_manifest",
+      "target": "static_manifest_start_url",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "static/manifest.json",
+      "source_location": "L8",
+      "weight": 1.0,
+      "source": "static_manifest",
+      "target": "static_manifest_theme_color",
+      "confidence_score": 1.0
     },
     {
       "relation": "contains",
@@ -2878,11 +4157,11 @@
       "source_file": "utils.py",
       "source_location": "L5",
       "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "utils",
-      "target": "utils_normalize_result"
+      "source": "c_inspectionapp_code_only_utils_py",
+      "target": "code_only_utils_normalize_result",
+      "confidence_score": 1.0
     }
   ],
   "hyperedges": [],
-  "built_at_commit": "1685b7834dfeb2ee28dc549ddba9690fcfc32a6a"
+  "built_at_commit": "13e21852ba7c6aad923c4858021a9852f837d1b8"
 }

@@ -897,6 +897,7 @@ def delete_fire_extinguisher(extinguisher_id):
 #SCBA INSPECTION REPORT END
 
 @app.route('/inspect-scba-tag/<tag>', methods=['GET', 'POST'])
+@login_required
 def inspect_scba_by_tag(tag):
     from datetime import date
     from flask import abort
@@ -937,6 +938,7 @@ def inspect_scba_by_tag(tag):
 
 
 @app.route('/inspect-scba-new', methods=['GET', 'POST'])
+@login_required
 def inspect_assembly():
     conn = get_db_connection()
     cursor = conn.cursor()
@@ -1166,7 +1168,7 @@ def inspect_scba(scba_id):
         scba=scba,
         inspections=inspections,
         current_date=date.today().isoformat(),
-        qr_link=f"https://mytestapp.pythonanywhere.com/inspect-scba-tag/{scba['tag_number']}"
+        qr_link=request.host_url.rstrip('/') + f"/inspect-scba-tag/{scba['tag_number']}"
     )
 
 
@@ -2745,50 +2747,6 @@ def extinguisher_summary_pdf():
 
 
 
-
-@app.route('/edit-fire-extinguisher/<int:extinguisher_id>', methods=['GET', 'POST'])
-def update_fire_extinguisher(extinguisher_id):
-    conn = get_db_connection()
-    cursor = conn.cursor()
-
-    # Mevcut veri
-    extinguisher = cursor.execute("SELECT * FROM fire_extinguishers WHERE id = ?", (extinguisher_id,)).fetchone()
-    companies = cursor.execute("SELECT id, company_name FROM companies ORDER BY company_name").fetchall()
-
-    if request.method == 'POST':
-        cursor.execute("""
-            UPDATE fire_extinguishers SET
-                extinguisher_type = ?, capacity = ?, responsible_company_id = ?, tag_number = ?,
-                location = ?, sub_location = ?, third_party_inspection_date = ?, third_party_due_date = ?,
-                monthly_inspection_date = ?, monthly_due_date = ?, pressure_gauge = ?, hose_nozzle = ?,
-                safety_pin = ?, trigger = ?, overall_condition = ?, remarks = ?
-            WHERE id = ?
-        """, (
-            request.form['extinguisher_type'],
-            request.form['capacity'],
-            request.form['responsible_company_id'],
-            request.form['tag_number'],
-            request.form['location'],
-            request.form['sub_location'],
-            request.form['third_party_inspection_date'],
-            request.form['third_party_due_date'],
-            request.form['monthly_inspection_date'],
-            request.form['monthly_due_date'],
-            request.form['pressure_gauge'],
-            request.form['hose_nozzle'],
-            request.form['safety_pin'],
-            request.form['trigger'],
-            request.form['overall_condition'],
-            request.form['remarks'],
-            extinguisher_id
-        ))
-        conn.commit()
-        conn.close()
-        flash("Fire extinguisher updated successfully.", "success")
-        return redirect(url_for('list_fire_extinguishers'))
-
-    conn.close()
-    return render_template('edit_fire_extinguisher.html', extinguisher=extinguisher, companies=companies)
 
 @app.route('/edit-fire-extinguisher/<int:extinguisher_id>', methods=['GET', 'POST'])
 def edit_fire_extinguisher(extinguisher_id):
