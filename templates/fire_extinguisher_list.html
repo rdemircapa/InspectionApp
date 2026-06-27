@@ -143,7 +143,7 @@
           <td>{{ fe.overall_condition }}</td>
           <td>{{ fe.remarks }}</td>
           <td class="text-nowrap">
-              <a href="{{ url_for('inspect_fire_extinguisher_mobile', tag=fe.tag_number) }}"
+              <a href="{{ url_for('inspect_tag', tag=fe.tag_number) }}"
                  class="btn btn-sm btn-outline-primary me-1 d-inline-flex align-items-center">
                 🕵️ <span class="ms-1">Inspect</span>
               </a>

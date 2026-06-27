@@ -372,6 +372,12 @@ def initialize_database():
         )
     ''')
 
+    # Add inspector column to fire_extinguisher_inspections if it doesn't exist yet
+    try:
+        cursor.execute("ALTER TABLE fire_extinguisher_inspections ADD COLUMN inspector TEXT")
+    except Exception:
+        pass  # column already exists
+
     conn.commit()
     conn.close()
 
@@ -3119,6 +3125,20 @@ def bulk_inspect_fire_extinguishers():
                 extinguisher_id
             ))
 
+            cursor.execute("""
+                INSERT INTO fire_extinguisher_inspections (
+                    extinguisher_id, date, pressure_gauge, hose_nozzle,
+                    safety_pin, trigger, overall_condition, remarks, inspector
+                ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)
+            """, (
+                extinguisher_id,
+                mpi_date or datetime.now().strftime('%Y-%m-%d'),
+                pg, hn, sp, tr,
+                None,
+                remarks,
+                session.get('username'),
+            ))
+
         conn.commit()
 
     flash("Bulk inspection update applied successfully.", "success")
@@ -3708,88 +3728,6 @@ def inspect_fire_extinguisher_desktop(extinguisher_id):
     conn.close()
     return render_template("inspect_fire_extinguisher_desktop.html", extinguisher=extinguisher)
 
-
-@app.route('/inspect-tag/<tag>', methods=['GET', 'POST'])
-def inspect_fire_extinguisher_mobile(tag):
-    from datetime import datetime
-    from dateutil.relativedelta import relativedelta
-    import sqlite3
-
-    tag = tag.strip().upper()
-    conn = sqlite3.connect(DATABASE)
-    conn.row_factory = sqlite3.Row
-    cursor = conn.cursor()
-
-    extinguisher = cursor.execute(
-        "SELECT * FROM fire_extinguishers WHERE UPPER(tag_number) = ?", (tag,)
-    ).fetchone()
-
-    if not extinguisher:
-        conn.close()
-        return f"<h3>❌ Tag '{tag}' not found in the system.</h3>"
-
-    extinguisher_id = extinguisher['id']
-
-    inspections = cursor.execute("""
-        SELECT date, pressure_gauge, hose_nozzle, safety_pin, trigger, overall_condition, remarks
-        FROM fire_extinguisher_inspections
-        WHERE extinguisher_id = ?
-        ORDER BY date DESC
-        LIMIT 5
-    """, (extinguisher_id,)).fetchall()
-
-    show_form = 'user' in session
-
-    if request.method == 'POST' and show_form:
-        pressure_gauge = request.form.get('pressure_gauge')
-        hose_nozzle = request.form.get('hose_nozzle')
-        safety_pin = request.form.get('safety_pin')
-        trigger = request.form.get('trigger')
-        overall_condition = request.form.get('overall_condition')
-        remarks = request.form.get('remarks')
-
-        now = datetime.now().strftime("%Y-%m-%d")
-        monthly_due = (datetime.now() + relativedelta(months=1)).strftime("%Y-%m-%d")
-
-        try:
-            # Güncelleme
-            cursor.execute('''
-                UPDATE fire_extinguishers SET
-                    pressure_gauge = ?, hose_nozzle = ?, safety_pin = ?, trigger = ?,
-                    overall_condition = ?, monthly_inspection_date = ?, monthly_due_date = ?,
-                    remarks = ?
-                WHERE id = ?
-            ''', (
-                pressure_gauge, hose_nozzle, safety_pin, trigger,
-                overall_condition, now, monthly_due, remarks, extinguisher_id
-            ))
-
-            # Yeni inspection ekle
-            cursor.execute("""
-                INSERT INTO fire_extinguisher_inspections (
-                    extinguisher_id, date, pressure_gauge, hose_nozzle,
-                    safety_pin, trigger, overall_condition, remarks
-                ) VALUES (?, ?, ?, ?, ?, ?, ?, ?)
-            """, (
-                extinguisher_id, now, pressure_gauge, hose_nozzle,
-                safety_pin, trigger, overall_condition, remarks
-            ))
-
-            conn.commit()
-            conn.close()
-            return redirect(url_for('manual_scan'))  # 🔁 Mobilde tekrar QR okutma sayfasına dön
-        except Exception as e:
-            conn.close()
-            return f"<h3>❌ Error occurred: {e}</h3>"
-
-    conn.close()
-    return render_template(
-        'inspect_mobile.html',
-        tag=tag,
-        extinguisher=extinguisher,
-        inspections=inspections,
-        show_form=show_form
-    )
 
 
 @app.route('/auth-users')
