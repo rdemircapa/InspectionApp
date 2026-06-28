@@ -20,25 +20,8 @@
     <link href="https://cdn.datatables.net/1.13.6/css/dataTables.bootstrap5.min.css" rel="stylesheet">
     <link href="https://cdn.datatables.net/fixedheader/3.4.0/css/fixedHeader.bootstrap5.min.css" rel="stylesheet">
 
-
-
-
-
-
-  <style>
-    body {
-      font-family: 'Segoe UI', sans-serif;
-      background-color: #f8f9fa;
-      padding-top: 0px; /* sticky navbar için içerik aşağıdan başlasın */
-      margin: 0;
-    }
-    .navbar-brand {
-      font-weight: 600;
-    }
-    .dropdown-menu a:hover {
-      background-color: #e9ecef;
-    }
-  </style>
+    <!-- Field-grade theme (must load AFTER Bootstrap) -->
+    <link href="{{ url_for('static', filename='css/theme.css') }}" rel="stylesheet">
 </head>
 
 <body>
