@@ -1,24 +1,170 @@
-{% extends "base.html" %}
-{% block content %}
-<div class="row justify-content-center mt-5">
-  <div class="col-md-4">
-    <h3 class="text-center mb-4">🔐 User Login</h3>
-    <form method="post">
-      <div class="mb-3">
-        <label class="form-label">Badge Number</label>
-        <input type="text" name="username" class="form-control" placeholder="Enter your badge number" required>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Sign in · InspectionApp</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="icon" type="image/png" href="{{ url_for('static', filename='images/icon-192.png') }}">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ink:#14171C; --signal:#FF5A1F; --signal-600:#E84E16;
+    --line:#E5E4DF; --muted:#74787F; --canvas:#F4F4F1;
+  }
+  *{box-sizing:border-box;}
+  html,body{margin:0;height:100%;}
+  body{font-family:'IBM Plex Sans',system-ui,sans-serif;color:var(--ink);background:var(--canvas);}
+  .login-wrap{display:flex;min-height:100vh;}
+
+  /* LEFT brand panel */
+  .brand-panel{flex:1 1 56%;background:var(--ink);color:#fff;position:relative;overflow:hidden;
+    padding:48px 56px;display:flex;flex-direction:column;justify-content:space-between;}
+  .brand-panel::before{content:"";position:absolute;inset:0;
+    background-image:linear-gradient(rgba(255,255,255,.04) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.04) 1px,transparent 1px);
+    background-size:46px 46px;mask-image:radial-gradient(120% 100% at 80% 0%,#000 40%,transparent 78%);}
+  .brand-panel::after{content:"";position:absolute;right:-160px;top:-120px;width:420px;height:420px;
+    background:radial-gradient(circle,rgba(255,90,31,.35),transparent 60%);filter:blur(20px);}
+  .bp-top,.bp-mid,.bp-bot{position:relative;z-index:2;}
+  .logo-row{display:flex;align-items:center;gap:13px;}
+  .logo-mark{width:46px;height:46px;border-radius:13px;background:var(--signal);display:flex;align-items:center;justify-content:center;
+    box-shadow:0 12px 28px -10px rgba(255,90,31,.7);}
+  .logo-mark i{font-size:25px;color:#fff;}
+  .logo-word{font-size:22px;font-weight:700;letter-spacing:-.02em;}
+  .logo-word small{display:block;font-family:'IBM Plex Mono',monospace;font-size:10.5px;letter-spacing:.18em;color:#8A8F96;font-weight:500;margin-top:2px;}
+  .bp-eyebrow{font-family:'IBM Plex Mono',monospace;font-size:12px;letter-spacing:.16em;text-transform:uppercase;color:var(--signal);font-weight:600;}
+  .bp-headline{font-size:42px;line-height:1.08;font-weight:700;letter-spacing:-.025em;margin:16px 0;max-width:14ch;}
+  .bp-sub{font-size:15.5px;line-height:1.6;color:#A8ADB4;max-width:42ch;}
+  .equip-row{display:flex;gap:10px;margin-top:30px;flex-wrap:wrap;}
+  .equip-chip{display:flex;align-items:center;gap:8px;border:1px solid rgba(255,255,255,.12);border-radius:11px;
+    padding:9px 13px;font-size:12.5px;color:#C9CCD1;background:rgba(255,255,255,.03);}
+  .equip-chip i{color:var(--signal);font-size:15px;}
+  .bp-bot{display:flex;gap:26px;flex-wrap:wrap;align-items:center;}
+  .trust{display:flex;align-items:center;gap:8px;font-size:12.5px;color:#8A8F96;}
+  .trust i{color:#46C97E;}
+
+  /* RIGHT form panel */
+  .form-panel{flex:1 1 44%;display:flex;align-items:center;justify-content:center;padding:40px 32px;background:#fff;}
+  .form-card{width:100%;max-width:380px;}
+  .fc-eyebrow{font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);font-weight:600;}
+  .fc-title{font-size:27px;font-weight:700;letter-spacing:-.02em;margin:8px 0 6px;}
+  .fc-desc{font-size:14px;color:var(--muted);margin-bottom:28px;}
+  .field{margin-bottom:18px;}
+  .field label{display:block;font-size:12.5px;font-weight:600;color:var(--muted);margin-bottom:7px;}
+  .input-shell{position:relative;display:flex;align-items:center;}
+  .input-shell > i{position:absolute;left:14px;color:#A9ACB2;font-size:16px;pointer-events:none;}
+  .input-shell input{width:100%;border:1px solid var(--line);border-radius:11px;padding:13px 14px 13px 42px;
+    font-size:14.5px;font-family:inherit;color:var(--ink);background:#fff;transition:border .15s,box-shadow .15s;}
+  .input-shell input::placeholder{color:#B0B3B8;}
+  .input-shell input:focus{outline:none;border-color:var(--signal);box-shadow:0 0 0 3px rgba(255,90,31,.15);}
+  .pw-toggle{position:absolute;right:8px;background:none;border:none;color:#A9ACB2;cursor:pointer;padding:8px;border-radius:8px;}
+  .pw-toggle:hover{color:var(--ink);}
+  .row-between{display:flex;align-items:center;justify-content:space-between;margin-bottom:24px;}
+  .remember{display:flex;align-items:center;gap:8px;font-size:13px;color:var(--muted);cursor:pointer;}
+  .remember input{width:16px;height:16px;accent-color:var(--signal);}
+  .help-link{font-size:13px;color:var(--signal-600);text-decoration:none;font-weight:600;}
+  .help-link:hover{text-decoration:underline;}
+  .btn-signin{width:100%;border:none;border-radius:11px;background:var(--signal);color:#fff;font-family:inherit;
+    font-size:15px;font-weight:600;padding:14px;cursor:pointer;display:flex;align-items:center;justify-content:center;gap:9px;
+    box-shadow:0 12px 26px -12px rgba(255,90,31,.75);transition:background .15s,transform .04s;}
+  .btn-signin:hover{background:var(--signal-600);}
+  .btn-signin:active{transform:translateY(1px);}
+  .err{background:#FDECEC;border:1px solid #F3C6C6;border-left:4px solid #E02424;color:#9F1B1B;
+    border-radius:11px;padding:12px 14px;font-size:13.5px;font-weight:500;margin-bottom:20px;display:flex;gap:9px;align-items:center;}
+  .fc-foot{margin-top:30px;text-align:center;font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:.06em;color:#A9ACB2;}
+
+  @media(max-width:900px){
+    .login-wrap{flex-direction:column;}
+    .brand-panel{flex:none;padding:34px 30px 30px;}
+    .bp-headline{font-size:30px;margin:12px 0;}
+    .bp-sub{display:none;}
+    .bp-mid{margin:18px 0;}
+    .form-panel{flex:none;padding:34px 26px 50px;}
+  }
+  @media(max-width:480px){
+    .equip-chip:nth-child(n+3){display:none;}
+    .bp-bot .trust:nth-child(n+2){display:none;}
+  }
+</style>
+</head>
+<body>
+<div class="login-wrap">
+
+  <!-- LEFT -->
+  <div class="brand-panel">
+    <div class="bp-top logo-row">
+      <div class="logo-mark"><i class="bi bi-clipboard-check"></i></div>
+      <div class="logo-word">InspectionApp<small>HSE EQUIPMENT SYSTEM</small></div>
+    </div>
+
+    <div class="bp-mid">
+      <div class="bp-eyebrow">Safety equipment &middot; Inspection &amp; tracking</div>
+      <div class="bp-headline">Every asset, inspected and accounted for.</div>
+      <div class="bp-sub">Tag-based inspection records for fire extinguishers, SCBA, EEBA and gas monitors &mdash; auditable, field-ready, always in sync.</div>
+      <div class="equip-row">
+        <div class="equip-chip"><i class="bi bi-fire"></i> Fire Extinguisher</div>
+        <div class="equip-chip"><i class="bi bi-box"></i> SCBA</div>
+        <div class="equip-chip"><i class="bi bi-mask"></i> EEBA</div>
+        <div class="equip-chip"><i class="bi bi-cloud-fog2"></i> Gas Monitor</div>
       </div>
-      <div class="mb-3">
-        <label class="form-label">Password</label>
-        <input type="password" name="password" class="form-control" placeholder="Enter your password" required>
-      </div>
-      <button type="submit" class="btn btn-dark w-100">Login</button>
-    </form>
-    {% if error %}
-      <div class="alert alert-danger mt-3" role="alert">
-        {{ error }}
-      </div>
-    {% endif %}
+    </div>
+
+    <div class="bp-bot">
+      <div class="trust"><i class="bi bi-shield-check"></i> Role-based access</div>
+      <div class="trust"><i class="bi bi-qr-code"></i> QR / tag tracking</div>
+      <div class="trust"><i class="bi bi-clock-history"></i> Full audit trail</div>
+    </div>
   </div>
+
+  <!-- RIGHT -->
+  <div class="form-panel">
+    <div class="form-card">
+      <div class="fc-eyebrow">Secure login</div>
+      <div class="fc-title">Sign in</div>
+      <div class="fc-desc">Enter your badge number and password to continue.</div>
+
+      {% if error %}
+      <div class="err"><i class="bi bi-exclamation-octagon-fill"></i> {{ error }}</div>
+      {% endif %}
+
+      <form method="post">
+        <div class="field">
+          <label>Badge Number</label>
+          <div class="input-shell">
+            <i class="bi bi-person-badge"></i>
+            <input type="text" name="username" placeholder="Enter your badge number" required autofocus>
+          </div>
+        </div>
+
+        <div class="field">
+          <label>Password</label>
+          <div class="input-shell">
+            <i class="bi bi-lock"></i>
+            <input type="password" name="password" id="pw" placeholder="Enter your password" required>
+            <button type="button" class="pw-toggle" onclick="togglePw()"><i class="bi bi-eye" id="pwIcon"></i></button>
+          </div>
+        </div>
+
+        <div class="row-between">
+          <label class="remember"><input type="checkbox" name="remember"> Keep me signed in</label>
+          <a href="#" class="help-link">Need help?</a>
+        </div>
+
+        <button type="submit" class="btn-signin"><i class="bi bi-box-arrow-in-right"></i> Sign in</button>
+      </form>
+
+      <div class="fc-foot">INSPECTIONAPP &middot; v1.0 &middot; &copy; {{ current_year }}</div>
+    </div>
+  </div>
+
 </div>
-{% endblock %}
+
+<script>
+function togglePw(){
+  const p=document.getElementById('pw'), ic=document.getElementById('pwIcon');
+  if(p.type==='password'){p.type='text';ic.className='bi bi-eye-slash';}
+  else{p.type='password';ic.className='bi bi-eye';}
+}
+</script>
+</body>
+</html>
