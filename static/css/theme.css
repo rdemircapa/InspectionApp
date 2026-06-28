@@ -1,0 +1,244 @@
+/* ============================================================
+   InspectionApp â€” Field-grade theme  (drop-in Bootstrap 5.3 override)
+   Place at: static/css/theme.css
+   Load AFTER bootstrap.min.css in base.html:
+     <link href="{{ url_for('static', filename='css/theme.css') }}" rel="stylesheet">
+   No template markup changes required.
+   ============================================================ */
+
+/* ---- Fonts (IBM Plex Sans = UI, IBM Plex Mono = tags/IDs/numbers) ---- */
+@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans:wght@400;500;600;700&display=swap');
+
+/* ---- Design tokens + Bootstrap variable overrides ---- */
+:root {
+  --ink:        #14171C;   /* charcoal â€” navbar, headings, dark surfaces */
+  --ink-soft:   #2C3138;
+  --signal:     #FF5A1F;   /* signal orange â€” brand / primary action */
+  --signal-600: #E84E16;
+  --signal-bg:  #FFF1EB;
+  --canvas:     #F4F4F1;   /* warm paper background */
+  --line:       #E5E4DF;   /* hairline borders */
+  --muted:      #74787F;
+  --pass:       #1F9D55;  --pass-bg:  #E9F7EF;
+  --fail:       #E02424;  --fail-bg:  #FDECEC;
+  --warn:       #B5731A;  --warn-bg:  #FBF1DF;
+
+  /* Bootstrap core vars */
+  --bs-primary:        #FF5A1F;
+  --bs-primary-rgb:    255, 90, 31;
+  --bs-success:        #1F9D55;  --bs-success-rgb:  31, 157, 85;
+  --bs-danger:         #E02424;  --bs-danger-rgb:   224, 36, 36;
+  --bs-warning:        #B5731A;  --bs-warning-rgb:  181, 115, 26;
+  --bs-body-bg:        #F4F4F1;
+  --bs-body-color:     #14171C;
+  --bs-body-font-family: 'IBM Plex Sans', system-ui, sans-serif;
+  --bs-border-color:   #E5E4DF;
+  --bs-link-color:     #E84E16;
+  --bs-link-hover-color: #14171C;
+  --bs-border-radius:    .75rem;
+  --bs-border-radius-sm: .55rem;
+}
+
+body {
+  font-family: var(--bs-body-font-family);
+  background-color: var(--canvas) !important;
+  color: var(--ink);
+  -webkit-font-smoothing: antialiased;
+}
+
+/* mono helper â€” apply to tags / serials / IDs anywhere */
+.mono, .tag, code, kbd { font-family: 'IBM Plex Mono', monospace; }
+
+h1,h2,h3,h4,h5 { font-weight: 700; letter-spacing: -.01em; color: var(--ink); }
+
+/* ============ NAVBAR ============ */
+.navbar.bg-dark,
+.navbar-dark.bg-dark { background-color: var(--ink) !important; }
+.navbar.sticky-top { box-shadow: 0 1px 0 rgba(255,255,255,.04), 0 8px 24px -16px rgba(0,0,0,.6); }
+
+.navbar-brand { font-weight: 700; letter-spacing: -.02em; }
+.navbar-brand .bi { color: var(--signal); }
+
+.navbar-dark .navbar-nav .nav-link {
+  color: #B9BDC4 !important;
+  font-size: .94rem;
+  font-weight: 500;
+  border-radius: 8px;
+  padding: .42rem .7rem !important;
+  transition: background .15s, color .15s;
+}
+.navbar-dark .navbar-nav .nav-link:hover,
+.navbar-dark .navbar-nav .nav-link.show {
+  color: #fff !important;
+  background: rgba(255,255,255,.07);
+}
+.navbar-dark .navbar-nav .nav-link.active {
+  color: #fff !important;
+  background: rgba(255,90,31,.16);
+}
+
+.dropdown-menu {
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  box-shadow: 0 18px 40px -18px rgba(20,23,28,.35);
+  padding: 6px;
+  font-size: .9rem;
+}
+.dropdown-item { border-radius: 8px; padding: .5rem .7rem; font-weight: 500; }
+.dropdown-item:hover, .dropdown-item:focus { background: var(--canvas); color: var(--ink); }
+.dropdown-item.text-danger:hover { background: var(--fail-bg); color: var(--fail) !important; }
+.dropdown-divider { border-color: var(--line); }
+
+/* ============ CARDS ============ */
+.card {
+  border: 1px solid var(--line);
+  border-radius: 14px;
+  box-shadow: 0 1px 2px rgba(20,23,28,.04);
+  overflow: hidden;
+}
+.card-header {
+  background: #FAFAF8;
+  border-bottom: 1px solid var(--line);
+  font-weight: 600;
+  letter-spacing: -.01em;
+}
+.card.shadow-sm { box-shadow: 0 14px 34px -24px rgba(20,23,28,.4) !important; }
+
+/* colored card accents â†’ left border strip instead of full border */
+.card.border-primary { border-color: var(--line); border-left: 4px solid var(--signal); }
+.card.border-warning { border-color: var(--line); border-left: 4px solid var(--warn); }
+.card.border-success { border-color: var(--line); border-left: 4px solid var(--pass); }
+.card.border-danger  { border-color: var(--line); border-left: 4px solid var(--fail); }
+.card .card-text.text-primary { color: var(--ink) !important; font-weight: 700; }
+.card .card-text.text-warning { color: var(--warn) !important; font-weight: 700; }
+
+/* ============ BUTTONS ============ */
+.btn {
+  font-weight: 600;
+  border-radius: 10px;
+  padding: .5rem .95rem;
+  letter-spacing: -.01em;
+  transition: transform .04s ease, box-shadow .15s, background .15s;
+}
+.btn:active { transform: translateY(1px); }
+.btn-sm { border-radius: 8px; padding: .32rem .6rem; font-size: .82rem; }
+
+.btn-primary {
+  --bs-btn-bg: var(--signal); --bs-btn-border-color: var(--signal);
+  --bs-btn-hover-bg: var(--signal-600); --bs-btn-hover-border-color: var(--signal-600);
+  --bs-btn-active-bg: var(--signal-600); --bs-btn-active-border-color: var(--signal-600);
+  --bs-btn-disabled-bg: var(--signal); --bs-btn-disabled-border-color: var(--signal);
+  box-shadow: 0 8px 18px -10px rgba(255,90,31,.7);
+}
+.btn-outline-primary {
+  --bs-btn-color: var(--signal-600); --bs-btn-border-color: #F3C9B8;
+  --bs-btn-hover-bg: var(--signal); --bs-btn-hover-border-color: var(--signal);
+  --bs-btn-active-bg: var(--signal-600); --bs-btn-active-border-color: var(--signal-600);
+}
+.btn-dark {
+  --bs-btn-bg: var(--ink); --bs-btn-border-color: var(--ink);
+  --bs-btn-hover-bg: var(--ink-soft); --bs-btn-hover-border-color: var(--ink-soft);
+}
+.btn-outline-secondary {
+  --bs-btn-color: var(--muted); --bs-btn-border-color: var(--line);
+  --bs-btn-hover-bg: var(--ink); --bs-btn-hover-border-color: var(--ink); --bs-btn-hover-color:#fff;
+}
+.btn-outline-success { --bs-btn-color: var(--pass); --bs-btn-border-color:#BfE5CE; --bs-btn-hover-bg: var(--pass); --bs-btn-hover-border-color: var(--pass); }
+.btn-outline-danger  { --bs-btn-color: var(--fail); --bs-btn-border-color:#F3C6C6; --bs-btn-hover-bg: var(--fail); --bs-btn-hover-border-color: var(--fail); }
+.btn-outline-warning { --bs-btn-color: var(--warn); --bs-btn-border-color:#EAD7AE; --bs-btn-hover-bg: var(--warn); --bs-btn-hover-border-color: var(--warn); --bs-btn-hover-color:#fff; }
+
+/* ============ TABLES ============ */
+.table {
+  --bs-table-border-color: var(--line);
+  border-radius: 12px;
+  overflow: hidden;
+  vertical-align: middle;
+}
+.table > :not(caption) > * > * { padding: .72rem .8rem; }
+.table thead.table-dark th,
+.table .table-dark th {
+  background: var(--ink) !important;
+  color: #C9CCD1 !important;
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: .72rem;
+  letter-spacing: .04em;
+  text-transform: uppercase;
+  font-weight: 500;
+  border-color: var(--ink-soft) !important;
+  white-space: nowrap;
+}
+.table-bordered { border: 1px solid var(--line); }
+.table-bordered > :not(caption) > * > * { border-color: #EFEFEA; }
+.table tbody tr { transition: background .12s; }
+.table-hover > tbody > tr:hover > * { background: var(--signal-bg); }
+.table td { font-size: .9rem; }
+/* tag numbers in tables read as mono */
+.table td:nth-child(2) { font-family: 'IBM Plex Mono', monospace; font-weight: 500; }
+
+/* ============ BADGES (status) ============ */
+.badge { font-weight: 600; font-family:'IBM Plex Mono',monospace; letter-spacing:.03em; padding:.4em .6em; border-radius:6px; }
+.badge.bg-secondary { background: var(--ink) !important; }
+.badge.bg-success   { background: var(--pass-bg) !important; color: var(--pass) !important; }
+.badge.bg-danger    { background: var(--fail-bg) !important; color: var(--fail) !important; }
+.badge.bg-warning   { background: var(--warn-bg) !important; color: var(--warn) !important; }
+.badge.bg-primary   { background: var(--signal-bg) !important; color: var(--signal-600) !important; }
+
+/* ============ FORMS ============ */
+.form-label { font-weight: 600; font-size: .82rem; color: var(--muted); letter-spacing: .01em; margin-bottom: .35rem; }
+.form-control, .form-select {
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  padding: .6rem .8rem;
+  font-size: .92rem;
+  background: #fff;
+  color: var(--ink);
+}
+.form-control:focus, .form-select:focus {
+  border-color: var(--signal);
+  box-shadow: 0 0 0 3px rgba(255,90,31,.15);
+}
+.form-control::placeholder { color: #A9ACB2; }
+
+/* ============ ALERTS ============ */
+.alert { border: 1px solid var(--line); border-radius: 12px; font-weight: 500; border-left-width: 4px; }
+.alert-danger  { background: var(--fail-bg); color: #9F1B1B; border-color:#F3C6C6; border-left-color: var(--fail); }
+.alert-warning { background: var(--warn-bg); color: #7A4D11; border-color:#EAD7AE; border-left-color: var(--warn); }
+.alert-success { background: var(--pass-bg); color: #136638; border-color:#BfE5CE; border-left-color: var(--pass); }
+.alert-info    { background: #fff; color: var(--ink); border-color: var(--line); border-left-color: var(--signal); }
+.alert-info strong { color: var(--ink); }
+
+/* ============ DataTables polish ============ */
+.dataTables_wrapper .dataTables_filter input,
+.dataTables_wrapper .dataTables_length select {
+  border: 1px solid var(--line); border-radius: 8px; padding: .35rem .6rem;
+}
+.dataTables_wrapper .dataTables_paginate .paginate_button.current {
+  background: var(--ink) !important; color: #fff !important;
+  border-radius: 8px; border: none;
+}
+.dataTables_wrapper .dataTables_paginate .paginate_button {
+  border-radius: 8px; border: 1px solid var(--line) !important;
+}
+table.dataTable thead .sorting:after,
+table.dataTable thead .sorting_asc:after,
+table.dataTable thead .sorting_desc:after { color: var(--signal); }
+
+/* ============ FOOTER ============ */
+footer.bg-light { background: #fff !important; border-top: 1px solid var(--line) !important; }
+footer a { color: var(--signal-600); }
+
+/* ============ Small utilities used across screens ============ */
+.section-eyebrow {
+  font-family: 'IBM Plex Mono', monospace; font-size: .68rem; letter-spacing: .08em;
+  text-transform: uppercase; color: var(--muted); font-weight: 600;
+}
+.kpi-value { font-size: 2rem; font-weight: 700; line-height: 1; letter-spacing: -.02em; }
+.status-dot { width: 8px; height: 8px; border-radius: 50%; display: inline-block; }
+.status-dot.pass { background: var(--pass); }
+.status-dot.fail { background: var(--fail); }
+.status-dot.warn { background: var(--warn); }
+
+/* red overdue cells already inline-styled in templates â†’ make them legible */
+td[style*="color:red"], td[style*="color: red"] {
+  color: var(--fail) !important; font-weight: 600;
+}
