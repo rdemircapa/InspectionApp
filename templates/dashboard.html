@@ -4,41 +4,58 @@
 {% block content %}
 <div class="container mt-4">
 
-  <!-- Reminder Alerts Section -->
+  <!-- Page header -->
+  <div class="d-flex justify-content-between align-items-end flex-wrap gap-2 mb-4">
+    <div>
+      <div class="section-eyebrow">HSE Equipment · Overview</div>
+      <h2 class="mb-0 mt-1">Inspection Dashboard</h2>
+    </div>
+    <a href="{{ url_for('list_fire_extinguishers') }}" class="btn btn-outline-secondary btn-sm">
+      <i class="bi bi-list-check"></i> View equipment
+    </a>
+  </div>
+
+  <!-- Reminder Alerts -->
   {% if overdue > 0 %}
-  <div class="alert alert-danger">
-    🔥 {{ overdue }} fire extinguishers are <strong>overdue</strong>!
+  <div class="alert alert-danger d-flex align-items-center gap-2">
+    <i class="bi bi-exclamation-octagon-fill"></i>
+    <span><strong>{{ overdue }}</strong> fire extinguishers are <strong>overdue</strong>.</span>
   </div>
   {% endif %}
   {% if approaching > 0 %}
-  <div class="alert alert-warning">
-    ⏰ {{ approaching }} fire extinguishers need inspection <strong>within 7 days</strong>.
+  <div class="alert alert-warning d-flex align-items-center gap-2">
+    <i class="bi bi-clock-history"></i>
+    <span><strong>{{ approaching }}</strong> need inspection within <strong>7 days</strong>.</span>
   </div>
   {% endif %}
 
   <!-- Summary Cards -->
-  <div class="row mb-4">
+  <div class="row g-3 mb-4">
     <div class="col-md-6">
-      <div class="card border-primary">
-        <div class="card-body text-center">
-          <h5 class="card-title">Total Products</h5>
-          <h3 class="card-text text-primary">{{ total_products }}</h3>
+      <div class="card border-primary h-100">
+        <div class="card-body">
+          <div class="section-eyebrow">Total tracked equipment</div>
+          <div class="kpi-value text-primary mt-2">{{ total_products }}</div>
         </div>
       </div>
     </div>
     <div class="col-md-6">
-      <div class="card border-warning">
-        <div class="card-body text-center">
-          <h5 class="card-title">Upcoming Inspections (Next 7 Days)</h5>
-          <h3 class="card-text text-warning">{{ upcoming_inspections }}</h3>
+      <div class="card border-warning h-100">
+        <div class="card-body">
+          <div class="section-eyebrow">Upcoming inspections · next 7 days</div>
+          <div class="kpi-value text-warning mt-2">{{ upcoming_inspections }}</div>
         </div>
       </div>
     </div>
   </div>
 
   <!-- Chart -->
-  <h2>Product Summary by Type</h2>
-  <canvas id="typeChart" height="100"></canvas>
+  <div class="card">
+    <div class="card-header">Equipment by type</div>
+    <div class="card-body">
+      <canvas id="typeChart" height="100"></canvas>
+    </div>
+  </div>
 </div>
 
 <!-- Chart.js -->
@@ -50,22 +67,21 @@ new Chart(ctx, {
   data: {
     labels: {{ labels | tojson }},
     datasets: [{
-      label: 'Total Products',
+      label: 'Total equipment',
       data: {{ values | tojson }},
-      backgroundColor: 'rgba(54, 162, 235, 0.6)',
-      borderColor: 'rgba(54, 162, 235, 1)',
-      borderWidth: 1
+      backgroundColor: 'rgba(255, 90, 31, 0.85)',
+      borderColor: 'rgba(255, 90, 31, 1)',
+      borderWidth: 0,
+      borderRadius: 6,
+      maxBarThickness: 46
     }]
   },
   options: {
     responsive: true,
+    plugins: { legend: { display: false } },
     scales: {
-      y: {
-        beginAtZero: true,
-        ticks: {
-          stepSize: 1
-        }
-      }
+      y: { beginAtZero: true, ticks: { stepSize: 1 }, grid: { color: '#ECECE7' } },
+      x: { grid: { display: false } }
     }
   }
 });
